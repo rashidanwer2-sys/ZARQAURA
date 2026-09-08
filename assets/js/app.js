@@ -5,20 +5,74 @@
 
 (function () {
 
-    const config = window.SITE_CONFIG;
+    "use strict";
 
 
     /* =====================================================
-       CART
+       CONFIG
+    ===================================================== */
+
+    const config = window.SITE_CONFIG || {};
+
+
+    const SETTINGS = {
+
+        businessName:
+            config.businessName || "ZARQAURA",
+
+        whatsappNumber:
+            config.whatsappNumber || "",
+
+        currencySymbol:
+            config.currencySymbol || "₹",
+
+        announcement:
+            config.announcement ||
+            "Anti-Tarnish Jewellery • Free Shipping Across India",
+
+        shippingText:
+            config.shippingText ||
+            "Free Shipping Across India",
+
+        deliveryText:
+            config.deliveryText ||
+            "3–7 Business Days",
+
+        dispatchText:
+            config.dispatchText ||
+            "Dispatch within 24–48 hours",
+
+        instagram:
+            config.instagram || "#"
+
+    };
+
+
+
+    /* =====================================================
+       CART STORAGE
     ===================================================== */
 
     function getCart() {
 
-        return JSON.parse(
-            localStorage.getItem("zarqauraCart") || "[]"
-        );
+        try {
+
+            return JSON.parse(
+                localStorage.getItem(
+                    "zarqauraCart"
+                ) || "[]"
+            );
+
+        }
+
+        catch {
+
+            return [];
+
+        }
 
     }
+
 
 
     function saveCart(items) {
@@ -33,13 +87,19 @@
     }
 
 
+
     function updateCartCount() {
 
-        const count = getCart().reduce(
-            (total, item) =>
-                total + item.qty,
-            0
-        );
+        const totalQuantity =
+            getCart().reduce(
+
+                (total, item) =>
+                    total +
+                    Number(item.qty || 0),
+
+                0
+
+            );
 
 
         document
@@ -50,7 +110,7 @@
                 element => {
 
                     element.textContent =
-                        count;
+                        totalQuantity;
 
                 }
             );
@@ -61,9 +121,25 @@
 
     /* =====================================================
        PRODUCT IMAGE SYSTEM
+
+       Example:
+       RG0001
+
+       assets/images/products/rings/RG0001/
+       1.jpg
+       2.jpg
+       3.jpg
+       4.jpg
     ===================================================== */
 
     function getProductImages(product) {
+
+        if (!product) {
+
+            return [];
+
+        }
+
 
         const basePath =
             `assets/images/products/${product.category}/${product.id}`;
@@ -84,24 +160,34 @@
     }
 
 
+
     function getMainProductImage(product) {
 
-        return getProductImages(product)[0];
+        const images =
+            getProductImages(product);
+
+
+        return images.length
+            ? images[0]
+            : "";
 
     }
 
 
+
     function productImageMarkup(product) {
 
-        const mainImage =
+        const image =
             getMainProductImage(product);
 
 
         return `
+
             <img
-                src="${mainImage}"
-                alt="${product.name}"
+                src="${image}"
+                alt="${escapeHTML(product.name)}"
                 loading="lazy"
+
                 onerror="
                     this.style.display='none';
                     this.nextElementSibling.style.display='flex';
@@ -115,17 +201,22 @@
 
                 <div>
 
+                    <span>
+                        ✦
+                    </span>
+
                     <strong>
-                        ${product.id}
+                        ${escapeHTML(product.id)}
                     </strong>
 
                     <small>
-                        Product image unavailable
+                        Image coming soon
                     </small>
 
                 </div>
 
             </div>
+
         `;
 
     }
@@ -138,12 +229,61 @@
 
     function money(value) {
 
+        const number =
+            Number(value || 0);
+
+
         return (
-            config.currencySymbol +
-            Number(value).toLocaleString(
+            SETTINGS.currencySymbol +
+            number.toLocaleString(
                 "en-IN"
             )
         );
+
+    }
+
+
+
+    /* =====================================================
+       PRODUCT HELPERS
+    ===================================================== */
+
+    function findProduct(productId) {
+
+        if (!window.PRODUCTS) {
+
+            return null;
+
+        }
+
+
+        return (
+            window.PRODUCTS.find(
+                product =>
+                    product.id === productId
+            ) || null
+        );
+
+    }
+
+
+
+    function formatCategory(value) {
+
+        if (!value) {
+
+            return "";
+
+        }
+
+
+        return value
+            .replace(/-/g, " ")
+            .replace(
+                /\b\w/g,
+                char =>
+                    char.toUpperCase()
+            );
 
     }
 
@@ -159,19 +299,16 @@
     ) {
 
         const product =
-            window.PRODUCTS.find(
-                item =>
-                    item.id === productId
-            );
+            findProduct(productId);
 
 
         if (
             !product ||
             !product.active ||
-            product.stock <= 0
+            Number(product.stock) <= 0
         ) {
 
-            return;
+            return false;
 
         }
 
@@ -187,12 +324,23 @@
             );
 
 
+        const requestedQuantity =
+            Math.max(
+                1,
+                Number(quantity || 1)
+            );
+
+
         if (existing) {
 
             existing.qty =
                 Math.min(
-                    existing.qty + quantity,
-                    product.stock
+
+                    Number(existing.qty) +
+                    requestedQuantity,
+
+                    Number(product.stock)
+
                 );
 
         }
@@ -206,8 +354,11 @@
 
                 qty:
                     Math.min(
-                        quantity,
-                        product.stock
+
+                        requestedQuantity,
+
+                        Number(product.stock)
+
                     )
 
             });
@@ -216,6 +367,8 @@
 
 
         saveCart(cart);
+
+        return true;
 
     }
 
@@ -227,6 +380,13 @@
 
     function productCard(product) {
 
+        if (!product) {
+
+            return "";
+
+        }
+
+
         const badges = [];
 
 
@@ -234,7 +394,7 @@
 
             badges.push(
                 `<span class="badge">
-                    New Arrival
+                    New
                 </span>`
             );
 
@@ -252,7 +412,9 @@
         }
 
 
-        if (product.stock <= 0) {
+        if (
+            Number(product.stock) <= 0
+        ) {
 
             badges.push(
                 `<span class="badge out">
@@ -269,9 +431,11 @@
                 class="product-card"
             >
 
+
                 <a
-                    href="product.html?id=${product.id}"
+                    href="product.html?id=${encodeURIComponent(product.id)}"
                     class="product-card-image-link"
+                    aria-label="View ${escapeHTML(product.name)}"
                 >
 
                     <div
@@ -285,9 +449,11 @@
                 </a>
 
 
+
                 <div
                     class="product-body"
                 >
+
 
                     <div
                         class="badges"
@@ -298,34 +464,57 @@
                     </div>
 
 
+
+                    <p
+                        class="product-card-category"
+                    >
+
+                        ${escapeHTML(
+                            formatCategory(
+                                product.category
+                            )
+                        )}
+
+                    </p>
+
+
+
                     <h3>
 
                         <a
-                            href="product.html?id=${product.id}"
+                            href="product.html?id=${encodeURIComponent(product.id)}"
                         >
 
-                            ${product.name}
+                            ${escapeHTML(product.name)}
 
                         </a>
 
                     </h3>
 
 
+
                     <div
-                        class="price"
+                        class="product-card-price-row"
                     >
 
-                        ${money(product.price)}
+                        <div
+                            class="price"
+                        >
+
+                            ${money(product.price)}
+
+                        </div>
 
                     </div>
 
 
+
                     <div
-                        class="actions"
+                        class="actions product-card-actions"
                     >
 
                         <a
-                            href="product.html?id=${product.id}"
+                            href="product.html?id=${encodeURIComponent(product.id)}"
                             class="btn secondary"
                         >
 
@@ -335,18 +524,19 @@
 
 
                         <button
+                            type="button"
                             class="btn"
-                            data-add="${product.id}"
+                            data-add="${escapeHTML(product.id)}"
 
                             ${
-                                product.stock <= 0
+                                Number(product.stock) <= 0
                                     ? "disabled"
                                     : ""
                             }
                         >
 
                             ${
-                                product.stock <= 0
+                                Number(product.stock) <= 0
                                     ? "Out of Stock"
                                     : "Add to Cart"
                             }
@@ -355,7 +545,9 @@
 
                     </div>
 
+
                 </div>
+
 
             </article>
 
@@ -366,325 +558,539 @@
 
 
     /* =====================================================
-       HEADER + FOOTER
+       HEADER
     ===================================================== */
 
-    function renderShell() {
+    function renderHeader() {
 
-        const header =
+        const target =
             document.querySelector(
                 "[data-site-header]"
             );
 
 
-        if (header) {
+        if (!target) {
 
-            header.innerHTML = `
+            return;
+
+        }
+
+
+        target.innerHTML = `
+
+            <div
+                class="announcement"
+            >
+
+                ${escapeHTML(
+                    SETTINGS.announcement
+                )}
+
+            </div>
+
+
+            <header
+                class="header"
+            >
 
                 <div
-                    class="announcement"
+                    class="container header-inner"
                 >
 
-                    ${config.announcement}
 
-                </div>
+                    <a
+                        href="index.html"
+                        class="logo"
+                        aria-label="ZARQAURA Home"
+                    >
+
+                        <img
+                            src="assets/images/branding/logo.png"
+                            alt="ZARQAURA"
+                            class="site-logo"
+
+                            onerror="
+                                this.style.display='none';
+                                this.nextElementSibling.style.display='inline';
+                            "
+                        >
+
+                        <span
+                            class="logo-text-fallback"
+                        >
+                            ZARQAURA
+                        </span>
+
+                    </a>
 
 
-                <header
-                    class="header"
-                >
 
-                    <div
-                        class="container header-inner"
+                    <button
+                        type="button"
+                        class="mobile-toggle"
+                        aria-label="Open menu"
+                        aria-expanded="false"
+                    >
+
+                        <span></span>
+                        <span></span>
+                        <span></span>
+
+                    </button>
+
+
+
+                    <nav
+                        class="nav"
                     >
 
                         <a
                             href="index.html"
-                            class="logo"
+                        >
+                            Home
+                        </a>
+
+
+                        <a
+                            href="shop.html"
+                        >
+                            Shop
+                        </a>
+
+
+                        <a
+                            href="shop.html?category=bracelets"
+                        >
+                            Bracelets
+                        </a>
+
+
+                        <a
+                            href="shop.html?category=chains"
+                        >
+                            Chains
+                        </a>
+
+
+                        <a
+                            href="shop.html?category=rings"
+                        >
+                            Rings
+                        </a>
+
+
+                        <a
+                            href="shop.html?category=earrings"
+                        >
+                            Earrings
+                        </a>
+
+
+                        <a
+                            href="shop.html?category=mangalsutras"
+                        >
+                            Mangalsutras
+                        </a>
+
+
+                        <a
+                            href="about.html"
+                        >
+                            About
+                        </a>
+
+
+                        <a
+                            href="cart.html"
+                            class="cart-link"
                         >
 
-                            ZARQAURA
+                            Cart
+
+                            <span
+                                class="cart-count"
+                                data-cart-count
+                            >
+                                0
+                            </span>
 
                         </a>
 
 
-                        <button
-                            class="mobile-toggle"
-                            aria-label="Open navigation menu"
-                        >
+                    </nav>
 
-                            ☰
 
-                        </button>
+                </div>
 
+            </header>
 
-                        <nav
-                            class="nav"
-                        >
+        `;
 
-                            <a
-                                href="index.html"
-                            >
-                                Home
-                            </a>
 
+        setupMobileNavigation(
+            target
+        );
 
-                            <a
-                                href="shop.html"
-                            >
-                                Shop
-                            </a>
 
-
-                            <a
-                                href="shop.html?category=bracelets"
-                            >
-                                Bracelets
-                            </a>
-
-
-                            <a
-                                href="shop.html?category=chains"
-                            >
-                                Chains
-                            </a>
-
-
-                            <a
-                                href="shop.html?category=rings"
-                            >
-                                Rings
-                            </a>
-
-
-                            <a
-                                href="shop.html?category=earrings"
-                            >
-                                Earrings
-                            </a>
-
-
-                            <a
-                                href="shop.html?category=mangalsutras"
-                            >
-                                Mangalsutras
-                            </a>
-
-
-                            <a
-                                href="about.html"
-                            >
-                                About
-                            </a>
-
-
-                            <a
-                                href="cart.html"
-                                class="cart-link"
-                            >
-
-                                Cart
-                                (
-                                <span
-                                    data-cart-count
-                                >
-                                    0
-                                </span>
-                                )
-
-                            </a>
-
-                        </nav>
-
-                    </div>
-
-                </header>
-
-            `;
-
-
-            const toggle =
-                header.querySelector(
-                    ".mobile-toggle"
-                );
-
-
-            const nav =
-                header.querySelector(
-                    ".nav"
-                );
-
-
-            if (
-                toggle &&
-                nav
-            ) {
-
-                toggle.addEventListener(
-                    "click",
-                    () => {
-
-                        nav.classList.toggle(
-                            "open"
-                        );
-
-                    }
-                );
-
-            }
-
-        }
-
-
-
-        const footer =
-            document.querySelector(
-                "[data-site-footer]"
-            );
-
-
-        if (footer) {
-
-            footer.innerHTML = `
-
-                <footer
-                    class="footer"
-                >
-
-                    <div
-                        class="container footer-grid"
-                    >
-
-
-                        <div>
-
-                            <h3>
-                                ZARQAURA
-                            </h3>
-
-                            <p>
-                                Anti-tarnish jewellery
-                                designed for everyday
-                                elegance.
-                            </p>
-
-                            <p>
-                                Jewellery for a brighter you.
-                            </p>
-
-                        </div>
-
-
-
-                        <div>
-
-                            <h3>
-                                Shop
-                            </h3>
-
-                            <a
-                                href="shop.html"
-                            >
-                                All Products
-                            </a>
-
-                            <a
-                                href="shop.html?category=bracelets"
-                            >
-                                Bracelets
-                            </a>
-
-                            <a
-                                href="shop.html?category=chains"
-                            >
-                                Chains
-                            </a>
-
-                            <a
-                                href="shop.html?category=rings"
-                            >
-                                Rings
-                            </a>
-
-                            <a
-                                href="shop.html?category=earrings"
-                            >
-                                Earrings
-                            </a>
-
-                            <a
-                                href="shop.html?category=mangalsutras"
-                            >
-                                Mangalsutras
-                            </a>
-
-                        </div>
-
-
-
-                        <div>
-
-                            <h3>
-                                Help
-                            </h3>
-
-                            <a
-                                href="contact.html"
-                            >
-                                Contact
-                            </a>
-
-                            <a
-                                href="refund.html"
-                            >
-                                Refund Policy
-                            </a>
-
-                            <a
-                                href="privacy.html"
-                            >
-                                Privacy Policy
-                            </a>
-
-                        </div>
-
-
-
-                        <div>
-
-                            <h3>
-                                Delivery
-                            </h3>
-
-                            <p>
-                                ${config.shippingText}
-                            </p>
-
-                            <p>
-                                ${config.deliveryText}
-                            </p>
-
-                            <p>
-                                ${config.dispatchText}
-                            </p>
-
-                        </div>
-
-
-                    </div>
-
-                </footer>
-
-            `;
-
-        }
+        setActiveNavigation(
+            target
+        );
 
     }
 
 
 
     /* =====================================================
-       GLOBAL ADD TO CART CLICK
+       MOBILE NAVIGATION
+    ===================================================== */
+
+    function setupMobileNavigation(
+        header
+    ) {
+
+        const toggle =
+            header.querySelector(
+                ".mobile-toggle"
+            );
+
+
+        const nav =
+            header.querySelector(
+                ".nav"
+            );
+
+
+        if (
+            !toggle ||
+            !nav
+        ) {
+
+            return;
+
+        }
+
+
+        toggle.addEventListener(
+            "click",
+            () => {
+
+                const open =
+                    nav.classList.toggle(
+                        "open"
+                    );
+
+
+                toggle.classList.toggle(
+                    "open",
+                    open
+                );
+
+
+                toggle.setAttribute(
+                    "aria-expanded",
+                    String(open)
+                );
+
+            }
+        );
+
+
+
+        nav.addEventListener(
+            "click",
+            event => {
+
+                if (
+                    !event.target.closest(
+                        "a"
+                    )
+                ) {
+
+                    return;
+
+                }
+
+
+                nav.classList.remove(
+                    "open"
+                );
+
+
+                toggle.classList.remove(
+                    "open"
+                );
+
+
+                toggle.setAttribute(
+                    "aria-expanded",
+                    "false"
+                );
+
+            }
+        );
+
+    }
+
+
+
+    /* =====================================================
+       ACTIVE NAVIGATION
+    ===================================================== */
+
+    function setActiveNavigation(
+        header
+    ) {
+
+        const currentPage =
+            window.location.pathname
+                .split("/")
+                .pop() ||
+            "index.html";
+
+
+        header
+            .querySelectorAll(
+                ".nav a"
+            )
+            .forEach(
+                link => {
+
+                    const href =
+                        link
+                            .getAttribute(
+                                "href"
+                            )
+                            .split("?")[0];
+
+
+                    if (
+                        href === currentPage
+                    ) {
+
+                        link.classList.add(
+                            "active"
+                        );
+
+                    }
+
+                }
+            );
+
+    }
+
+
+
+    /* =====================================================
+       FOOTER
+    ===================================================== */
+
+    function renderFooter() {
+
+        const target =
+            document.querySelector(
+                "[data-site-footer]"
+            );
+
+
+        if (!target) {
+
+            return;
+
+        }
+
+
+        target.innerHTML = `
+
+            <footer
+                class="footer"
+            >
+
+                <div
+                    class="container footer-grid"
+                >
+
+
+                    <div
+                        class="footer-brand"
+                    >
+
+                        <img
+                            src="assets/images/branding/logo.png"
+                            alt="ZARQAURA"
+                            class="footer-logo"
+                        >
+
+
+                        <p
+                            class="footer-brand-message"
+                        >
+
+                            Anti-tarnish jewellery
+                            for everyday elegance.
+
+                        </p>
+
+
+                        <p>
+
+                            ZARQAURA is made for women
+                            who love to express their
+                            aura with confidence.
+
+                        </p>
+
+
+                        <a
+                            href="${SETTINGS.instagram}"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="footer-social"
+                        >
+
+                            Instagram →
+
+                        </a>
+
+                    </div>
+
+
+
+                    <div>
+
+                        <h3>
+                            Shop
+                        </h3>
+
+                        <a
+                            href="shop.html"
+                        >
+                            Shop All
+                        </a>
+
+                        <a
+                            href="shop.html?category=bracelets"
+                        >
+                            Bracelets
+                        </a>
+
+                        <a
+                            href="shop.html?category=chains"
+                        >
+                            Chains
+                        </a>
+
+                        <a
+                            href="shop.html?category=rings"
+                        >
+                            Rings
+                        </a>
+
+                        <a
+                            href="shop.html?category=earrings"
+                        >
+                            Earrings
+                        </a>
+
+                        <a
+                            href="shop.html?category=mangalsutras"
+                        >
+                            Mangalsutras
+                        </a>
+
+                    </div>
+
+
+
+                    <div>
+
+                        <h3>
+                            Customer Care
+                        </h3>
+
+                        <a
+                            href="contact.html"
+                        >
+                            Contact Us
+                        </a>
+
+                        <a
+                            href="refund.html"
+                        >
+                            Refund Policy
+                        </a>
+
+                        <a
+                            href="privacy.html"
+                        >
+                            Privacy Policy
+                        </a>
+
+                        <a
+                            href="cart.html"
+                        >
+                            Your Cart
+                        </a>
+
+                    </div>
+
+
+
+                    <div>
+
+                        <h3>
+                            Delivery
+                        </h3>
+
+                        <p>
+                            ${escapeHTML(
+                                SETTINGS.shippingText
+                            )}
+                        </p>
+
+                        <p>
+                            ${escapeHTML(
+                                SETTINGS.dispatchText
+                            )}
+                        </p>
+
+                        <p>
+                            ${escapeHTML(
+                                SETTINGS.deliveryText
+                            )}
+                        </p>
+
+                    </div>
+
+
+                </div>
+
+
+                <div
+                    class="container footer-bottom"
+                >
+
+                    <span>
+                        © ${new Date().getFullYear()}
+                        ZARQAURA
+                    </span>
+
+                    <span>
+                        Made with love in India ♡
+                    </span>
+
+                </div>
+
+
+            </footer>
+
+        `;
+
+    }
+
+
+
+    /* =====================================================
+       GLOBAL ADD TO CART
     ===================================================== */
 
     document.addEventListener(
@@ -704,17 +1110,37 @@
             }
 
 
+            if (button.disabled) {
+
+                return;
+
+            }
+
+
             const productId =
                 button.dataset.add;
 
 
-            addToCart(
-                productId
-            );
+            const added =
+                addToCart(
+                    productId
+                );
 
 
-            const originalText =
+            if (!added) {
+
+                return;
+
+            }
+
+
+            const oldText =
                 button.textContent;
+
+
+            button.classList.add(
+                "added"
+            );
 
 
             button.textContent =
@@ -725,10 +1151,17 @@
                 () => {
 
                     button.textContent =
-                        originalText;
+                        oldText;
+
+
+                    button.classList.remove(
+                        "added"
+                    );
 
                 },
-                900
+
+                1000
+
             );
 
         }
@@ -737,7 +1170,41 @@
 
 
     /* =====================================================
-       PUBLIC FUNCTIONS
+       ESCAPE HTML
+    ===================================================== */
+
+    function escapeHTML(value) {
+
+        return String(
+            value ?? ""
+        )
+            .replace(
+                /&/g,
+                "&amp;"
+            )
+            .replace(
+                /</g,
+                "&lt;"
+            )
+            .replace(
+                />/g,
+                "&gt;"
+            )
+            .replace(
+                /"/g,
+                "&quot;"
+            )
+            .replace(
+                /'/g,
+                "&#039;"
+            );
+
+    }
+
+
+
+    /* =====================================================
+       PUBLIC API
     ===================================================== */
 
     window.ZARQAURA = {
@@ -766,6 +1233,12 @@
         productCard:
             productCard,
 
+        findProduct:
+            findProduct,
+
+        formatCategory:
+            formatCategory,
+
         updateCartCount:
             updateCartCount
 
@@ -774,14 +1247,16 @@
 
 
     /* =====================================================
-       INITIAL LOAD
+       INITIALIZE
     ===================================================== */
 
     document.addEventListener(
         "DOMContentLoaded",
         () => {
 
-            renderShell();
+            renderHeader();
+
+            renderFooter();
 
             updateCartCount();
 
