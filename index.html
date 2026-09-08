@@ -1,1 +1,907 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>ZARQAURA | Anti-Tarnish Jewellery</title><link rel="stylesheet" href="assets/css/styles.css"></head><body><div data-site-header></div><main><section class="hero"><div class="container hero-grid"><div><div class="eyebrow">Everyday Elegance</div><h1>Jewellery that moves with your aura.</h1><p>Premium anti-tarnish jewellery designed for modern everyday styling.</p><div class="actions"><a class="btn" href="shop.html">Shop Collection</a><a class="btn secondary" href="#categories">Explore Categories</a></div></div><div class="hero-card"><div><h2>Hero image goes here</h2><p>Later place your campaign image inside <code>assets/images/banners/home/</code>.</p></div></div></div></section><section class="section" id="categories"><div class="container"><div class="section-title"><div><div class="eyebrow">Shop by category</div><h2>Find your style</h2></div></div><div class="category-grid"><a class="category-card" href="shop.html?category=bracelets"><div class="category-icon">◯</div><strong>Bracelets</strong></a><a class="category-card" href="shop.html?category=chains"><div class="category-icon">⌁</div><strong>Chains</strong></a><a class="category-card" href="shop.html?category=rings"><div class="category-icon">◉</div><strong>Rings</strong></a><a class="category-card" href="shop.html?category=earrings"><div class="category-icon">◇</div><strong>Earrings</strong></a><a class="category-card" href="shop.html?category=mangalsutras"><div class="category-icon">✦</div><strong>Mangalsutras</strong></a></div></div></section><section class="section"><div class="container"><div class="section-title"><div><div class="eyebrow">Curated for you</div><h2>Featured Products</h2></div><a href="shop.html">View All</a></div><div class="product-grid" data-featured-grid></div></div></section></main><div data-site-footer></div><script src="assets/data/site-config.js"></script><script src="assets/data/products.js"></script><script src="assets/js/app.js"></script><script>document.addEventListener('DOMContentLoaded',()=>{const grid=document.querySelector('[data-featured-grid]');grid.innerHTML=PRODUCTS.filter(p=>p.active&&p.featured).map(ZARQAURA.productCard).join('')});</script></body></html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>ZARQAURA | Anti-Tarnish Jewellery</title>
+
+  <meta
+    name="description"
+    content="Discover ZARQAURA anti-tarnish jewellery designed for everyday elegance."
+  >
+
+  <!-- Favicon -->
+  <link
+    rel="icon"
+    href="assets/images/branding/favicon.png"
+    type="image/png"
+  >
+
+  <!-- Main CSS -->
+  <link
+    rel="stylesheet"
+    href="assets/css/styles.css"
+  >
+</head>
+
+
+<body>
+
+  <!-- =========================================
+       SHARED HEADER
+  ========================================== -->
+
+  <div data-site-header></div>
+
+
+
+  <main>
+
+    <!-- =========================================
+         HERO
+    ========================================== -->
+
+    <section class="zq-hero">
+
+      <div class="zq-container zq-hero-grid">
+
+        <!-- Hero content -->
+
+        <div class="zq-hero-content">
+
+          <p class="zq-eyebrow">
+            ANTI-TARNISH JEWELLERY
+          </p>
+
+          <h1>
+            Style Your
+            <span>Statement.</span>
+          </h1>
+
+          <p class="zq-hero-description">
+            Jewellery designed to complement your everyday aura —
+            timeless, effortless and made to keep shining.
+          </p>
+
+          <div class="zq-hero-actions">
+
+            <a
+              href="shop.html"
+              class="zq-btn zq-btn-primary"
+            >
+              Shop Collection
+            </a>
+
+            <a
+              href="#shop-category"
+              class="zq-btn zq-btn-outline"
+            >
+              Explore Categories
+            </a>
+
+          </div>
+
+
+          <!-- Hero small benefits -->
+
+          <div class="zq-hero-features">
+
+            <div>
+              <strong>Anti-Tarnish</strong>
+              <span>Long-lasting shine</span>
+            </div>
+
+            <div>
+              <strong>Everyday Wear</strong>
+              <span>Designed for daily styling</span>
+            </div>
+
+            <div>
+              <strong>Free Shipping</strong>
+              <span>Across India</span>
+            </div>
+
+          </div>
+
+        </div>
+
+
+
+        <!-- Hero Image -->
+
+        <div class="zq-hero-visual">
+
+          <div class="zq-hero-image-wrap">
+
+            <img
+              src="assets/images/banners/home/hero.jpg"
+              alt="ZARQAURA jewellery collection"
+              class="zq-hero-image"
+              onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+            >
+
+            <!-- Appears only until you upload hero.jpg -->
+
+            <div class="zq-image-placeholder">
+              <div>
+                <span>✦</span>
+
+                <p>
+                  Add your homepage hero image
+                </p>
+
+                <small>
+                  assets/images/banners/home/hero.jpg
+                </small>
+              </div>
+            </div>
+
+          </div>
+
+
+          <!-- Floating note -->
+
+          <div class="zq-floating-card">
+
+            <span class="zq-floating-icon">✦</span>
+
+            <div>
+              <strong>
+                Everyday Elegance
+              </strong>
+
+              <small>
+                Jewellery that moves with your aura.
+              </small>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- =========================================
+         CATEGORY SECTION
+    ========================================== -->
+
+    <section
+      class="zq-section zq-category-section"
+      id="shop-category"
+    >
+
+      <div class="zq-container">
+
+        <div class="zq-section-heading">
+
+          <div>
+
+            <p class="zq-eyebrow">
+              SHOP BY CATEGORY
+            </p>
+
+            <h2>
+              Find Your Everyday Favourite
+            </h2>
+
+          </div>
+
+          <a
+            href="shop.html"
+            class="zq-text-link"
+          >
+            View all products →
+          </a>
+
+        </div>
+
+
+
+        <div class="zq-category-grid">
+
+
+          <!-- Bracelets -->
+
+          <a
+            href="shop.html?category=bracelets"
+            class="zq-category-card"
+          >
+
+            <div class="zq-category-image">
+
+              <img
+                src="assets/images/categories/bracelets.jpg"
+                alt="Bracelets"
+              >
+
+              <div class="zq-category-overlay"></div>
+
+            </div>
+
+            <div class="zq-category-info">
+
+              <span>
+                01
+              </span>
+
+              <h3>
+                Bracelets
+              </h3>
+
+              <p>
+                Effortless pieces for everyday styling.
+              </p>
+
+            </div>
+
+          </a>
+
+
+
+          <!-- Chains -->
+
+          <a
+            href="shop.html?category=chains"
+            class="zq-category-card"
+          >
+
+            <div class="zq-category-image">
+
+              <img
+                src="assets/images/categories/chains.jpg"
+                alt="Chains"
+              >
+
+              <div class="zq-category-overlay"></div>
+
+            </div>
+
+            <div class="zq-category-info">
+
+              <span>
+                02
+              </span>
+
+              <h3>
+                Chains
+              </h3>
+
+              <p>
+                Minimal chains made for versatile looks.
+              </p>
+
+            </div>
+
+          </a>
+
+
+
+          <!-- Rings -->
+
+          <a
+            href="shop.html?category=rings"
+            class="zq-category-card"
+          >
+
+            <div class="zq-category-image">
+
+              <img
+                src="assets/images/categories/rings.jpg"
+                alt="Rings"
+              >
+
+              <div class="zq-category-overlay"></div>
+
+            </div>
+
+            <div class="zq-category-info">
+
+              <span>
+                03
+              </span>
+
+              <h3>
+                Rings
+              </h3>
+
+              <p>
+                Small details that complete your look.
+              </p>
+
+            </div>
+
+          </a>
+
+
+
+          <!-- Earrings -->
+
+          <a
+            href="shop.html?category=earrings"
+            class="zq-category-card"
+          >
+
+            <div class="zq-category-image">
+
+              <img
+                src="assets/images/categories/earrings.jpg"
+                alt="Earrings"
+              >
+
+              <div class="zq-category-overlay"></div>
+
+            </div>
+
+            <div class="zq-category-info">
+
+              <span>
+                04
+              </span>
+
+              <h3>
+                Earrings
+              </h3>
+
+              <p>
+                From subtle everyday shine to statement styles.
+              </p>
+
+            </div>
+
+          </a>
+
+
+
+          <!-- Mangalsutras -->
+
+          <a
+            href="shop.html?category=mangalsutras"
+            class="zq-category-card"
+          >
+
+            <div class="zq-category-image">
+
+              <img
+                src="assets/images/categories/mangalsutras.jpg"
+                alt="Mangalsutras"
+              >
+
+              <div class="zq-category-overlay"></div>
+
+            </div>
+
+            <div class="zq-category-info">
+
+              <span>
+                05
+              </span>
+
+              <h3>
+                Mangalsutras
+              </h3>
+
+              <p>
+                Tradition reimagined for modern everyday wear.
+              </p>
+
+            </div>
+
+          </a>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- =========================================
+         FEATURED PRODUCTS
+    ========================================== -->
+
+    <section class="zq-section zq-products-section">
+
+      <div class="zq-container">
+
+        <div class="zq-section-heading">
+
+          <div>
+
+            <p class="zq-eyebrow">
+              CURATED FOR YOU
+            </p>
+
+            <h2>
+              Featured Pieces
+            </h2>
+
+            <p class="zq-section-description">
+              Pieces selected to bring effortless elegance
+              into your everyday wardrobe.
+            </p>
+
+          </div>
+
+
+          <a
+            href="shop.html"
+            class="zq-text-link"
+          >
+            Shop all →
+          </a>
+
+        </div>
+
+
+        <!-- Products automatically inserted by JS -->
+
+        <div
+          class="product-grid zq-featured-grid"
+          data-featured-grid
+        ></div>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- =========================================
+         EDITORIAL BRAND SECTION
+    ========================================== -->
+
+    <section class="zq-story-section">
+
+      <div class="zq-container zq-story-grid">
+
+
+        <div class="zq-story-image">
+
+          <img
+            src="assets/images/banners/home/everyday-elegance.jpg"
+            alt="ZARQAURA everyday jewellery"
+          >
+
+        </div>
+
+
+
+        <div class="zq-story-content">
+
+          <p class="zq-eyebrow">
+            THE ZARQAURA WAY
+          </p>
+
+          <h2>
+            More Than Jewellery.
+            <span>A Feeling.</span>
+          </h2>
+
+          <p>
+            ZARQAURA is made for women who love to express
+            their aura with confidence.
+          </p>
+
+          <p>
+            Our pieces balance modern styling with timeless
+            elegance — designed to become part of your
+            everyday story.
+          </p>
+
+          <div class="zq-story-points">
+
+            <div>
+              <span>✦</span>
+
+              <div>
+                <strong>
+                  Made for Everyday
+                </strong>
+
+                <p>
+                  Easy-to-style jewellery for work,
+                  celebrations and everything between.
+                </p>
+              </div>
+            </div>
+
+
+            <div>
+              <span>✦</span>
+
+              <div>
+                <strong>
+                  Long-Lasting Shine
+                </strong>
+
+                <p>
+                  Anti-tarnish pieces designed to remain
+                  beautiful with proper care.
+                </p>
+              </div>
+            </div>
+
+
+            <div>
+              <span>✦</span>
+
+              <div>
+                <strong>
+                  Thoughtfully Curated
+                </strong>
+
+                <p>
+                  Modern pieces selected for versatility,
+                  elegance and effortless styling.
+                </p>
+              </div>
+            </div>
+
+          </div>
+
+
+          <a
+            href="about.html"
+            class="zq-btn zq-btn-primary"
+          >
+            Discover Our Story
+          </a>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- =========================================
+         NEW ARRIVALS
+    ========================================== -->
+
+    <section class="zq-section zq-new-section">
+
+      <div class="zq-container">
+
+        <div class="zq-section-heading centered">
+
+          <div>
+
+            <p class="zq-eyebrow">
+              JUST LANDED
+            </p>
+
+            <h2>
+              New Arrivals
+            </h2>
+
+            <p class="zq-section-description">
+              Fresh additions to the ZARQAURA collection.
+            </p>
+
+          </div>
+
+        </div>
+
+
+        <div
+          class="product-grid"
+          data-new-arrivals
+        ></div>
+
+
+        <div class="zq-center-action">
+
+          <a
+            href="shop.html"
+            class="zq-btn zq-btn-outline"
+          >
+            Explore All Jewellery
+          </a>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- =========================================
+         BENEFITS
+    ========================================== -->
+
+    <section class="zq-benefits">
+
+      <div class="zq-container zq-benefits-grid">
+
+
+        <div class="zq-benefit">
+
+          <span>✦</span>
+
+          <h3>
+            Anti-Tarnish
+          </h3>
+
+          <p>
+            Designed for long-lasting everyday shine.
+          </p>
+
+        </div>
+
+
+        <div class="zq-benefit">
+
+          <span>♡</span>
+
+          <h3>
+            Thoughtfully Curated
+          </h3>
+
+          <p>
+            Pieces chosen for modern everyday elegance.
+          </p>
+
+        </div>
+
+
+        <div class="zq-benefit">
+
+          <span>◌</span>
+
+          <h3>
+            Free Shipping
+          </h3>
+
+          <p>
+            Complimentary shipping across India.
+          </p>
+
+        </div>
+
+
+        <div class="zq-benefit">
+
+          <span>♢</span>
+
+          <h3>
+            Secure Ordering
+          </h3>
+
+          <p>
+            Simple ordering and support through WhatsApp.
+          </p>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- =========================================
+         INSTAGRAM / COMMUNITY CTA
+    ========================================== -->
+
+    <section class="zq-community">
+
+      <div class="zq-container zq-community-inner">
+
+        <div>
+
+          <p class="zq-eyebrow light">
+            STAY IN OUR AURA
+          </p>
+
+          <h2>
+            New drops, styling inspiration
+            & ZARQAURA stories.
+          </h2>
+
+        </div>
+
+
+        <div class="zq-community-actions">
+
+          <a
+            href="#"
+            id="instagram-link"
+            target="_blank"
+            class="zq-btn zq-btn-light"
+          >
+            Follow on Instagram
+          </a>
+
+          <a
+            href="shop.html"
+            class="zq-community-link"
+          >
+            Shop the Collection →
+          </a>
+
+        </div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+
+
+  <!-- =========================================
+       SHARED FOOTER
+  ========================================== -->
+
+  <div data-site-footer></div>
+
+
+
+  <!-- =========================================
+       DATA
+  ========================================== -->
+
+  <script src="assets/data/site-config.js"></script>
+
+  <script src="assets/data/products.js"></script>
+
+
+
+  <!-- =========================================
+       SHARED APP
+  ========================================== -->
+
+  <script src="assets/js/app.js"></script>
+
+
+
+  <!-- =========================================
+       HOME PAGE JS
+  ========================================== -->
+
+  <script>
+
+    document.addEventListener(
+      "DOMContentLoaded",
+      () => {
+
+        /*
+        =========================================
+        FEATURED PRODUCTS
+        =========================================
+        */
+
+        const featuredGrid =
+          document.querySelector(
+            "[data-featured-grid]"
+          );
+
+
+        const featuredProducts =
+          PRODUCTS
+            .filter(
+              product =>
+                product.active &&
+                product.featured
+            )
+            .slice(0, 4);
+
+
+        if (featuredGrid) {
+
+          if (featuredProducts.length) {
+
+            featuredGrid.innerHTML =
+              featuredProducts
+                .map(
+                  ZARQAURA.productCard
+                )
+                .join("");
+
+          }
+
+          else {
+
+            featuredGrid.innerHTML = `
+              <div class="zq-empty-products">
+                Featured products will appear here.
+              </div>
+            `;
+
+          }
+
+        }
+
+
+
+        /*
+        =========================================
+        NEW ARRIVALS
+        =========================================
+        */
+
+        const newGrid =
+          document.querySelector(
+            "[data-new-arrivals]"
+          );
+
+
+        const newProducts =
+          PRODUCTS
+            .filter(
+              product =>
+                product.active &&
+                product.newArrival
+            )
+            .slice(0, 4);
+
+
+        if (newGrid) {
+
+          if (newProducts.length) {
+
+            newGrid.innerHTML =
+              newProducts
+                .map(
+                  ZARQAURA.productCard
+                )
+                .join("");
+
+          }
+
+          else {
+
+            newGrid.innerHTML = `
+              <div class="zq-empty-products">
+                New arrivals will appear here.
+              </div>
+            `;
+
+          }
+
+        }
+
+
+
+        /*
+        =========================================
+        INSTAGRAM FROM SITE CONFIG
+        =========================================
+        */
+
+        const instagramButton =
+          document.getElementById(
+            "instagram-link"
+          );
+
+
+        if (
+          instagramButton &&
+          SITE_CONFIG.instagram
+        ) {
+
+          instagramButton.href =
+            SITE_CONFIG.instagram;
+
+        }
+
+      }
+    );
+
+  </script>
+
+
+</body>
+</html>
