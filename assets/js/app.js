@@ -48,9 +48,8 @@
     };
 
 
-
     /* =====================================================
-       CART STORAGE
+       CART
     ===================================================== */
 
     function getCart() {
@@ -74,7 +73,6 @@
     }
 
 
-
     function saveCart(items) {
 
         localStorage.setItem(
@@ -87,18 +85,14 @@
     }
 
 
-
     function updateCartCount() {
 
         const totalQuantity =
             getCart().reduce(
-
                 (total, item) =>
                     total +
                     Number(item.qty || 0),
-
                 0
-
             );
 
 
@@ -118,12 +112,10 @@
     }
 
 
-
     /* =====================================================
-       PRODUCT IMAGE SYSTEM
+       PRODUCT IMAGES
 
        Example:
-       RG0001
 
        assets/images/products/rings/RG0001/
        1.jpg
@@ -148,11 +140,8 @@
         return [
 
             `${basePath}/1.jpg`,
-
             `${basePath}/2.jpg`,
-
             `${basePath}/3.jpg`,
-
             `${basePath}/4.jpg`
 
         ];
@@ -160,19 +149,11 @@
     }
 
 
-
     function getMainProductImage(product) {
 
-        const images =
-            getProductImages(product);
-
-
-        return images.length
-            ? images[0]
-            : "";
+        return getProductImages(product)[0] || "";
 
     }
-
 
 
     function productImageMarkup(product) {
@@ -222,30 +203,23 @@
     }
 
 
-
     /* =====================================================
        CURRENCY
     ===================================================== */
 
     function money(value) {
 
-        const number =
-            Number(value || 0);
-
-
         return (
             SETTINGS.currencySymbol +
-            number.toLocaleString(
-                "en-IN"
-            )
+            Number(value || 0)
+                .toLocaleString("en-IN")
         );
 
     }
 
 
-
     /* =====================================================
-       PRODUCT HELPERS
+       PRODUCTS
     ===================================================== */
 
     function findProduct(productId) {
@@ -267,7 +241,6 @@
     }
 
 
-
     function formatCategory(value) {
 
         if (!value) {
@@ -281,12 +254,11 @@
             .replace(/-/g, " ")
             .replace(
                 /\b\w/g,
-                char =>
-                    char.toUpperCase()
+                character =>
+                    character.toUpperCase()
             );
 
     }
-
 
 
     /* =====================================================
@@ -335,12 +307,10 @@
 
             existing.qty =
                 Math.min(
-
                     Number(existing.qty) +
                     requestedQuantity,
 
                     Number(product.stock)
-
                 );
 
         }
@@ -354,11 +324,8 @@
 
                 qty:
                     Math.min(
-
                         requestedQuantity,
-
                         Number(product.stock)
-
                     )
 
             });
@@ -371,7 +338,6 @@
         return true;
 
     }
-
 
 
     /* =====================================================
@@ -431,11 +397,9 @@
                 class="product-card"
             >
 
-
                 <a
                     href="product.html?id=${encodeURIComponent(product.id)}"
                     class="product-card-image-link"
-                    aria-label="View ${escapeHTML(product.name)}"
                 >
 
                     <div
@@ -449,11 +413,9 @@
                 </a>
 
 
-
                 <div
                     class="product-body"
                 >
-
 
                     <div
                         class="badges"
@@ -462,7 +424,6 @@
                         ${badges.join("")}
 
                     </div>
-
 
 
                     <p
@@ -478,35 +439,30 @@
                     </p>
 
 
-
                     <h3>
 
                         <a
                             href="product.html?id=${encodeURIComponent(product.id)}"
                         >
 
-                            ${escapeHTML(product.name)}
+                            ${escapeHTML(
+                                product.name
+                            )}
 
                         </a>
 
                     </h3>
 
 
-
                     <div
-                        class="product-card-price-row"
+                        class="price"
                     >
 
-                        <div
-                            class="price"
-                        >
-
-                            ${money(product.price)}
-
-                        </div>
+                        ${money(
+                            product.price
+                        )}
 
                     </div>
-
 
 
                     <div
@@ -545,16 +501,13 @@
 
                     </div>
 
-
                 </div>
-
 
             </article>
 
         `;
 
     }
-
 
 
     /* =====================================================
@@ -598,6 +551,8 @@
                 >
 
 
+                    <!-- LOGO -->
+
                     <a
                         href="index.html"
                         class="logo"
@@ -624,6 +579,7 @@
                     </a>
 
 
+                    <!-- MOBILE MENU -->
 
                     <button
                         type="button"
@@ -639,6 +595,7 @@
                     </button>
 
 
+                    <!-- NAVIGATION -->
 
                     <nav
                         class="nav"
@@ -659,37 +616,9 @@
 
 
                         <a
-                            href="shop.html?category=bracelets"
+                            href="index.html#shop-category"
                         >
-                            Bracelets
-                        </a>
-
-
-                        <a
-                            href="shop.html?category=chains"
-                        >
-                            Chains
-                        </a>
-
-
-                        <a
-                            href="shop.html?category=rings"
-                        >
-                            Rings
-                        </a>
-
-
-                        <a
-                            href="shop.html?category=earrings"
-                        >
-                            Earrings
-                        </a>
-
-
-                        <a
-                            href="shop.html?category=mangalsutras"
-                        >
-                            Mangalsutras
+                            Collection
                         </a>
 
 
@@ -716,9 +645,7 @@
 
                         </a>
 
-
                     </nav>
-
 
                 </div>
 
@@ -737,7 +664,6 @@
         );
 
     }
-
 
 
     /* =====================================================
@@ -795,7 +721,6 @@
         );
 
 
-
         nav.addEventListener(
             "click",
             event => {
@@ -832,9 +757,8 @@
     }
 
 
-
     /* =====================================================
-       ACTIVE NAVIGATION
+       ACTIVE NAV
     ===================================================== */
 
     function setActiveNavigation(
@@ -860,7 +784,8 @@
                             .getAttribute(
                                 "href"
                             )
-                            .split("?")[0];
+                            .split("?")[0]
+                            .split("#")[0];
 
 
                     if (
@@ -877,7 +802,6 @@
             );
 
     }
-
 
 
     /* =====================================================
@@ -909,6 +833,8 @@
                     class="container footer-grid"
                 >
 
+
+                    <!-- BRAND -->
 
                     <div
                         class="footer-brand"
@@ -954,6 +880,7 @@
                     </div>
 
 
+                    <!-- SHOP -->
 
                     <div>
 
@@ -1000,6 +927,7 @@
                     </div>
 
 
+                    <!-- CUSTOMER CARE -->
 
                     <div>
 
@@ -1034,6 +962,7 @@
                     </div>
 
 
+                    <!-- DELIVERY -->
 
                     <div>
 
@@ -1070,23 +999,26 @@
                 >
 
                     <span>
-                        © ${new Date().getFullYear()}
+
+                        ©
+                        ${new Date().getFullYear()}
                         ZARQAURA
+
                     </span>
 
                     <span>
+
                         Made with love in India ♡
+
                     </span>
 
                 </div>
-
 
             </footer>
 
         `;
 
     }
-
 
 
     /* =====================================================
@@ -1103,27 +1035,19 @@
                 );
 
 
-            if (!button) {
+            if (
+                !button ||
+                button.disabled
+            ) {
 
                 return;
 
             }
-
-
-            if (button.disabled) {
-
-                return;
-
-            }
-
-
-            const productId =
-                button.dataset.add;
 
 
             const added =
                 addToCart(
-                    productId
+                    button.dataset.add
                 );
 
 
@@ -1134,7 +1058,7 @@
             }
 
 
-            const oldText =
+            const originalText =
                 button.textContent;
 
 
@@ -1151,7 +1075,7 @@
                 () => {
 
                     button.textContent =
-                        oldText;
+                        originalText;
 
 
                     button.classList.remove(
@@ -1161,16 +1085,14 @@
                 },
 
                 1000
-
             );
 
         }
     );
 
 
-
     /* =====================================================
-       ESCAPE HTML
+       SECURITY / ESCAPE
     ===================================================== */
 
     function escapeHTML(value) {
@@ -1178,22 +1100,27 @@
         return String(
             value ?? ""
         )
+
             .replace(
                 /&/g,
                 "&amp;"
             )
+
             .replace(
                 /</g,
                 "&lt;"
             )
+
             .replace(
                 />/g,
                 "&gt;"
             )
+
             .replace(
                 /"/g,
                 "&quot;"
             )
+
             .replace(
                 /'/g,
                 "&#039;"
@@ -1202,9 +1129,8 @@
     }
 
 
-
     /* =====================================================
-       PUBLIC API
+       PUBLIC FUNCTIONS
     ===================================================== */
 
     window.ZARQAURA = {
@@ -1243,7 +1169,6 @@
             updateCartCount
 
     };
-
 
 
     /* =====================================================
