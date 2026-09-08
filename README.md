@@ -1,15 +1,28 @@
-# ZARQAURA static storefront
+# ZARQAURA Starter Website
 
-Open `index.html` locally or upload all files to GitHub Pages / Netlify / any static host.
+Static HTML/CSS/JS starter designed for GitHub Pages and easy product management.
 
-## WhatsApp checkout
-Orders are sent to `+91 76203 06562`. Update `ZQ.whatsapp` in `assets/app.js` if the number changes.
+## Core files
+- `assets/data/site-config.js` — business settings
+- `assets/data/products.js` — all product data
+- `assets/css/styles.css` — design
+- `assets/js/app.js` — header/footer/common cart helpers
+- `assets/js/shop.js` — dynamic shop/filtering
+- `assets/js/product.js` — product details
+- `assets/js/cart.js` — cart
+- `assets/js/checkout.js` — checkout + WhatsApp order
 
-## Payment details
-No public UPI ID or payment QR was present on zarqaura.com when this site was built. Add your UPI ID to `ZQ.upiId` in `assets/app.js` when ready. The payment screenshot button already works with mobile Web Share where supported and falls back to opening WhatsApp.
+## Add a new product
+1. Add photos to a product folder, e.g. `assets/images/products/bracelets/BR002/`
+2. Add one object to `assets/data/products.js`
+3. Set `active`, `featured`, `newArrival`, `bestseller`, and `stock` as needed.
 
-## Products
-Current public products from the Shopify site are defined in `ZQ.products` in `assets/app.js`. Add new product objects there.
+## SKU prefixes
+- Bracelets: BR
+- Chains: CH
+- Rings: RG
+- Earrings: ER
+- Mangalsutras: MG
 
-## Branding
-The palette uses #64413A, #FFF7EC and #2F5D62. The page requests the live `https://zarqaura.com/favicon.ico` first and includes a local fallback icon.
+## Run
+Open `index.html` with VS Code Live Server.
