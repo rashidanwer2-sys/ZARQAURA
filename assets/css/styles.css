@@ -273,7 +273,7 @@ h4 {
 
 
 /* =========================================================
-   PREMIUM ANNOUNCEMENT BAR
+   SMOOTH PREMIUM ANNOUNCEMENT BAR
 ========================================================= */
 
 .announcement {
@@ -290,11 +290,9 @@ h4 {
         linear-gradient(
             90deg,
             #2F5D62 0%,
-            #376C71 50%,
+            #365F64 50%,
             #2F5D62 100%
         );
-
-    background-size: 200% 100%;
 
     color: #FFFFFF;
 
@@ -306,14 +304,39 @@ h4 {
 
     letter-spacing: 1px;
 
+}
+
+
+/* Soft continuous glow */
+
+.announcement::before {
+
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        radial-gradient(
+            circle at 50% 50%,
+            rgba(255,255,255,0.10),
+            transparent 55%
+        );
+
+    opacity: 0.35;
+
     animation:
-        announcementBackground 9s
-        ease-in-out infinite;
+        announcementGlow 6s
+        ease-in-out
+        infinite alternate;
+
+    pointer-events: none;
 
 }
 
 
-/* Soft luxury shine */
+/* Very soft slow shimmer */
 
 .announcement::after {
 
@@ -323,98 +346,86 @@ h4 {
 
     top: 0;
 
-    left: -140%;
+    left: -35%;
 
-    width: 70%;
+    width: 30%;
 
     height: 100%;
 
     background:
         linear-gradient(
-            110deg,
-            transparent 0%,
-            rgba(255, 255, 255, 0.02) 20%,
-            rgba(255, 255, 255, 0.10) 35%,
-            rgba(255, 255, 255, 0.28) 50%,
-            rgba(255, 255, 255, 0.10) 65%,
-            rgba(255, 255, 255, 0.02) 80%,
-            transparent 100%
+            90deg,
+            transparent,
+            rgba(255,255,255,0.10),
+            transparent
         );
 
-    transform: skewX(-18deg);
+    filter: blur(8px);
 
     animation:
-        announcementShine 9s
-        linear infinite;
+        announcementShimmer 12s
+        ease-in-out
+        infinite;
 
     pointer-events: none;
 
 }
 
 
-/* Gentle background movement */
+@keyframes announcementGlow {
 
-@keyframes announcementBackground {
+    from {
 
-    0%,
-    100% {
+        opacity: 0.18;
 
-        background-position: 0% 50%;
+        transform:
+            scale(0.98);
+
+    }
+
+    to {
+
+        opacity: 0.42;
+
+        transform:
+            scale(1.03);
+
+    }
+
+}
+
+
+@keyframes announcementShimmer {
+
+    0% {
+
+        left: -35%;
 
     }
 
     50% {
 
-        background-position: 100% 50%;
-
-    }
-    100% {
-
-        background-position: 0% 50%;
-
-    }
-
-}
-
-
-/* Shine passes across occasionally */
-
-@keyframes announcementShine {
-
-    0% {
-
-        left:
-            -140%;
-
-    }
-
-    30% {
-
-        left:
-            170%;
+        left: 105%;
 
     }
 
     100% {
 
-        left:
-            170%;
+        left: 105%;
 
     }
 
 }
-
 
 
 /* Accessibility */
 
 @media (prefers-reduced-motion: reduce) {
 
-    .announcement,
+    .announcement::before,
     .announcement::after {
 
-        animation:
-            none;
+        animation: none;
 
     }
 
