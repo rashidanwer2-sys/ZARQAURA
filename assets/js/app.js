@@ -531,15 +531,37 @@
 
         target.innerHTML = `
 
-            <div
-                class="announcement"
-            >
+            <div class="announcement">
 
-                ${escapeHTML(
-                    SETTINGS.announcement
-                )}
+    <div class="announcement-track">
 
-            </div>
+        <span class="announcement-item">
+            ${escapeHTML(SETTINGS.announcement)}
+        </span>
+
+        <span class="announcement-item">
+            ${escapeHTML(SETTINGS.announcement)}
+        </span>
+
+        <span class="announcement-item">
+            ${escapeHTML(SETTINGS.announcement)}
+        </span>
+
+        <span class="announcement-item">
+            ${escapeHTML(SETTINGS.announcement)}
+        </span>
+
+        <span class="announcement-item">
+            ${escapeHTML(SETTINGS.announcement)}
+        </span>
+
+        <span class="announcement-item">
+            ${escapeHTML(SETTINGS.announcement)}
+        </span>
+
+    </div>
+
+</div>
 
 
             <header
