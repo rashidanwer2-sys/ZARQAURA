@@ -310,7 +310,7 @@ h4 {
     text-indent: 100%;
 
     animation:
-        announcementScroll 18s
+        announcementScroll 30s
         linear infinite;
 
 }
@@ -750,10 +750,11 @@ span:nth-child(3) {
         1;
 
     transition:
-        transform 0.25s ease,
-        background 0.25s ease,
-        color 0.25s ease,
-        border-color 0.25s ease;
+        transform 0.35s ease,
+        background-color 0.35s ease,
+        color 0.35s ease,
+        border-color 0.35s ease,
+        box-shadow 0.35s ease;
 
 }
 
@@ -762,10 +763,12 @@ span:nth-child(3) {
 .zq-btn:hover {
 
     transform:
-        translateY(-2px);
+        translateY(-3px);
 
 }
 
+
+/* Primary button */
 
 .btn:hover,
 .zq-btn-primary:hover {
@@ -776,8 +779,19 @@ span:nth-child(3) {
     background:
         var(--teal);
 
+    box-shadow:
+        0 10px 24px
+        rgba(
+            47,
+            93,
+            98,
+            0.16
+        );
+
 }
 
+
+/* Outline / secondary button */
 
 .btn.secondary,
 .zq-btn-outline {
@@ -806,13 +820,29 @@ span:nth-child(3) {
         var(--brown);
 
     background:
-        var(--brown);
+        rgba(
+            100,
+            65,
+            58,
+            0.06
+        );
 
     color:
-        var(--white);
+        var(--brown);
+
+    box-shadow:
+        0 10px 24px
+        rgba(
+            100,
+            65,
+            58,
+            0.10
+        );
 
 }
 
+
+/* Teal button */
 
 .btn.teal {
 
@@ -833,8 +863,19 @@ span:nth-child(3) {
     background:
         var(--teal-dark);
 
+    box-shadow:
+        0 10px 24px
+        rgba(
+            47,
+            93,
+            98,
+            0.16
+        );
+
 }
 
+
+/* Added state */
 
 .btn.added {
 
@@ -846,6 +887,8 @@ span:nth-child(3) {
 
 }
 
+
+/* Light button */
 
 .zq-btn-light {
 
@@ -860,6 +903,20 @@ span:nth-child(3) {
 
 }
 
+
+/* Press effect */
+
+.btn:active,
+.zq-btn:active {
+
+    transform:
+        translateY(-1px)
+        scale(0.99);
+
+}
+
+
+/* Button groups */
 
 .actions {
 
@@ -876,7 +933,6 @@ span:nth-child(3) {
         10px;
 
 }
-
 
 /* =========================================================
    HOME HERO
