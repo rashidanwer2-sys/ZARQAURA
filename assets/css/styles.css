@@ -1202,6 +1202,17 @@ span:nth-child(3) {
     gap:
         4px;
 
+    border-right: 
+        1px solid rgba(100, 65, 58, 0.14);
+
+}
+
+
+.zq-hero-features div:last-child {
+
+    border-right: 
+        0;
+
 }
 
 
@@ -2346,9 +2357,6 @@ span:nth-child(3) {
 
 .zq-story-content h2 span {
 
-    color:
-        var(--teal);
-
     font-style:
         italic;
 
@@ -2356,9 +2364,6 @@ span:nth-child(3) {
 
 
 .zq-story-content > p {
-
-    color:
-        var(--text-soft);
 
     font-family:
         "Lora",
