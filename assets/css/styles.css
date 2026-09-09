@@ -273,7 +273,7 @@ h4 {
 
 
 /* =========================================================
-   SMOOTH PREMIUM ANNOUNCEMENT BAR
+   MOVING ANNOUNCEMENT TEXT
 ========================================================= */
 
 .announcement {
@@ -284,19 +284,11 @@ h4 {
 
     overflow: hidden;
 
-    padding: 9px 20px;
+    padding: 9px 0;
 
-    background:
-        linear-gradient(
-            90deg,
-            #2F5D62 0%,
-            #365F64 50%,
-            #2F5D62 100%
-        );
+    background: #2F5D62;
 
     color: #FFFFFF;
-
-    text-align: center;
 
     font-size: 11px;
 
@@ -304,114 +296,48 @@ h4 {
 
     letter-spacing: 1px;
 
+    white-space: nowrap;
+
 }
 
 
-/* Soft continuous glow */
+/* Moving text */
 
-.announcement::before {
+.announcement {
 
-    content: "";
+    text-align: left;
 
-    position: absolute;
-
-    inset: 0;
-
-    background:
-        radial-gradient(
-            circle at 50% 50%,
-            rgba(255,255,255,0.10),
-            transparent 55%
-        );
-
-    opacity: 0.35;
+    text-indent: 100%;
 
     animation:
-        announcementGlow 6s
-        ease-in-out
-        infinite alternate;
-
-    pointer-events: none;
+        announcementScroll 18s
+        linear infinite;
 
 }
 
 
-/* Very soft slow shimmer */
+/* Pause on hover */
 
-.announcement::after {
+.announcement:hover {
 
-    content: "";
-
-    position: absolute;
-
-    top: 0;
-
-    left: -35%;
-
-    width: 30%;
-
-    height: 100%;
-
-    background:
-        linear-gradient(
-            90deg,
-            transparent,
-            rgba(255,255,255,0.10),
-            transparent
-        );
-
-    filter: blur(8px);
-
-    animation:
-        announcementShimmer 12s
-        ease-in-out
-        infinite;
-
-    pointer-events: none;
+    animation-play-state: paused;
 
 }
 
 
-@keyframes announcementGlow {
+/* Horizontal movement */
+
+@keyframes announcementScroll {
 
     from {
 
-        opacity: 0.18;
-
-        transform:
-            scale(0.98);
+        text-indent: 100%;
 
     }
 
     to {
 
-        opacity: 0.42;
-
-        transform:
-            scale(1.03);
-
-    }
-
-}
-
-
-@keyframes announcementShimmer {
-
-    0% {
-
-        left: -35%;
-
-    }
-
-    50% {
-
-        left: 105%;
-
-    }
-
-    100% {
-
-        left: 105%;
+        text-indent: -100%;
 
     }
 
@@ -422,10 +348,13 @@ h4 {
 
 @media (prefers-reduced-motion: reduce) {
 
-    .announcement::before,
-    .announcement::after {
+    .announcement {
 
         animation: none;
+
+        text-align: center;
+
+        text-indent: 0;
 
     }
 
