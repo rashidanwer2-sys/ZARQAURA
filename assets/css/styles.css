@@ -250,7 +250,7 @@ h4 {
         var(--teal);
 
     font-size:
-        14px;
+        12px;
 
     font-weight:
         700;
@@ -855,7 +855,7 @@ span:nth-child(3) {
             100,
             65,
             58,
-            0.20
+            0.25
         );
 
 }
@@ -1164,7 +1164,19 @@ span:nth-child(3) {
     padding-top:
         23px;
 
+    padding-bottom:
+        23px;
+
     border-top:
+        1px solid
+        rgba(
+            100,
+            65,
+            58,
+            0.14
+        );
+
+    border-bottom:
         1px solid
         rgba(
             100,
