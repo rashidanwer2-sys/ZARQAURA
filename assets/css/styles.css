@@ -785,7 +785,7 @@ span:nth-child(3) {
             47,
             93,
             98,
-            0.16
+            0.20
         );
 
 }
@@ -831,7 +831,7 @@ span:nth-child(3) {
             100,
             65,
             58,
-            0.10
+            0.20
         );
 
 }
@@ -1122,19 +1122,20 @@ span:nth-child(3) {
 }
 
 
+/* =========================================================
+   HERO FEATURES
+========================================================= */
+
 .zq-hero-features {
 
     display:
         grid;
 
     grid-template-columns:
-        repeat(
-            3,
-            1fr
-        );
+        repeat(3, 1fr);
 
     gap:
-        18px;
+        28px;
 
     margin-top:
         45px;
@@ -1156,6 +1157,9 @@ span:nth-child(3) {
 
 .zq-hero-features div {
 
+    position:
+        relative;
+
     display:
         flex;
 
@@ -1164,6 +1168,40 @@ span:nth-child(3) {
 
     gap:
         4px;
+
+}
+
+
+/* Star separator */
+
+.zq-hero-features div:not(:last-child)::after {
+
+    content:
+        "✦";
+
+    position:
+        absolute;
+
+    top:
+        50%;
+
+    right:
+        -18px;
+
+    transform:
+        translate(
+            50%,
+            -50%
+        );
+
+    color:
+        var(--brown);
+
+    font-size:
+        9px;
+
+    opacity:
+        0.65;
 
 }
 
@@ -1197,6 +1235,48 @@ span:nth-child(3) {
 
     line-height:
         1.45;
+
+}
+
+
+/* Mobile */
+
+@media (max-width: 650px) {
+
+    .zq-hero-features {
+
+        grid-template-columns:
+            1fr;
+
+        gap:
+            11px;
+
+    }
+
+
+    .zq-hero-features div {
+
+        padding-bottom:
+            10px;
+
+        border-bottom:
+            1px solid
+            rgba(
+                100,
+                65,
+                58,
+                0.08
+            );
+
+    }
+
+
+    .zq-hero-features div:not(:last-child)::after {
+
+        display:
+            none;
+
+    }
 
 }
 
