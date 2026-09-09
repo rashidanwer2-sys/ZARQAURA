@@ -307,7 +307,7 @@ h4 {
     letter-spacing: 1px;
 
     animation:
-        announcementBackground 8s
+        announcementBackground 9s
         ease-in-out infinite;
 
 }
@@ -323,9 +323,9 @@ h4 {
 
     top: 0;
 
-    left: -120%;
+    left: -140%;
 
-    width: 60%;
+    width: 70%;
 
     height: 100%;
 
@@ -333,17 +333,19 @@ h4 {
         linear-gradient(
             110deg,
             transparent 0%,
-            rgba(255, 255, 255, 0.04) 25%,
-            rgba(255, 255, 255, 0.22) 50%,
-            rgba(255, 255, 255, 0.04) 75%,
+            rgba(255, 255, 255, 0.02) 20%,
+            rgba(255, 255, 255, 0.10) 35%,
+            rgba(255, 255, 255, 0.28) 50%,
+            rgba(255, 255, 255, 0.10) 65%,
+            rgba(255, 255, 255, 0.02) 80%,
             transparent 100%
         );
 
-    transform: skewX(-20deg);
+    transform: skewX(-18deg);
 
     animation:
-        announcementShine 5s
-        ease-in-out infinite;
+        announcementShine 9s
+        linear infinite;
 
     pointer-events: none;
 
@@ -366,6 +368,11 @@ h4 {
         background-position: 100% 50%;
 
     }
+    100% {
+
+        background-position: 0% 50%;
+
+    }
 
 }
 
@@ -374,20 +381,29 @@ h4 {
 
 @keyframes announcementShine {
 
-    0%,
-    65% {
+    0% {
 
-        left: -120%;
+        left:
+            -140%;
+
+    }
+
+    30% {
+
+        left:
+            170%;
 
     }
 
     100% {
 
-        left: 160%;
+        left:
+            170%;
 
     }
 
 }
+
 
 
 /* Accessibility */
@@ -397,7 +413,8 @@ h4 {
     .announcement,
     .announcement::after {
 
-        animation: none;
+        animation:
+            none;
 
     }
 
