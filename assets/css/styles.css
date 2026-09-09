@@ -805,7 +805,7 @@ span:nth-child(3) {
         );
 
     background:
-         var(--brown);
+        transparent;
 
     color:
         var(--brown);
@@ -820,15 +820,10 @@ span:nth-child(3) {
         var(--brown);
 
     background:
-        rgba(
-            100,
-            65,
-            58,
-            0.06
-        );
+        var(--brown);
 
     color:
-        var(--brown);
+        var(--white);
 
     box-shadow:
         0 10px 24px
