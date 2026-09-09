@@ -273,37 +273,133 @@ h4 {
 
 
 /* =========================================================
-   ANNOUNCEMENT
+   PREMIUM ANNOUNCEMENT BAR
 ========================================================= */
 
 .announcement {
 
-    position:
-        relative;
+    position: relative;
 
-    z-index:
-        1100;
+    z-index: 1100;
 
-    padding:
-        8px 20px;
+    overflow: hidden;
+
+    padding: 9px 20px;
 
     background:
-        var(--teal);
+        linear-gradient(
+            90deg,
+            #2F5D62 0%,
+            #376C71 50%,
+            #2F5D62 100%
+        );
 
-    color:
-        var(--white);
+    background-size: 200% 100%;
 
-    text-align:
-        center;
+    color: #FFFFFF;
 
-    font-size:
-        11px;
+    text-align: center;
 
-    font-weight:
-        500;
+    font-size: 11px;
 
-    letter-spacing:
-        0.45px;
+    font-weight: 500;
+
+    letter-spacing: 1px;
+
+    animation:
+        announcementBackground 8s
+        ease-in-out infinite;
+
+}
+
+
+/* Soft luxury shine */
+
+.announcement::after {
+
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+
+    left: -120%;
+
+    width: 60%;
+
+    height: 100%;
+
+    background:
+        linear-gradient(
+            110deg,
+            transparent 0%,
+            rgba(255, 255, 255, 0.04) 25%,
+            rgba(255, 255, 255, 0.22) 50%,
+            rgba(255, 255, 255, 0.04) 75%,
+            transparent 100%
+        );
+
+    transform: skewX(-20deg);
+
+    animation:
+        announcementShine 5s
+        ease-in-out infinite;
+
+    pointer-events: none;
+
+}
+
+
+/* Gentle background movement */
+
+@keyframes announcementBackground {
+
+    0%,
+    100% {
+
+        background-position: 0% 50%;
+
+    }
+
+    50% {
+
+        background-position: 100% 50%;
+
+    }
+
+}
+
+
+/* Shine passes across occasionally */
+
+@keyframes announcementShine {
+
+    0%,
+    65% {
+
+        left: -120%;
+
+    }
+
+    100% {
+
+        left: 160%;
+
+    }
+
+}
+
+
+/* Accessibility */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .announcement,
+    .announcement::after {
+
+        animation: none;
+
+    }
 
 }
 

@@ -616,7 +616,7 @@
 
 
                         <a
-                            href="index.html#shop-category"
+                            href="collections.html"
                         >
                             Collection
                         </a>
@@ -758,50 +758,65 @@
 
 
     /* =====================================================
-       ACTIVE NAV
-    ===================================================== */
+   ACTIVE NAVIGATION
+===================================================== */
 
-    function setActiveNavigation(
-        header
+function setActiveNavigation(header) {
+
+    let currentPage =
+        window.location.pathname
+            .split("/")
+            .pop();
+
+
+    /* GitHub Pages / root homepage */
+
+    if (
+        !currentPage ||
+        currentPage === ""
     ) {
 
-        const currentPage =
-            window.location.pathname
-                .split("/")
-                .pop() ||
+        currentPage =
             "index.html";
 
-
-        header
-            .querySelectorAll(
-                ".nav a"
-            )
-            .forEach(
-                link => {
-
-                    const href =
-                        link
-                            .getAttribute(
-                                "href"
-                            )
-                            .split("?")[0]
-                            .split("#")[0];
+    }
 
 
-                    if (
-                        href === currentPage
-                    ) {
+    header
+        .querySelectorAll(
+            ".nav a"
+        )
+        .forEach(
+            link => {
 
-                        link.classList.add(
-                            "active"
-                        );
+                const href =
+                    link
+                        .getAttribute(
+                            "href"
+                        )
+                        .split("?")[0]
+                        .split("#")[0];
 
-                    }
+
+                link.classList.remove(
+                    "active"
+                );
+
+
+                if (
+                    href === currentPage
+                ) {
+
+                    link.classList.add(
+                        "active"
+                    );
 
                 }
-            );
 
-    }
+            }
+        );
+
+}
 
 
     /* =====================================================
