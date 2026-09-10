@@ -946,7 +946,7 @@ span:nth-child(3) {
         var(--white);
 
     transform:
-        translateY(-3px);
+        translateY(-5px);
 
     box-shadow:
         0 12px 28px
@@ -2766,9 +2766,6 @@ span:nth-child(3) {
     opacity:
         0.9;
 
-    transform:
-        translateX(4px);
-
 }
 
 
@@ -4039,9 +4036,6 @@ textarea.form-control {
 
 
 .footer-social:hover {
-
-    transform:
-        translateX(4px);
 
     opacity:
         0.95;
