@@ -2704,56 +2704,35 @@ span:nth-child(3) {
 
 .zq-community-link {
 
-    position:
-        relative;
+    position: relative;
 
-    display:
-        inline-flex;
+    display: inline-flex;
 
-    align-items:
-        center;
+    align-items: center;
 
-    justify-content:
-        center;
+    justify-content: center;
 
-    gap:
-        7px;
+    width: 260px;
 
-    margin:
-        0;
+    max-width: 100%;
 
-    padding-bottom:
-        5px;
+    margin: 0;
 
-    color:
-        var(--white);
+    padding-bottom: 5px;
 
-    font-size:
-        11px;
+    color: var(--white);
 
-    font-weight:
-        500;
+    font-size: 11px;
 
-    letter-spacing:
-        0.25px;
+    font-weight: 500;
 
-    text-align:
-        center;
+    letter-spacing: 0.25px;
+
+    text-align: center;
 
     transition:
         opacity 0.3s ease,
         transform 0.3s ease;
-
-}
-
-
-.zq-community-actions .zq-btn {
-
-    width:
-        260px;
-
-    max-width:
-        100%;
 
 }
 
@@ -2764,7 +2743,7 @@ span:nth-child(3) {
 
     position: absolute;
 
-    left: 0;
+    left: 50%;
 
     bottom: 0;
 
@@ -2780,6 +2759,8 @@ span:nth-child(3) {
             0.65
         );
 
+    transform: translateX(-50%);
+
     transition:
         width 0.4s ease;
 
@@ -2788,15 +2769,26 @@ span:nth-child(3) {
 
 .zq-community-link:hover {
 
-    opacity:
-        0.9;
+    opacity: 0.9;
+
+    transform: translateY(-2px);
 
 }
 
 
 .zq-community-link:hover::after {
 
+    width: 72%;
+
+}
+
+
+.zq-community-actions .zq-btn {
+
     width:
+        260px;
+
+    max-width:
         100%;
 
 }
