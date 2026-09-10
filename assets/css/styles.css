@@ -821,18 +821,13 @@ span:nth-child(3) {
 .zq-btn-outline {
 
     border-color:
-        rgba(
-            100,
-            65,
-            58,
-            0.42
-        );
+        var(--teal);
 
     background:
-        transparent;
+        var(--teal);
 
     color:
-        var(--brown);
+        var(--white);
 
 }
 
