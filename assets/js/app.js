@@ -968,35 +968,44 @@ function setActiveNavigation(header) {
 
                     <div>
 
-                        <h3>
-                            Customer Care
-                        </h3>
+                      <h3>
+                          Customer Care
+                      </h3>
 
-                        <a
-                            href="contact.html"
-                        >
-                            Contact Us
-                        </a>
+                      <a
+                          href="contact.html"
+                      >
+                          Contact Us
+                      </a>
 
-                        <a
-                            href="refund.html"
-                        >
-                            Refund Policy
-                        </a>
+                      <a
+                          href="https://chat.whatsapp.com/YOUR-COMMUNITY-LINK"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          class="footer-community-link"
+                      >
+                          Join WhatsApp Community →
+                      </a>
 
-                        <a
-                            href="privacy.html"
-                        >
-                            Privacy Policy
-                        </a>
+                      <a
+                          href="refund.html"
+                      >
+                          Refund Policy
+                      </a>
 
-                        <a
-                            href="cart.html"
-                        >
-                            Your Cart
-                        </a>
+                      <a
+                          href="privacy.html"
+                      >
+                          Privacy Policy
+                      </a>
 
-                    </div>
+                      <a
+                          href="cart.html"
+                      >
+                          Your Cart
+                      </a>
+
+                  </div>
 
 
                     <!-- DELIVERY -->

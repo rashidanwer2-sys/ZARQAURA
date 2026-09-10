@@ -2782,6 +2782,66 @@ span:nth-child(3) {
 
 
 /* =========================================================
+   WHATSAPP COMMUNITY BUTTON
+========================================================= */
+
+.zq-whatsapp-community {
+
+    border-color:
+        rgba(255, 255, 255, 0.65);
+
+    background:
+        transparent;
+
+    color:
+        var(--white);
+
+    transition:
+        transform 0.35s ease,
+        background-color 0.35s ease,
+        color 0.35s ease,
+        border-color 0.35s ease,
+        box-shadow 0.35s ease;
+
+}
+
+
+.zq-whatsapp-community:hover {
+
+    border-color:
+        var(--cream);
+
+    background:
+        var(--cream);
+
+    color:
+        var(--teal);
+
+    transform:
+        translateY(-3px);
+
+    box-shadow:
+        0 12px 28px
+        rgba(
+            20,
+            48,
+            51,
+            0.22
+        );
+
+}
+
+
+.zq-whatsapp-community:active {
+
+    transform:
+        translateY(-1px)
+        scale(0.99);
+
+}
+
+
+/* =========================================================
    PAGE HEADER
 ========================================================= */
 
