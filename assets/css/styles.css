@@ -1704,8 +1704,8 @@ span:nth-child(3) {
         var(--cream-light);
 
     transition:
-        transform 0.3s ease,
-        box-shadow 0.3s ease;
+        transform 0.5s ease,
+        box-shadow 0.5s ease;
 
 }
 
@@ -1900,8 +1900,8 @@ span:nth-child(3) {
         var(--white);
 
     transition:
-        transform 0.3s ease,
-        box-shadow 0.3s ease;
+        transform 0.5s ease,
+        box-shadow 0.5s ease;
 
 }
 
