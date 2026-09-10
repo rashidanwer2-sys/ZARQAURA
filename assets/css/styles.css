@@ -2714,6 +2714,10 @@ span:nth-child(3) {
 
     padding-bottom: 5px;
 
+    margin-top: 5px;
+
+    margin-left: 20px;
+
     color:
         var(--white);
 
