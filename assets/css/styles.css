@@ -2704,19 +2704,26 @@ span:nth-child(3) {
 
 .zq-community-link {
 
-    position: relative;
+    position:
+        relative;
 
-    display: inline-flex;
+    display:
+        inline-flex;
 
-    align-items: center;
+    align-items:
+        center;
 
-    gap: 7px;
+    justify-content:
+        center;
 
-    padding-bottom: 5px;
+    gap:
+        7px;
 
-    margin-top: 5px;
+    margin:
+        0;
 
-    margin-left: 20px;
+    padding-bottom:
+        5px;
 
     color:
         var(--white);
@@ -2730,9 +2737,23 @@ span:nth-child(3) {
     letter-spacing:
         0.25px;
 
+    text-align:
+        center;
+
     transition:
         opacity 0.3s ease,
         transform 0.3s ease;
+
+}
+
+
+.zq-community-actions .zq-btn {
+
+    width:
+        260px;
+
+    max-width:
+        100%;
 
 }
 
