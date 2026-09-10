@@ -652,6 +652,13 @@
 
 
                         <a
+                            href="contact.html"
+                        >
+                            Contact
+                        </a>
+
+
+                        <a
                             href="cart.html"
                             class="cart-link"
                         >
