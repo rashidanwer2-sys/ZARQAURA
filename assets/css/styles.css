@@ -4648,15 +4648,6 @@ textarea.form-control {
     }
 
 
-    .zq-hero-actions
-    .zq-btn {
-
-        width:
-            100%;
-
-    }
-
-
     .zq-hero-features {
 
         grid-template-columns:
@@ -5585,6 +5576,14 @@ textarea.form-control {
     .zq-btn,
     .zq-whatsapp-community,
     .zq-community-link {
+
+        width:
+            100%;
+
+    }
+
+    .zq-hero-actions
+    .zq-btn {
 
         width:
             100%;
