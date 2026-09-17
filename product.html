@@ -1,1 +1,2038 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Product | ZARQAURA</title><link rel="stylesheet" href="assets/css/styles.css"></head><body><div data-site-header></div><main class="container section" data-product></main><div data-site-footer></div><script src="assets/data/site-config.js"></script><script src="assets/data/products.js"></script><script src="assets/js/app.js"></script><script src="assets/js/product.js"></script></body></html>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        Product | ZARQAURA
+    </title>
+
+    <meta
+        name="description"
+        content="Discover premium anti-tarnish jewellery from ZARQAURA."
+    >
+
+    <link
+        rel="icon"
+        href="assets/images/branding/favicon.png"
+        type="image/png"
+    >
+
+    <link
+        rel="stylesheet"
+        href="assets/css/styles.css"
+    >
+
+
+    <style>
+
+        /* =========================================================
+           PRODUCT PAGE
+        ========================================================= */
+
+        .product-detail-page {
+            overflow: hidden;
+        }
+
+
+
+        /* =========================================================
+           BREADCRUMB
+        ========================================================= */
+
+        .product-breadcrumb-section {
+            padding: 20px 0;
+            border-bottom: 1px solid var(--border);
+            background: var(--cream);
+        }
+
+
+        .product-breadcrumb {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 8px;
+
+            color: var(--text-light);
+            font-size: 9px;
+        }
+
+
+        .product-breadcrumb a {
+            color: var(--text-soft);
+            transition: color 0.25s ease;
+        }
+
+
+        .product-breadcrumb a:hover {
+            color: var(--teal);
+        }
+
+
+        .product-breadcrumb-separator {
+            opacity: 0.6;
+        }
+
+
+        .product-breadcrumb-current {
+            color: var(--brown);
+            font-weight: 600;
+        }
+
+
+
+        /* =========================================================
+           PRODUCT SECTION
+        ========================================================= */
+
+        .product-detail-section {
+            padding: 58px 0 90px;
+            background: var(--cream-light);
+        }
+
+
+        .product-detail-layout {
+            display: grid;
+
+            grid-template-columns:
+                minmax(0, 1.05fr)
+                minmax(380px, 0.95fr);
+
+            align-items: start;
+            gap: 62px;
+        }
+
+
+
+        /* =========================================================
+           GALLERY
+        ========================================================= */
+
+        .product-gallery {
+            position: sticky;
+            top: 105px;
+            min-width: 0;
+        }
+
+
+        .product-gallery-main {
+            position: relative;
+
+            width: 100%;
+            aspect-ratio: 1 / 1.1;
+
+            overflow: hidden;
+
+            border: 1px solid var(--border);
+            border-radius: var(--radius-large);
+
+            background: #EFE2D9;
+
+            box-shadow: var(--shadow-small);
+        }
+
+
+        .product-gallery-main img {
+            width: 100%;
+            height: 100%;
+
+            display: block;
+
+            object-fit: cover;
+
+            transition:
+                opacity 0.25s ease,
+                transform 0.5s ease;
+        }
+
+
+        .product-gallery-main:hover img {
+            transform: scale(1.015);
+        }
+
+
+
+        /* =========================================================
+           IMAGE FALLBACK
+        ========================================================= */
+
+        .product-image-fallback {
+            position: absolute;
+            inset: 0;
+
+            display: none;
+
+            align-items: center;
+            justify-content: center;
+
+            padding: 30px;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    #F3E8E0,
+                    #E0CCC0
+                );
+
+            color: var(--brown);
+
+            font-family:
+                "Lora",
+                Georgia,
+                serif;
+
+            font-size: 15px;
+
+            text-align: center;
+        }
+
+
+
+        /* =========================================================
+           GALLERY ARROWS
+        ========================================================= */
+
+        .product-gallery-arrow {
+            position: absolute;
+
+            top: 50%;
+
+            width: 42px;
+            height: 42px;
+
+            display: grid;
+            place-items: center;
+
+            padding: 0;
+
+            border: 1px solid
+                rgba(100, 65, 58, 0.12);
+
+            border-radius: 50%;
+
+            background:
+                rgba(255, 247, 236, 0.92);
+
+            color: var(--brown);
+
+            transform: translateY(-50%);
+
+            box-shadow:
+                0 8px 24px
+                rgba(65, 45, 40, 0.10);
+
+            backdrop-filter: blur(8px);
+
+            transition:
+                background-color 0.25s ease,
+                color 0.25s ease,
+                transform 0.25s ease;
+
+            z-index: 3;
+        }
+
+
+        .product-gallery-arrow:hover {
+            background: var(--teal);
+            color: var(--white);
+
+            transform:
+                translateY(-50%)
+                scale(1.04);
+        }
+
+
+        .product-gallery-prev {
+            left: 16px;
+        }
+
+
+        .product-gallery-next {
+            right: 16px;
+        }
+
+
+        .product-gallery-arrow svg {
+            width: 17px;
+            height: 17px;
+        }
+
+
+
+        /* =========================================================
+           COUNTER
+        ========================================================= */
+
+        .product-gallery-counter {
+            position: absolute;
+
+            right: 17px;
+            bottom: 17px;
+
+            padding: 7px 11px;
+
+            border-radius: 999px;
+
+            background:
+                rgba(255, 247, 236, 0.92);
+
+            color: var(--brown);
+
+            font-size: 8px;
+            font-weight: 700;
+
+            box-shadow:
+                0 7px 20px
+                rgba(65, 45, 40, 0.08);
+
+            backdrop-filter: blur(8px);
+
+            z-index: 3;
+        }
+
+
+
+        /* =========================================================
+           THUMBNAILS
+        ========================================================= */
+
+        .product-thumbnails {
+            display: grid;
+
+            grid-template-columns:
+                repeat(4, 1fr);
+
+            gap: 10px;
+
+            margin-top: 12px;
+        }
+
+
+        .product-thumbnail {
+            position: relative;
+
+            width: 100%;
+
+            aspect-ratio: 1 / 1.05;
+
+            overflow: hidden;
+
+            padding: 0;
+
+            border:
+                1px solid
+                var(--border);
+
+            border-radius: 12px;
+
+            background: #EFE2D9;
+
+            opacity: 0.72;
+
+            transition:
+                opacity 0.25s ease,
+                border-color 0.25s ease,
+                transform 0.25s ease;
+        }
+
+
+        .product-thumbnail:hover {
+            opacity: 1;
+            transform: translateY(-2px);
+        }
+
+
+        .product-thumbnail.active {
+            opacity: 1;
+            border-color: var(--teal);
+        }
+
+
+        .product-thumbnail img {
+            width: 100%;
+            height: 100%;
+
+            object-fit: cover;
+        }
+
+
+
+        /* =========================================================
+           PRODUCT INFO
+        ========================================================= */
+
+        .product-detail-info {
+            min-width: 0;
+        }
+
+
+
+        /* =========================================================
+           BADGES
+        ========================================================= */
+
+        .product-detail-badges {
+            min-height: 24px;
+
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+
+            gap: 7px;
+
+            margin-bottom: 15px;
+        }
+
+
+        .product-detail-badge {
+            display: inline-flex;
+            align-items: center;
+
+            min-height: 24px;
+
+            padding: 0 10px;
+
+            border-radius: 999px;
+
+            background: var(--background-soft);
+
+            color: var(--teal);
+
+            font-size: 7px;
+            font-weight: 700;
+
+            letter-spacing: 0.8px;
+            text-transform: uppercase;
+        }
+
+
+        .product-detail-badge.bestseller {
+            background: var(--teal);
+            color: var(--white);
+        }
+
+
+
+        /* =========================================================
+           TITLE
+        ========================================================= */
+
+        .product-detail-title {
+            margin: 0;
+
+            font-size:
+                clamp(
+                    42px,
+                    5vw,
+                    62px
+                );
+
+            font-weight: 500;
+            line-height: 1.02;
+
+            letter-spacing: -1px;
+        }
+
+
+        .product-detail-price {
+            display: block;
+
+            margin-top: 19px;
+
+            color: var(--teal);
+
+            font-family:
+                "Lora",
+                Georgia,
+                serif;
+
+            font-size: 23px;
+            font-weight: 600;
+        }
+
+
+
+        /* =========================================================
+           DESCRIPTION
+        ========================================================= */
+
+        .product-detail-description {
+            margin: 24px 0 0;
+
+            color: var(--text-soft);
+
+            font-family:
+                "Lora",
+                Georgia,
+                serif;
+
+            font-size: 12px;
+            line-height: 1.9;
+        }
+
+
+
+        /* =========================================================
+           META
+        ========================================================= */
+
+        .product-meta {
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            margin-top: 28px;
+
+            border-top:
+                1px solid
+                var(--border);
+
+            border-bottom:
+                1px solid
+                var(--border);
+        }
+
+
+        .product-meta-item {
+            padding: 15px 14px;
+
+            border-right:
+                1px solid
+                var(--border);
+        }
+
+
+        .product-meta-item:first-child {
+            padding-left: 0;
+        }
+
+
+        .product-meta-item:last-child {
+            border-right: 0;
+        }
+
+
+        .product-meta-label {
+            display: block;
+
+            margin-bottom: 5px;
+
+            color: var(--text-light);
+
+            font-size: 7px;
+            font-weight: 700;
+
+            letter-spacing: 0.8px;
+            text-transform: uppercase;
+        }
+
+
+        .product-meta-value {
+            color: var(--brown);
+
+            font-size: 9px;
+            font-weight: 600;
+        }
+
+
+        .product-stock.in-stock {
+            color: var(--success);
+        }
+
+
+        .product-stock.out-of-stock {
+            color: var(--danger);
+        }
+
+
+
+        /* =========================================================
+           QUANTITY
+        ========================================================= */
+
+        .product-purchase {
+            margin-top: 28px;
+        }
+
+
+        .product-quantity-label {
+            display: block;
+
+            margin-bottom: 9px;
+
+            color: var(--brown);
+
+            font-size: 8px;
+            font-weight: 700;
+
+            letter-spacing: 0.7px;
+            text-transform: uppercase;
+        }
+
+
+        .product-quantity-row {
+            display: flex;
+            align-items: center;
+
+            gap: 11px;
+        }
+
+
+        .product-quantity {
+            display: inline-flex;
+
+            align-items: center;
+            justify-content: center;
+
+            overflow: hidden;
+
+            border: 1px solid var(--border);
+            border-radius: 999px;
+
+            background: var(--white);
+        }
+
+
+        .product-quantity button {
+            width: 43px;
+            height: 43px;
+
+            display: grid;
+            place-items: center;
+
+            padding: 0;
+
+            border: 0;
+
+            background: transparent;
+
+            color: var(--brown);
+
+            font-size: 17px;
+
+            transition:
+                background-color 0.25s ease,
+                color 0.25s ease;
+        }
+
+
+        .product-quantity button:hover:not(:disabled) {
+            background: var(--brown);
+            color: var(--white);
+        }
+
+
+        .product-quantity button:disabled {
+            opacity: 0.35;
+        }
+
+
+        .product-quantity-value {
+            min-width: 43px;
+
+            color: var(--brown);
+
+            font-size: 11px;
+            font-weight: 700;
+
+            text-align: center;
+        }
+
+
+
+        /* =========================================================
+           ACTIONS
+        ========================================================= */
+
+        .product-actions {
+            display: grid;
+
+            grid-template-columns:
+                1fr auto;
+
+            gap: 10px;
+
+            margin-top: 14px;
+        }
+
+
+        .product-add-cart {
+            width: 100%;
+        }
+
+
+        .product-view-cart {
+            min-width: 135px;
+        }
+
+
+        .product-add-feedback {
+            min-height: 20px;
+
+            margin: 9px 0 0;
+
+            color: var(--success);
+
+            font-size: 8px;
+            font-weight: 600;
+        }
+
+
+
+        /* =========================================================
+           PRODUCT HIGHLIGHTS
+        ========================================================= */
+
+        .product-highlights {
+            display: grid;
+
+            grid-template-columns:
+                repeat(2, 1fr);
+
+            gap: 9px;
+
+            margin-top: 28px;
+        }
+
+
+        .product-highlight {
+            display: grid;
+
+            grid-template-columns:
+                39px 1fr;
+
+            align-items: center;
+
+            gap: 10px;
+
+            min-height: 67px;
+
+            padding: 12px;
+
+            border:
+                1px solid
+                var(--border);
+
+            border-radius: 12px;
+
+            background: var(--white);
+        }
+
+
+        .product-highlight-icon {
+            width: 39px;
+            height: 39px;
+
+            display: grid;
+            place-items: center;
+
+            border-radius: 50%;
+
+            background:
+                var(--background-soft);
+
+            color: var(--teal);
+        }
+
+
+        .product-highlight-icon svg {
+            width: 22px;
+            height: 22px;
+        }
+
+
+        .product-highlight strong {
+            display: block;
+
+            margin-bottom: 2px;
+
+            color: var(--brown);
+
+            font-family:
+                "Lora",
+                Georgia,
+                serif;
+
+            font-size: 10px;
+            font-weight: 600;
+        }
+
+
+        .product-highlight p {
+            margin: 0;
+
+            color: var(--text-soft);
+
+            font-size: 7px;
+            line-height: 1.5;
+        }
+
+
+
+        /* =========================================================
+           PRODUCT NOTE
+        ========================================================= */
+
+        .product-note {
+            margin-top: 15px;
+
+            padding: 16px 17px;
+
+            border-left:
+                3px solid
+                var(--teal);
+
+            border-radius: 9px;
+
+            background:
+                var(--background-soft);
+
+            color: var(--text-soft);
+
+            font-family:
+                "Lora",
+                Georgia,
+                serif;
+
+            font-size: 9px;
+            line-height: 1.7;
+        }
+
+
+        .product-note strong {
+            color: var(--brown);
+        }
+
+
+
+        /* =========================================================
+           NOT FOUND
+        ========================================================= */
+
+        .product-not-found {
+            display: none;
+
+            max-width: 720px;
+
+            margin: 0 auto;
+
+            padding: 70px 30px;
+
+            border:
+                1px solid
+                var(--border);
+
+            border-radius:
+                var(--radius-large);
+
+            background: var(--white);
+
+            box-shadow:
+                var(--shadow-small);
+
+            text-align: center;
+        }
+
+
+        .product-not-found.show {
+            display: block;
+        }
+
+
+        .product-not-found-icon {
+            width: 64px;
+            height: 64px;
+
+            display: grid;
+            place-items: center;
+
+            margin: 0 auto 18px;
+
+            border-radius: 50%;
+
+            background:
+                var(--background-soft);
+
+            color: var(--teal);
+        }
+
+
+        .product-not-found h2 {
+            margin: 0 0 10px;
+
+            font-size: 36px;
+            font-weight: 500;
+        }
+
+
+        .product-not-found p {
+            max-width: 440px;
+
+            margin: 0 auto 24px;
+
+            color: var(--text-soft);
+
+            font-family:
+                "Lora",
+                Georgia,
+                serif;
+
+            font-size: 12px;
+            line-height: 1.8;
+        }
+
+
+
+        /* =========================================================
+           RELATED
+        ========================================================= */
+
+        .product-related {
+            padding: 82px 0 95px;
+
+            border-top:
+                1px solid
+                var(--border);
+
+            background: var(--cream);
+        }
+
+
+        .product-related-header {
+            display: flex;
+
+            align-items: flex-end;
+            justify-content: space-between;
+
+            gap: 30px;
+
+            margin-bottom: 32px;
+        }
+
+
+        .product-related-header h2 {
+            margin: 4px 0 0;
+
+            font-size:
+                clamp(
+                    35px,
+                    4vw,
+                    48px
+                );
+
+            font-weight: 500;
+        }
+
+
+        .product-related-grid {
+            display: grid;
+
+            grid-template-columns:
+                repeat(4, 1fr);
+
+            gap: 18px;
+        }
+
+
+
+        /* =========================================================
+           TABLET
+        ========================================================= */
+
+        @media (max-width: 950px) {
+
+            .product-detail-layout {
+                grid-template-columns: 1fr;
+                gap: 48px;
+            }
+
+
+            .product-gallery {
+                position: static;
+
+                width: 100%;
+                max-width: 720px;
+
+                margin-left: 0;
+                margin-right: auto;
+            }
+
+
+            .product-detail-info {
+                width: 100%;
+                max-width: 720px;
+            }
+
+
+            .product-related-grid {
+                grid-template-columns:
+                    repeat(2, 1fr);
+            }
+
+        }
+
+
+
+        /* =========================================================
+           MOBILE
+        ========================================================= */
+
+        @media (max-width: 650px) {
+
+            .product-detail-section {
+                padding: 38px 0 65px;
+            }
+
+
+            .product-detail-layout {
+                gap: 36px;
+            }
+
+
+            .product-gallery-arrow {
+                width: 38px;
+                height: 38px;
+            }
+
+
+            .product-detail-title {
+                font-size:
+                    clamp(
+                        38px,
+                        11vw,
+                        50px
+                    );
+            }
+
+
+            .product-meta {
+                grid-template-columns: 1fr;
+            }
+
+
+            .product-meta-item,
+            .product-meta-item:first-child {
+                padding: 12px 0;
+
+                border-right: 0;
+
+                border-bottom:
+                    1px solid
+                    var(--border);
+            }
+
+
+            .product-meta-item:last-child {
+                border-bottom: 0;
+            }
+
+
+            .product-actions {
+                grid-template-columns: 1fr;
+            }
+
+
+            .product-view-cart {
+                width: 100%;
+            }
+
+
+            .product-highlights {
+                grid-template-columns: 1fr;
+            }
+
+
+            .product-related {
+                padding: 62px 0 75px;
+            }
+
+
+            .product-related-header {
+                align-items: flex-start;
+                flex-direction: column;
+            }
+
+        }
+
+
+
+        /* =========================================================
+           SMALL MOBILE - 480PX
+        ========================================================= */
+
+        @media (max-width: 480px) {
+
+            /*
+               Header + footer intentionally excluded.
+            */
+
+
+            .product-breadcrumb {
+                justify-content: center;
+                text-align: center;
+            }
+
+
+            .product-detail-layout,
+            .product-gallery,
+            .product-gallery-main,
+            .product-detail-info {
+                width: 100%;
+                max-width: 100%;
+
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+
+            .product-gallery {
+                text-align: center;
+            }
+
+
+            .product-detail-info {
+                text-align: center;
+            }
+
+
+            .product-detail-badges {
+                justify-content: center;
+            }
+
+
+            .product-detail-description {
+                width: 100%;
+                max-width: 100%;
+            }
+
+
+            .product-meta {
+                width: 100%;
+            }
+
+
+            .product-meta-item {
+                text-align: center;
+            }
+
+
+            .product-quantity-row {
+                width: 100%;
+
+                justify-content: center;
+            }
+
+
+            .product-quantity {
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+
+            .product-actions {
+                width: 100%;
+            }
+
+
+            .product-actions .zq-btn {
+                width: 100%;
+            }
+
+
+            .product-add-feedback {
+                text-align: center;
+            }
+
+
+            .product-highlights {
+                width: 100%;
+            }
+
+
+            .product-highlight {
+                width: 100%;
+
+                grid-template-columns: 1fr;
+
+                justify-items: center;
+
+                text-align: center;
+            }
+
+
+            .product-highlight-icon {
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+
+            .product-note {
+                width: 100%;
+                text-align: center;
+            }
+
+
+            .product-related-header {
+                width: 100%;
+
+                align-items: center;
+
+                text-align: center;
+            }
+
+
+            .product-related-header .zq-text-link {
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+
+            .product-related-grid {
+                width: 100%;
+
+                grid-template-columns: 1fr;
+
+                justify-items: center;
+            }
+
+
+            .product-related-grid .product-card {
+                width: 100%;
+                max-width: 100%;
+
+                text-align: center;
+            }
+
+
+            .product-not-found {
+                width: 100%;
+            }
+
+
+            .product-not-found .zq-btn {
+                width: 100%;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- =========================================================
+         HEADER
+    ========================================================== -->
+
+    <div data-site-header></div>
+
+
+
+    <main class="product-detail-page">
+
+
+        <!-- =====================================================
+             BREADCRUMB
+        ====================================================== -->
+
+        <section class="product-breadcrumb-section">
+
+            <div class="container">
+
+                <nav
+                    class="product-breadcrumb"
+                    aria-label="Breadcrumb"
+                >
+
+                    <a href="index.html">
+                        Home
+                    </a>
+
+                    <span class="product-breadcrumb-separator">
+                        /
+                    </span>
+
+
+                    <a href="shop.html">
+                        Shop
+                    </a>
+
+                    <span class="product-breadcrumb-separator">
+                        /
+                    </span>
+
+
+                    <a
+                        href="shop.html"
+                        data-product-breadcrumb-category
+                    >
+                        Collection
+                    </a>
+
+                    <span class="product-breadcrumb-separator">
+                        /
+                    </span>
+
+
+                    <span
+                        class="product-breadcrumb-current"
+                        data-product-breadcrumb-name
+                    >
+                        Product
+                    </span>
+
+                </nav>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =====================================================
+             PRODUCT
+        ====================================================== -->
+
+        <section class="product-detail-section">
+
+            <div class="container">
+
+
+                <!-- =============================================
+                     PRODUCT NOT FOUND
+                ============================================== -->
+
+                <div
+                    class="product-not-found"
+                    data-product-not-found
+                >
+
+                    <div class="product-not-found-icon">
+
+                        <svg
+                            viewBox="0 0 64 64"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                            aria-hidden="true"
+                        >
+
+                            <circle
+                                cx="32"
+                                cy="32"
+                                r="24"
+                                stroke="currentColor"
+                                stroke-width="4"
+                            />
+
+                            <path
+                                d="M32 18V35"
+                                stroke="currentColor"
+                                stroke-width="4"
+                                stroke-linecap="round"
+                            />
+
+                            <circle
+                                cx="32"
+                                cy="45"
+                                r="2.5"
+                                fill="currentColor"
+                            />
+
+                        </svg>
+
+                    </div>
+
+
+                    <p class="zq-eyebrow">
+                        PRODUCT NOT FOUND
+                    </p>
+
+
+                    <h2>
+                        This piece isn't available.
+                    </h2>
+
+
+                    <p>
+
+                        The product may have been removed
+                        or the link may be incorrect.
+                        Explore our current jewellery
+                        collection instead.
+
+                    </p>
+
+
+                    <a
+                        href="shop.html"
+                        class="zq-btn zq-btn-primary"
+                    >
+                        Shop Jewellery
+                    </a>
+
+                </div>
+
+
+
+                <!-- =============================================
+                     PRODUCT CONTENT
+                ============================================== -->
+
+                <div
+                    class="product-detail-layout"
+                    data-product-content
+                >
+
+
+                    <!-- =========================================
+                         GALLERY
+                    ========================================== -->
+
+                    <div class="product-gallery">
+
+
+                        <div
+                            class="product-gallery-main"
+                            data-product-gallery
+                        >
+
+
+                            <img
+                                src=""
+                                alt=""
+                                data-product-main-image
+                            >
+
+
+                            <div
+                                class="product-image-fallback"
+                                data-product-image-fallback
+                            >
+                                ZARQAURA Jewellery
+                            </div>
+
+
+
+                            <!-- PREVIOUS -->
+
+                            <button
+                                type="button"
+                                class="
+                                    product-gallery-arrow
+                                    product-gallery-prev
+                                "
+                                aria-label="Previous product image"
+                                data-product-prev
+                            >
+
+                                <svg
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                >
+
+                                    <path
+                                        d="M15 5L8 12L15 19"
+                                        stroke="currentColor"
+                                        stroke-width="1.8"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                    />
+
+                                </svg>
+
+                            </button>
+
+
+
+                            <!-- NEXT -->
+
+                            <button
+                                type="button"
+                                class="
+                                    product-gallery-arrow
+                                    product-gallery-next
+                                "
+                                aria-label="Next product image"
+                                data-product-next
+                            >
+
+                                <svg
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                >
+
+                                    <path
+                                        d="M9 5L16 12L9 19"
+                                        stroke="currentColor"
+                                        stroke-width="1.8"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                    />
+
+                                </svg>
+
+                            </button>
+
+
+
+                            <span
+                                class="product-gallery-counter"
+                                data-product-counter
+                            >
+                                1 / 4
+                            </span>
+
+
+                        </div>
+
+
+
+                        <div
+                            class="product-thumbnails"
+                            data-product-thumbnails
+                        ></div>
+
+
+                    </div>
+
+
+
+                    <!-- =========================================
+                         PRODUCT INFO
+                    ========================================== -->
+
+                    <div class="product-detail-info">
+
+
+                        <div
+                            class="product-detail-badges"
+                            data-product-badges
+                        ></div>
+
+
+
+                        <h1
+                            class="product-detail-title"
+                            data-product-title
+                        ></h1>
+
+
+
+                        <span
+                            class="product-detail-price"
+                            data-product-price
+                        ></span>
+
+
+
+                        <p
+                            class="product-detail-description"
+                            data-product-description
+                        ></p>
+
+
+
+                        <!-- =====================================
+                             META
+                        ====================================== -->
+
+                        <div class="product-meta">
+
+
+                            <div class="product-meta-item">
+
+                                <span class="product-meta-label">
+                                    SKU
+                                </span>
+
+                                <span
+                                    class="product-meta-value"
+                                    data-product-sku
+                                ></span>
+
+                            </div>
+
+
+
+                            <div class="product-meta-item">
+
+                                <span class="product-meta-label">
+                                    Collection
+                                </span>
+
+                                <span
+                                    class="product-meta-value"
+                                    data-product-category
+                                ></span>
+
+                            </div>
+
+
+
+                            <div class="product-meta-item">
+
+                                <span class="product-meta-label">
+                                    Availability
+                                </span>
+
+                                <span
+                                    class="
+                                        product-meta-value
+                                        product-stock
+                                    "
+                                    data-product-stock
+                                ></span>
+
+                            </div>
+
+
+                        </div>
+
+
+
+                        <!-- =====================================
+                             PURCHASE
+                        ====================================== -->
+
+                        <div class="product-purchase">
+
+
+                            <span class="product-quantity-label">
+                                Quantity
+                            </span>
+
+
+                            <div class="product-quantity-row">
+
+
+                                <div class="product-quantity">
+
+
+                                    <button
+                                        type="button"
+                                        aria-label="Decrease quantity"
+                                        data-product-decrease
+                                    >
+                                        −
+                                    </button>
+
+
+                                    <span
+                                        class="product-quantity-value"
+                                        data-product-quantity
+                                    >
+                                        1
+                                    </span>
+
+
+                                    <button
+                                        type="button"
+                                        aria-label="Increase quantity"
+                                        data-product-increase
+                                    >
+                                        +
+                                    </button>
+
+
+                                </div>
+
+
+                            </div>
+
+
+
+                            <div class="product-actions">
+
+
+                                <button
+                                    type="button"
+                                    class="
+                                        zq-btn
+                                        zq-btn-primary
+                                        product-add-cart
+                                    "
+                                    data-product-add
+                                >
+                                    Add to Cart
+                                </button>
+
+
+                                <a
+                                    href="cart.html"
+                                    class="
+                                        zq-btn
+                                        zq-btn-outline
+                                        product-view-cart
+                                    "
+                                >
+                                    View Cart
+                                </a>
+
+
+                            </div>
+
+
+                            <p
+                                class="product-add-feedback"
+                                data-product-feedback
+                                aria-live="polite"
+                            ></p>
+
+
+                        </div>
+
+
+
+                        <!-- =====================================
+                             HIGHLIGHTS
+                        ====================================== -->
+
+                        <div class="product-highlights">
+
+
+                            <!-- ANTI-TARNISH -->
+
+                            <div class="product-highlight">
+
+                                <div class="product-highlight-icon">
+
+                                    <svg
+                                        viewBox="0 0 64 64"
+                                        fill="none"
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        aria-hidden="true"
+                                    >
+
+                                        <path
+                                            d="M32 8 C34.5 19 39 23.5 50 26 C39 28.5 34.5 33 32 44 C29.5 33 25 28.5 14 26 C25 23.5 29.5 19 32 8Z"
+                                            fill="currentColor"
+                                        />
+
+                                        <path
+                                            d="M50 9 C51.5 14.5 54 17 59.5 18.5 C54 20 51.5 22.5 50 28 C48.5 22.5 46 20 40.5 18.5 C46 17 48.5 14.5 50 9Z"
+                                            fill="currentColor"
+                                            opacity="0.75"
+                                        />
+
+                                    </svg>
+
+                                </div>
+
+
+                                <div>
+
+                                    <strong>
+                                        Anti-Tarnish
+                                    </strong>
+
+                                    <p>
+                                        Designed for lasting
+                                        everyday shine.
+                                    </p>
+
+                                </div>
+
+                            </div>
+
+
+
+                            <!-- CURATED -->
+
+                            <div class="product-highlight">
+
+                                <div class="product-highlight-icon">
+
+                                    <svg
+                                        viewBox="0 0 64 64"
+                                        fill="none"
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        aria-hidden="true"
+                                    >
+
+                                        <path
+                                            d="M32 54 L12 34 C4 26 7 13 18 11 C24 10 29 13 32 18 C35 13 40 10 46 11 C57 13 60 26 52 34 L32 54Z"
+                                            stroke="currentColor"
+                                            stroke-width="4"
+                                            stroke-linecap="round"
+                                            stroke-linejoin="round"
+                                        />
+
+                                    </svg>
+
+                                </div>
+
+
+                                <div>
+
+                                    <strong>
+                                        Thoughtfully Curated
+                                    </strong>
+
+                                    <p>
+                                        Selected for effortless
+                                        modern styling.
+                                    </p>
+
+                                </div>
+
+                            </div>
+
+
+
+                            <!-- SHIPPING -->
+
+                            <div class="product-highlight">
+
+                                <div class="product-highlight-icon">
+
+                                    <svg
+                                        viewBox="0 0 64 64"
+                                        fill="none"
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        aria-hidden="true"
+                                    >
+
+                                        <g
+                                            stroke="currentColor"
+                                            stroke-width="4"
+                                            stroke-linecap="round"
+                                            stroke-linejoin="round"
+                                        >
+
+                                            <path
+                                                d="M8 25L32 17L56 25L32 34L8 25Z"
+                                            />
+
+                                            <path
+                                                d="M8 25V48L32 57L56 48V25"
+                                            />
+
+                                            <path
+                                                d="M32 34V57"
+                                            />
+
+                                            <circle
+                                                cx="32"
+                                                cy="13"
+                                                r="9"
+                                                fill="#FFF7EC"
+                                            />
+
+                                            <path
+                                                d="M28 13L31 16L37 10"
+                                            />
+
+                                        </g>
+
+                                    </svg>
+
+                                </div>
+
+
+                                <div>
+
+                                    <strong>
+                                        Free Shipping
+                                    </strong>
+
+                                    <p>
+                                        Complimentary shipping
+                                        across India.
+                                    </p>
+
+                                </div>
+
+                            </div>
+
+
+
+                            <!-- EVERYDAY -->
+
+                            <div class="product-highlight">
+
+                                <div class="product-highlight-icon">
+
+                                    <svg
+                                        viewBox="0 0 64 64"
+                                        fill="none"
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        aria-hidden="true"
+                                    >
+
+                                        <circle
+                                            cx="32"
+                                            cy="32"
+                                            r="21"
+                                            stroke="currentColor"
+                                            stroke-width="4"
+                                        />
+
+                                        <path
+                                            d="M22 33L29 40L43 24"
+                                            stroke="currentColor"
+                                            stroke-width="4"
+                                            stroke-linecap="round"
+                                            stroke-linejoin="round"
+                                        />
+
+                                    </svg>
+
+                                </div>
+
+
+                                <div>
+
+                                    <strong>
+                                        Everyday Wear
+                                    </strong>
+
+                                    <p>
+                                        Easy pieces made to
+                                        complement your style.
+                                    </p>
+
+                                </div>
+
+                            </div>
+
+
+                        </div>
+
+
+
+                        <!-- CARE NOTE -->
+
+                        <div class="product-note">
+
+                            <strong>
+                                Jewellery Care:
+                            </strong>
+
+                            Keep your jewellery dry when
+                            possible and store it separately
+                            when not in use to help maintain
+                            its finish and shine.
+
+                        </div>
+
+
+                    </div>
+
+
+                </div>
+
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =====================================================
+             RELATED PRODUCTS
+        ====================================================== -->
+
+        <section
+            class="product-related"
+            data-product-related-section
+        >
+
+            <div class="container">
+
+
+                <div class="product-related-header">
+
+
+                    <div>
+
+                        <p class="zq-eyebrow">
+                            YOU MAY ALSO LIKE
+                        </p>
+
+                        <h2>
+                            More to discover.
+                        </h2>
+
+                    </div>
+
+
+                    <a
+                        href="shop.html"
+                        class="zq-text-link"
+                        data-product-related-link
+                    >
+                        Explore Collection →
+                    </a>
+
+
+                </div>
+
+
+
+                <div
+                    class="
+                        product-grid
+                        product-related-grid
+                    "
+                    data-product-related
+                ></div>
+
+
+            </div>
+
+        </section>
+
+
+    </main>
+
+
+
+    <!-- =========================================================
+         FOOTER
+    ========================================================== -->
+
+    <div data-site-footer></div>
+
+
+
+    <!-- =========================================================
+         DATA
+    ========================================================== -->
+
+    <script src="assets/data/site-config.js"></script>
+
+    <script src="assets/data/products.js"></script>
+
+
+
+    <!-- =========================================================
+         GLOBAL
+    ========================================================== -->
+
+    <script src="assets/js/app.js"></script>
+
+
+
+    <!-- =========================================================
+         PRODUCT
+    ========================================================== -->
+
+    <script src="assets/js/product.js"></script>
+
+
+</body>
+
+</html>
