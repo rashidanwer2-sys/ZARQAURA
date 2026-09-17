@@ -986,6 +986,12 @@ function setActiveNavigation(header) {
                       </a>
 
                       <a
+                          href="faq.html"
+                      >
+                          FAQ
+                      </a>
+
+                      <a
                           href="https://chat.whatsapp.com/YOUR-COMMUNITY-LINK"
                           target="_blank"
                           rel="noopener noreferrer"
@@ -1011,6 +1017,7 @@ function setActiveNavigation(header) {
                       >
                           Your Cart
                       </a>
+                      
 
                   </div>
 
