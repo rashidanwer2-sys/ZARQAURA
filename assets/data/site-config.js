@@ -10,5 +10,5 @@ window.SITE_CONFIG = {
   dispatchText: "Dispatch within 24–48 hours",
   announcement: "✦  Anti-Tarnish Jewellery  •  Free Shipping Across India  ✦",
   paymentInstruction: "Complete the payment and share the payment snapshot on WhatsApp.",
-  upiId: ""
+  upiId: "rashidanwer2@okicici"
 };

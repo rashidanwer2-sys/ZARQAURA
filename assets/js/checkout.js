@@ -107,6 +107,11 @@ document.addEventListener(
                 "[data-snapshot-status]"
             );
 
+         const upiPayButton =
+            document.querySelector(
+                "[data-upi-pay]"
+            );
+
 
 
         let currentOrder = null;
@@ -803,6 +808,8 @@ function createOrderId() {
 
         }
 
+        
+
 
 
         /* =====================================================
@@ -898,6 +905,86 @@ function createOrderId() {
                     buildOrder(
                         customer
                     );
+
+                    /* =========================================
+   UPI PAYMENT LINK
+========================================== */
+
+const upiId =
+    String(
+        SITE_CONFIG.upiId || ""
+    ).trim();
+
+
+if (
+    upiId &&
+    currentOrder
+) {
+
+    const paymentAmount =
+        Number(
+            currentOrder.totals.total
+        ).toFixed(2);
+
+
+    const payeeName =
+        SITE_CONFIG.businessName ||
+        "ZARQAURA";
+
+
+    const paymentNote =
+        `ZARQAURA Order ${currentOrder.id}`;
+
+
+    const upiParams =
+        new URLSearchParams(
+            {
+
+                pa:
+                    upiId,
+
+                pn:
+                    payeeName,
+
+                am:
+                    paymentAmount,
+
+                cu:
+                    "INR",
+
+                tn:
+                    paymentNote,
+
+                tr:
+                    currentOrder.id
+
+            }
+        );
+
+
+    const upiUrl =
+        `upi://pay?${upiParams.toString()}`;
+
+
+    upiPayButton.href =
+        upiUrl;
+
+
+    upiPayButton.style.display =
+        "inline-flex";
+
+
+    upiPayButton.textContent =
+        `Pay ${money(currentOrder.totals.total)} via UPI`;
+
+}
+
+else {
+
+    upiPayButton.style.display =
+        "none";
+
+}
 
 
                 const orderText =
