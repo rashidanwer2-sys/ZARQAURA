@@ -717,6 +717,82 @@
 
         }
 
+        .curated-card .zq-text-link {
+
+    position:
+        relative;
+
+    display:
+        inline-flex;
+
+    align-items:
+        center;
+
+    width:
+        fit-content;
+
+    padding-bottom:
+        4px;
+
+    color:
+        var(--brown);
+
+    transition:
+        color 0.35s ease;
+
+}
+
+
+.curated-card .zq-text-link::after {
+
+    content:
+        "";
+
+    position:
+        absolute;
+
+    left:
+        0;
+
+    bottom:
+        0;
+
+    width:
+        28%;
+
+    height:
+        1px;
+
+    background:
+        var(--brown);
+
+    transition:
+        width 0.4s ease,
+        background-color 0.4s ease;
+
+}
+
+
+/* Hover anywhere on the card */
+
+.curated-card:hover .zq-text-link {
+
+    color:
+        var(--teal);
+
+}
+
+
+.curated-card:hover .zq-text-link::after {
+
+    width:
+        100%;
+
+    background:
+        var(--teal);
+
+}
+
 
         .curated-card:hover {
 
