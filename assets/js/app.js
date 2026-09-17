@@ -73,43 +73,68 @@
     }
 
 
-    function saveCart(items) {
+    function saveCart(cart) {
 
-        localStorage.setItem(
-            "zarqauraCart",
-            JSON.stringify(items)
+    localStorage.setItem(
+        "zarqaura_cart",
+        JSON.stringify(cart)
+    );
+
+
+    updateCartCount();
+
+}
+
+
+    /* =========================================================
+   UPDATE HEADER CART COUNT
+========================================================= */
+
+function updateCartCount() {
+
+    const cart =
+        readCart();
+
+
+    const totalQuantity =
+        cart.reduce(
+            (total, item) => {
+
+                const quantity =
+                    Number(
+                        item.quantity ??
+                        item.qty ??
+                        1
+                    );
+
+
+                return (
+                    total +
+                    Math.max(
+                        1,
+                        quantity
+                    )
+                );
+
+            },
+            0
         );
 
-        updateCartCount();
 
-    }
+    document
+        .querySelectorAll(
+            ".cart-count"
+        )
+        .forEach(
+            element => {
 
+                element.textContent =
+                    totalQuantity;
 
-    function updateCartCount() {
+            }
+        );
 
-        const totalQuantity =
-            getCart().reduce(
-                (total, item) =>
-                    total +
-                    Number(item.qty || 0),
-                0
-            );
-
-
-        document
-            .querySelectorAll(
-                "[data-cart-count]"
-            )
-            .forEach(
-                element => {
-
-                    element.textContent =
-                        totalQuantity;
-
-                }
-            );
-
-    }
+}
 
 
     /* =====================================================
