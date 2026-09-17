@@ -1,1 +1,1952 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Shop | ZARQAURA</title><link rel="stylesheet" href="assets/css/styles.css"></head><body><div data-site-header></div><main class="container"><section class="page-hero"><div class="eyebrow">ZARQAURA Collection</div><h1>Shop Jewellery</h1></section><div class="filters"><input data-search type="search" placeholder="Search products or SKU"><select data-category-filter><option value="all">All Categories</option><option value="bracelets">Bracelets</option><option value="chains">Chains</option><option value="rings">Rings</option><option value="earrings">Earrings</option><option value="mangalsutras">Mangalsutras</option></select></div><section class="product-grid" data-shop-grid></section></main><div data-site-footer></div><script src="assets/data/site-config.js"></script><script src="assets/data/products.js"></script><script src="assets/js/app.js"></script><script src="assets/js/shop.js"></script></body></html>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        Shop Jewellery | ZARQAURA
+    </title>
+
+    <meta
+        name="description"
+        content="Shop ZARQAURA anti-tarnish jewellery including bracelets, chains, rings, earrings and mangalsutras."
+    >
+
+    <!-- Favicon -->
+    <link
+        rel="icon"
+        href="assets/images/branding/favicon.png"
+        type="image/png"
+    >
+
+    <!-- Main stylesheet -->
+    <link
+        rel="stylesheet"
+        href="assets/css/styles.css"
+    >
+
+
+    <!-- =========================================================
+         SHOP PAGE ONLY
+    ========================================================== -->
+
+    <style>
+
+        /* =====================================================
+           SHOP HERO
+        ====================================================== */
+
+        .shop-hero {
+
+            padding:
+                64px 0 46px;
+
+            background:
+
+                radial-gradient(
+                    circle at 85% 10%,
+                    rgba(100, 65, 58, 0.08),
+                    transparent 27%
+                ),
+
+                var(--cream);
+
+        }
+
+
+        .shop-hero-inner {
+
+            display:
+                flex;
+
+            align-items:
+                flex-end;
+
+            justify-content:
+                space-between;
+
+            gap:
+                35px;
+
+        }
+
+
+        .shop-hero-content {
+
+            max-width:
+                680px;
+
+        }
+
+
+        .shop-hero h1 {
+
+            margin:
+                4px 0 15px;
+
+            font-size:
+                clamp(
+                    46px,
+                    6vw,
+                    72px
+                );
+
+            font-weight:
+                500;
+
+            line-height:
+                1;
+
+        }
+
+
+        .shop-hero-description {
+
+            max-width:
+                600px;
+
+            margin:
+                0;
+
+            color:
+                var(--text-soft);
+
+            font-family:
+                "Lora",
+                Georgia,
+                serif;
+
+            font-size:
+                14px;
+
+            line-height:
+                1.8;
+
+        }
+
+
+        .shop-collection-link {
+
+            flex:
+                0 0 auto;
+
+        }
+
+
+
+        /* =====================================================
+           CATEGORY QUICK LINKS
+        ====================================================== */
+
+        .shop-categories {
+
+            padding:
+                0 0 36px;
+
+            background:
+                var(--cream);
+
+        }
+
+
+        .shop-category-list {
+
+            display:
+                flex;
+
+            align-items:
+                center;
+
+            flex-wrap:
+                wrap;
+
+            gap:
+                9px;
+
+        }
+
+
+        .shop-category-chip {
+
+            display:
+                inline-flex;
+
+            align-items:
+                center;
+
+            justify-content:
+                center;
+
+            min-height:
+                38px;
+
+            padding:
+                0 17px;
+
+            border:
+                1px solid
+                rgba(
+                    100,
+                    65,
+                    58,
+                    0.20
+                );
+
+            border-radius:
+                999px;
+
+            background:
+                rgba(
+                    255,
+                    255,
+                    255,
+                    0.5
+                );
+
+            color:
+                var(--brown);
+
+            font-size:
+                10px;
+
+            font-weight:
+                600;
+
+            transition:
+                background-color 0.3s ease,
+                border-color 0.3s ease,
+                color 0.3s ease,
+                transform 0.3s ease;
+
+        }
+
+
+        .shop-category-chip:hover {
+
+            transform:
+                translateY(-2px);
+
+            border-color:
+                var(--brown);
+
+            background:
+                var(--brown);
+
+            color:
+                var(--white);
+
+        }
+
+
+        .shop-category-chip.active {
+
+            border-color:
+                var(--teal);
+
+            background:
+                var(--teal);
+
+            color:
+                var(--white);
+
+        }
+
+
+
+        /* =====================================================
+           SHOP CONTENT
+        ====================================================== */
+
+        .shop-section {
+
+            padding:
+                55px 0 95px;
+
+            background:
+                var(--white);
+
+        }
+
+
+
+        /* =====================================================
+           SHOP TOOLBAR
+        ====================================================== */
+
+        .shop-toolbar {
+
+            display:
+                grid;
+
+            grid-template-columns:
+                minmax(240px, 1fr)
+                auto
+                auto
+                auto;
+
+            gap:
+                11px;
+
+            align-items:
+                center;
+
+            margin-bottom:
+                22px;
+
+        }
+
+
+        .shop-search-wrap {
+
+            position:
+                relative;
+
+        }
+
+
+        .shop-search-icon {
+
+            position:
+                absolute;
+
+            top:
+                50%;
+
+            left:
+                15px;
+
+            width:
+                18px;
+
+            height:
+                18px;
+
+            color:
+                var(--text-light);
+
+            transform:
+                translateY(-50%);
+
+            pointer-events:
+                none;
+
+        }
+
+
+        .shop-search {
+
+            width:
+                100%;
+
+            min-height:
+                46px;
+
+            padding:
+                0 15px 0 44px;
+
+            border:
+                1px solid
+                var(--border);
+
+            border-radius:
+                999px;
+
+            outline:
+                none;
+
+            background:
+                var(--cream-light);
+
+            color:
+                var(--text);
+
+            font-size:
+                11px;
+
+            transition:
+                border-color 0.25s ease,
+                box-shadow 0.25s ease,
+                background-color 0.25s ease;
+
+        }
+
+
+        .shop-search:focus {
+
+            border-color:
+                var(--teal);
+
+            background:
+                var(--white);
+
+            box-shadow:
+                0 0 0 3px
+                rgba(
+                    47,
+                    93,
+                    98,
+                    0.07
+                );
+
+        }
+
+
+        .shop-select {
+
+            min-height:
+                46px;
+
+            padding:
+                0 38px 0 14px;
+
+            border:
+                1px solid
+                var(--border);
+
+            border-radius:
+                999px;
+
+            outline:
+                none;
+
+            background:
+                var(--cream-light);
+
+            color:
+                var(--text);
+
+            font-size:
+                10px;
+
+            font-weight:
+                500;
+
+            cursor:
+                pointer;
+
+        }
+
+
+        .shop-select:focus {
+
+            border-color:
+                var(--teal);
+
+        }
+
+
+
+        /* =====================================================
+           RESULTS BAR
+        ====================================================== */
+
+        .shop-results-bar {
+
+            display:
+                flex;
+
+            align-items:
+                center;
+
+            justify-content:
+                space-between;
+
+            gap:
+                20px;
+
+            margin-bottom:
+                27px;
+
+            padding-bottom:
+                18px;
+
+            border-bottom:
+                1px solid
+                var(--border);
+
+        }
+
+
+        .shop-results-count {
+
+            margin:
+                0;
+
+            color:
+                var(--text-soft);
+
+            font-size:
+                10px;
+
+            font-weight:
+                500;
+
+        }
+
+
+        .shop-results-count strong {
+
+            color:
+                var(--brown);
+
+        }
+
+
+        .shop-clear {
+
+            padding:
+                0;
+
+            border:
+                0;
+
+            border-bottom:
+                1px solid
+                transparent;
+
+            background:
+                transparent;
+
+            color:
+                var(--teal);
+
+            font-size:
+                10px;
+
+            font-weight:
+                600;
+
+            cursor:
+                pointer;
+
+            transition:
+                border-color 0.25s ease,
+                opacity 0.25s ease;
+
+        }
+
+
+        .shop-clear:hover {
+
+            border-color:
+                var(--teal);
+
+        }
+
+
+
+        /* =====================================================
+           EMPTY STATE
+        ====================================================== */
+
+        .shop-empty {
+
+            grid-column:
+                1 / -1;
+
+            padding:
+                70px 25px;
+
+            border:
+                1px dashed
+                #D9C6BA;
+
+            border-radius:
+                var(--radius);
+
+            background:
+                var(--cream-light);
+
+            text-align:
+                center;
+
+        }
+
+
+        .shop-empty-icon {
+
+            display:
+                block;
+
+            margin-bottom:
+                15px;
+
+            color:
+                var(--teal);
+
+            font-size:
+                30px;
+
+        }
+
+
+        .shop-empty h3 {
+
+            margin-bottom:
+                8px;
+
+            font-size:
+                25px;
+
+            font-weight:
+                500;
+
+        }
+
+
+        .shop-empty p {
+
+            margin:
+                0 auto 22px;
+
+            max-width:
+                430px;
+
+            color:
+                var(--text-soft);
+
+            font-size:
+                11px;
+
+            line-height:
+                1.7;
+
+        }
+
+
+
+        /* =====================================================
+           SHOP NOTE
+        ====================================================== */
+
+        .shop-note {
+
+            display:
+                grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap:
+                0;
+
+            margin-top:
+                65px;
+
+            padding:
+                25px 0;
+
+            border-top:
+                1px solid
+                var(--border);
+
+            border-bottom:
+                1px solid
+                var(--border);
+
+        }
+
+
+        .shop-note-item {
+
+            padding:
+                4px 28px;
+
+            border-right:
+                1px solid
+                var(--border);
+
+            text-align:
+                center;
+
+        }
+
+
+        .shop-note-item:last-child {
+
+            border-right:
+                0;
+
+        }
+
+
+        .shop-note-item strong {
+
+            display:
+                block;
+
+            margin-bottom:
+                5px;
+
+            color:
+                var(--brown);
+
+            font-family:
+                "Lora",
+                Georgia,
+                serif;
+
+            font-size:
+                12px;
+
+        }
+
+
+        .shop-note-item span {
+
+            color:
+                var(--text-light);
+
+            font-size:
+                9px;
+
+            line-height:
+                1.5;
+
+        }
+
+
+
+        /* =====================================================
+           TABLET
+        ====================================================== */
+
+        @media (max-width: 950px) {
+
+            .shop-toolbar {
+
+                grid-template-columns:
+                    1fr 1fr;
+
+            }
+
+
+            .shop-search-wrap {
+
+                grid-column:
+                    1 / -1;
+
+            }
+
+        }
+
+
+
+        /* =====================================================
+           MOBILE
+        ====================================================== */
+
+        @media (max-width: 650px) {
+
+            .shop-hero {
+
+                padding:
+                    48px 0 35px;
+
+            }
+
+
+            .shop-hero-inner {
+
+                flex-direction:
+                    column;
+
+                align-items:
+                    flex-start;
+
+            }
+
+
+            .shop-hero h1 {
+
+                font-size:
+                    48px;
+
+            }
+
+
+            .shop-categories {
+
+                padding-bottom:
+                    28px;
+
+            }
+
+
+            .shop-category-list {
+
+                flex-wrap:
+                    nowrap;
+
+                overflow-x:
+                    auto;
+
+                padding-bottom:
+                    5px;
+
+                scrollbar-width:
+                    none;
+
+            }
+
+
+            .shop-category-list::-webkit-scrollbar {
+
+                display:
+                    none;
+
+            }
+
+
+            .shop-category-chip {
+
+                flex:
+                    0 0 auto;
+
+            }
+
+
+            .shop-section {
+
+                padding:
+                    42px 0 70px;
+
+            }
+
+
+            .shop-toolbar {
+
+                grid-template-columns:
+                    1fr;
+
+            }
+
+
+            .shop-search-wrap {
+
+                grid-column:
+                    auto;
+
+            }
+
+
+            .shop-select {
+
+                width:
+                    100%;
+
+            }
+
+
+            .shop-results-bar {
+
+                margin-bottom:
+                    21px;
+
+            }
+
+
+            .shop-note {
+
+                grid-template-columns:
+                    1fr;
+
+            }
+
+
+            .shop-note-item {
+
+                padding:
+                    17px;
+
+                border-right:
+                    0;
+
+                border-bottom:
+                    1px solid
+                    var(--border);
+
+            }
+
+
+            .shop-note-item:last-child {
+
+                border-bottom:
+                    0;
+
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- =========================================================
+         SHARED HEADER
+    ========================================================== -->
+
+    <div data-site-header></div>
+
+
+
+    <main>
+
+
+        <!-- =====================================================
+             SHOP HERO
+        ====================================================== -->
+
+        <section class="shop-hero">
+
+            <div
+                class="container shop-hero-inner"
+            >
+
+
+                <div class="shop-hero-content">
+
+                    <p class="zq-eyebrow">
+                        ZARQAURA JEWELLERY
+                    </p>
+
+
+                    <h1>
+                        Shop All
+                    </h1>
+
+
+                    <p class="shop-hero-description">
+
+                        Discover the complete ZARQAURA range —
+                        anti-tarnish jewellery curated for
+                        effortless everyday elegance.
+
+                    </p>
+
+                </div>
+
+
+
+                <!-- Separate Collections page -->
+
+                <div class="shop-collection-link">
+
+                    <a
+                        href="collections.html"
+                        class="zq-text-link"
+                    >
+                        Explore Collections →
+                    </a>
+
+                </div>
+
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =====================================================
+             QUICK CATEGORY FILTERS
+        ====================================================== -->
+
+        <section class="shop-categories">
+
+            <div class="container">
+
+                <div
+                    class="shop-category-list"
+                    data-category-chips
+                >
+
+                    <button
+                        type="button"
+                        class="shop-category-chip active"
+                        data-category-chip="all"
+                    >
+                        All Jewellery
+                    </button>
+
+
+                    <button
+                        type="button"
+                        class="shop-category-chip"
+                        data-category-chip="bracelets"
+                    >
+                        Bracelets
+                    </button>
+
+
+                    <button
+                        type="button"
+                        class="shop-category-chip"
+                        data-category-chip="chains"
+                    >
+                        Chains
+                    </button>
+
+
+                    <button
+                        type="button"
+                        class="shop-category-chip"
+                        data-category-chip="rings"
+                    >
+                        Rings
+                    </button>
+
+
+                    <button
+                        type="button"
+                        class="shop-category-chip"
+                        data-category-chip="earrings"
+                    >
+                        Earrings
+                    </button>
+
+
+                    <button
+                        type="button"
+                        class="shop-category-chip"
+                        data-category-chip="mangalsutras"
+                    >
+                        Mangalsutras
+                    </button>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =====================================================
+             SHOP PRODUCTS
+        ====================================================== -->
+
+        <section class="shop-section">
+
+            <div class="container">
+
+
+                <!-- =============================================
+                     SEARCH / FILTER / SORT
+                ============================================== -->
+
+                <div class="shop-toolbar">
+
+
+                    <!-- Search -->
+
+                    <div class="shop-search-wrap">
+
+                        <svg
+                            class="shop-search-icon"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                            aria-hidden="true"
+                        >
+
+                            <circle
+                                cx="11"
+                                cy="11"
+                                r="6.5"
+                                stroke="currentColor"
+                                stroke-width="1.7"
+                            />
+
+                            <path
+                                d="M16 16L21 21"
+                                stroke="currentColor"
+                                stroke-width="1.7"
+                                stroke-linecap="round"
+                            />
+
+                        </svg>
+
+
+                        <input
+                            type="search"
+                            class="shop-search"
+                            data-shop-search
+                            placeholder="Search jewellery or SKU..."
+                            autocomplete="off"
+                        >
+
+                    </div>
+
+
+
+                    <!-- Category -->
+
+                    <select
+                        class="shop-select"
+                        data-shop-category
+                        aria-label="Filter by category"
+                    >
+
+                        <option value="all">
+                            All Categories
+                        </option>
+
+                        <option value="bracelets">
+                            Bracelets
+                        </option>
+
+                        <option value="chains">
+                            Chains
+                        </option>
+
+                        <option value="rings">
+                            Rings
+                        </option>
+
+                        <option value="earrings">
+                            Earrings
+                        </option>
+
+                        <option value="mangalsutras">
+                            Mangalsutras
+                        </option>
+
+                    </select>
+
+
+
+                    <!-- Availability -->
+
+                    <select
+                        class="shop-select"
+                        data-shop-stock
+                        aria-label="Filter by availability"
+                    >
+
+                        <option value="all">
+                            Availability
+                        </option>
+
+                        <option value="in-stock">
+                            In Stock
+                        </option>
+
+                        <option value="out-of-stock">
+                            Out of Stock
+                        </option>
+
+                    </select>
+
+
+
+                    <!-- Sort -->
+
+                    <select
+                        class="shop-select"
+                        data-shop-sort
+                        aria-label="Sort products"
+                    >
+
+                        <option value="featured">
+                            Featured
+                        </option>
+
+                        <option value="newest">
+                            New Arrivals
+                        </option>
+
+                        <option value="price-low">
+                            Price: Low to High
+                        </option>
+
+                        <option value="price-high">
+                            Price: High to Low
+                        </option>
+
+                        <option value="name">
+                            Name: A–Z
+                        </option>
+
+                    </select>
+
+
+                </div>
+
+
+
+                <!-- =============================================
+                     RESULT COUNT
+                ============================================== -->
+
+                <div class="shop-results-bar">
+
+                    <p class="shop-results-count">
+
+                        Showing
+
+                        <strong
+                            data-result-count
+                        >
+                            0
+                        </strong>
+
+                        products
+
+                    </p>
+
+
+                    <button
+                        type="button"
+                        class="shop-clear"
+                        data-clear-filters
+                    >
+                        Clear filters
+                    </button>
+
+                </div>
+
+
+
+                <!-- =============================================
+                     PRODUCT GRID
+                ============================================== -->
+
+                <div
+                    class="product-grid"
+                    data-shop-grid
+                ></div>
+
+
+
+                <!-- =============================================
+                     SHOP SERVICE MESSAGE
+                ============================================== -->
+
+                <div class="shop-note">
+
+
+                    <div class="shop-note-item">
+
+                        <strong>
+                            Anti-Tarnish
+                        </strong>
+
+                        <span>
+                            Designed for long-lasting
+                            everyday shine
+                        </span>
+
+                    </div>
+
+
+                    <div class="shop-note-item">
+
+                        <strong>
+                            Free Shipping
+                        </strong>
+
+                        <span>
+                            Complimentary delivery
+                            across India
+                        </span>
+
+                    </div>
+
+
+                    <div class="shop-note-item">
+
+                        <strong>
+                            WhatsApp Support
+                        </strong>
+
+                        <span>
+                            Need help choosing?
+                            We're just a message away
+                        </span>
+
+                    </div>
+
+
+                </div>
+
+
+            </div>
+
+        </section>
+
+
+    </main>
+
+
+
+    <!-- =========================================================
+         SHARED FOOTER
+    ========================================================== -->
+
+    <div data-site-footer></div>
+
+
+
+    <!-- =========================================================
+         PRODUCT DATA
+    ========================================================== -->
+
+    <script src="assets/data/site-config.js"></script>
+
+    <script src="assets/data/products.js"></script>
+
+
+
+    <!-- =========================================================
+         GLOBAL WEBSITE
+    ========================================================== -->
+
+    <script src="assets/js/app.js"></script>
+
+
+
+    <!-- =========================================================
+         SHOP PAGE LOGIC
+    ========================================================== -->
+
+    <script>
+
+        document.addEventListener(
+            "DOMContentLoaded",
+            () => {
+
+
+                /* =============================================
+                   ELEMENTS
+                ============================================== */
+
+                const productGrid =
+                    document.querySelector(
+                        "[data-shop-grid]"
+                    );
+
+
+                const searchInput =
+                    document.querySelector(
+                        "[data-shop-search]"
+                    );
+
+
+                const categorySelect =
+                    document.querySelector(
+                        "[data-shop-category]"
+                    );
+
+
+                const stockSelect =
+                    document.querySelector(
+                        "[data-shop-stock]"
+                    );
+
+
+                const sortSelect =
+                    document.querySelector(
+                        "[data-shop-sort]"
+                    );
+
+
+                const resultCount =
+                    document.querySelector(
+                        "[data-result-count]"
+                    );
+
+
+                const clearButton =
+                    document.querySelector(
+                        "[data-clear-filters]"
+                    );
+
+
+                const categoryChips =
+                    document.querySelectorAll(
+                        "[data-category-chip]"
+                    );
+
+
+
+                /* =============================================
+                   INITIAL CATEGORY FROM URL
+
+                   Example:
+                   shop.html?category=rings
+                ============================================== */
+
+                const urlParameters =
+                    new URLSearchParams(
+                        window.location.search
+                    );
+
+
+                const requestedCategory =
+                    urlParameters.get(
+                        "category"
+                    );
+
+
+                const validCategories = [
+
+                    "bracelets",
+                    "chains",
+                    "rings",
+                    "earrings",
+                    "mangalsutras"
+
+                ];
+
+
+                if (
+                    requestedCategory &&
+                    validCategories.includes(
+                        requestedCategory
+                    )
+                ) {
+
+                    categorySelect.value =
+                        requestedCategory;
+
+                }
+
+
+
+                /* =============================================
+                   CATEGORY CHIP ACTIVE STATE
+                ============================================== */
+
+                function updateCategoryChips() {
+
+                    categoryChips.forEach(
+                        chip => {
+
+                            chip.classList.toggle(
+                                "active",
+
+                                chip.dataset.categoryChip ===
+                                categorySelect.value
+                            );
+
+                        }
+                    );
+
+                }
+
+
+
+                /* =============================================
+                   FILTER PRODUCTS
+                ============================================== */
+
+                function getFilteredProducts() {
+
+                    const search =
+                        searchInput.value
+                            .trim()
+                            .toLowerCase();
+
+
+                    const category =
+                        categorySelect.value;
+
+
+                    const availability =
+                        stockSelect.value;
+
+
+                    let products =
+                        PRODUCTS.filter(
+                            product =>
+                                product.active
+                        );
+
+
+                    /* Category */
+
+                    if (
+                        category !== "all"
+                    ) {
+
+                        products =
+                            products.filter(
+                                product =>
+                                    product.category ===
+                                    category
+                            );
+
+                    }
+
+
+
+                    /* Availability */
+
+                    if (
+                        availability ===
+                        "in-stock"
+                    ) {
+
+                        products =
+                            products.filter(
+                                product =>
+                                    Number(
+                                        product.stock
+                                    ) > 0
+                            );
+
+                    }
+
+
+                    if (
+                        availability ===
+                        "out-of-stock"
+                    ) {
+
+                        products =
+                            products.filter(
+                                product =>
+                                    Number(
+                                        product.stock
+                                    ) <= 0
+                            );
+
+                    }
+
+
+
+                    /* Search */
+
+                    if (search) {
+
+                        products =
+                            products.filter(
+                                product => {
+
+                                    const searchableText = [
+
+                                        product.id,
+
+                                        product.name,
+
+                                        product.category,
+
+                                        product.subCategory || "",
+
+                                        product.description || ""
+
+                                    ]
+                                        .join(" ")
+                                        .toLowerCase();
+
+
+                                    return (
+                                        searchableText
+                                            .includes(
+                                                search
+                                            )
+                                    );
+
+                                }
+                            );
+
+                    }
+
+
+
+                    /* =========================================
+                       SORT
+                    ========================================== */
+
+                    const sort =
+                        sortSelect.value;
+
+
+                    if (
+                        sort ===
+                        "price-low"
+                    ) {
+
+                        products.sort(
+                            (a, b) =>
+                                Number(a.price) -
+                                Number(b.price)
+                        );
+
+                    }
+
+
+                    else if (
+                        sort ===
+                        "price-high"
+                    ) {
+
+                        products.sort(
+                            (a, b) =>
+                                Number(b.price) -
+                                Number(a.price)
+                        );
+
+                    }
+
+
+                    else if (
+                        sort ===
+                        "name"
+                    ) {
+
+                        products.sort(
+                            (a, b) =>
+                                a.name.localeCompare(
+                                    b.name
+                                )
+                        );
+
+                    }
+
+
+                    else if (
+                        sort ===
+                        "newest"
+                    ) {
+
+                        products.sort(
+                            (a, b) =>
+                                Number(
+                                    Boolean(
+                                        b.newArrival
+                                    )
+                                ) -
+                                Number(
+                                    Boolean(
+                                        a.newArrival
+                                    )
+                                )
+                        );
+
+                    }
+
+
+                    else {
+
+                        /* Featured */
+
+                        products.sort(
+                            (a, b) => {
+
+                                const featuredDifference =
+                                    Number(
+                                        Boolean(
+                                            b.featured
+                                        )
+                                    ) -
+                                    Number(
+                                        Boolean(
+                                            a.featured
+                                        )
+                                    );
+
+
+                                if (
+                                    featuredDifference !== 0
+                                ) {
+
+                                    return (
+                                        featuredDifference
+                                    );
+
+                                }
+
+
+                                return (
+                                    a.name.localeCompare(
+                                        b.name
+                                    )
+                                );
+
+                            }
+                        );
+
+                    }
+
+
+                    return products;
+
+                }
+
+
+
+                /* =============================================
+                   RENDER SHOP
+                ============================================== */
+
+                function renderShop() {
+
+                    const products =
+                        getFilteredProducts();
+
+
+                    resultCount.textContent =
+                        products.length;
+
+
+                    if (
+                        !products.length
+                    ) {
+
+                        productGrid.innerHTML = `
+
+                            <div
+                                class="shop-empty"
+                            >
+
+                                <span
+                                    class="shop-empty-icon"
+                                >
+                                    ✦
+                                </span>
+
+                                <h3>
+                                    No jewellery found
+                                </h3>
+
+                                <p>
+
+                                    Try changing your
+                                    search or filters to
+                                    discover more ZARQAURA
+                                    pieces.
+
+                                </p>
+
+                                <button
+                                    type="button"
+                                    class="btn"
+                                    data-empty-clear
+                                >
+                                    View All Products
+                                </button>
+
+                            </div>
+
+                        `;
+
+
+                        return;
+
+                    }
+
+
+                    productGrid.innerHTML =
+                        products
+                            .map(
+                                product =>
+                                    ZARQAURA
+                                        .productCard(
+                                            product
+                                        )
+                            )
+                            .join("");
+
+                }
+
+
+
+                /* =============================================
+                   UPDATE URL CATEGORY
+                ============================================== */
+
+                function updateURL() {
+
+                    const category =
+                        categorySelect.value;
+
+
+                    const url =
+                        new URL(
+                            window.location.href
+                        );
+
+
+                    if (
+                        category === "all"
+                    ) {
+
+                        url.searchParams.delete(
+                            "category"
+                        );
+
+                    }
+
+                    else {
+
+                        url.searchParams.set(
+                            "category",
+                            category
+                        );
+
+                    }
+
+
+                    window.history.replaceState(
+                        {},
+                        "",
+                        url
+                    );
+
+                }
+
+
+
+                /* =============================================
+                   CATEGORY CHIPS
+                ============================================== */
+
+                categoryChips.forEach(
+                    chip => {
+
+                        chip.addEventListener(
+                            "click",
+                            () => {
+
+                                categorySelect.value =
+                                    chip.dataset.categoryChip;
+
+
+                                updateCategoryChips();
+
+                                updateURL();
+
+                                renderShop();
+
+                            }
+                        );
+
+                    }
+                );
+
+
+
+                /* =============================================
+                   FILTER EVENTS
+                ============================================== */
+
+                searchInput.addEventListener(
+                    "input",
+                    renderShop
+                );
+
+
+                categorySelect.addEventListener(
+                    "change",
+                    () => {
+
+                        updateCategoryChips();
+
+                        updateURL();
+
+                        renderShop();
+
+                    }
+                );
+
+
+                stockSelect.addEventListener(
+                    "change",
+                    renderShop
+                );
+
+
+                sortSelect.addEventListener(
+                    "change",
+                    renderShop
+                );
+
+
+
+                /* =============================================
+                   CLEAR FILTERS
+                ============================================== */
+
+                function clearFilters() {
+
+                    searchInput.value =
+                        "";
+
+
+                    categorySelect.value =
+                        "all";
+
+
+                    stockSelect.value =
+                        "all";
+
+
+                    sortSelect.value =
+                        "featured";
+
+
+                    updateCategoryChips();
+
+                    updateURL();
+
+                    renderShop();
+
+                }
+
+
+                clearButton.addEventListener(
+                    "click",
+                    clearFilters
+                );
+
+
+                document.addEventListener(
+                    "click",
+                    event => {
+
+                        if (
+                            event.target.closest(
+                                "[data-empty-clear]"
+                            )
+                        ) {
+
+                            clearFilters();
+
+                        }
+
+                    }
+                );
+
+
+
+                /* =============================================
+                   FIRST LOAD
+                ============================================== */
+
+                updateCategoryChips();
+
+                renderShop();
+
+
+            }
+        );
+
+    </script>
+
+
+</body>
+
+</html>
