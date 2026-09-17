@@ -539,61 +539,50 @@ document.addEventListener(
            ORDER ID
         ====================================================== */
 
-        function createOrderId() {
+        /* =====================================================
+   INCREMENTAL ORDER ID
+====================================================== */
 
-            const now =
-                new Date();
+function createOrderId() {
 
-
-            const date =
-                String(
-                    now.getFullYear()
-                ).slice(-2)
-                +
-                String(
-                    now.getMonth() + 1
-                ).padStart(
-                    2,
-                    "0"
-                )
-                +
-                String(
-                    now.getDate()
-                ).padStart(
-                    2,
-                    "0"
-                );
+    const storageKey =
+        "zarqaura_last_order_number";
 
 
-            const time =
-                String(
-                    now.getHours()
-                ).padStart(
-                    2,
-                    "0"
-                )
-                +
-                String(
-                    now.getMinutes()
-                ).padStart(
-                    2,
-                    "0"
-                );
+    let lastOrderNumber =
+        Number(
+            localStorage.getItem(
+                storageKey
+            )
+        ) || 0;
 
 
-            const random =
-                Math.floor(
-                    100 +
-                    Math.random() *
-                    900
-                );
+    const nextOrderNumber =
+        lastOrderNumber + 1;
 
 
-            return (
-                `ZQ${date}${time}${random}`
-            );
+    localStorage.setItem(
+        storageKey,
+        String(
+            nextOrderNumber
+        )
+    );
 
-        }
+
+    const formattedNumber =
+        String(
+            nextOrderNumber
+        ).padStart(
+            2,
+            "0"
+        );
+
+
+    return (
+        `ZQ${formattedNumber}`
+    );
+
+}
 
 
 

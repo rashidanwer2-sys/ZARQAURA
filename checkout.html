@@ -442,6 +442,37 @@
 
         }
 
+        .checkout-form-actions {
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    gap:
+        12px;
+
+    margin-top:
+        23px;
+
+}
+
+
+.checkout-back-cart,
+.checkout-submit {
+
+    flex:
+        1;
+
+    width:
+        100%;
+
+    margin-top:
+        0;
+
+}
+
 
 
         /* =========================================================
@@ -1905,6 +1936,25 @@
 
             }
 
+            .checkout-form-actions {
+
+    width:
+        100%;
+
+    flex-direction:
+        column;
+
+}
+
+
+.checkout-form-actions
+.zq-btn {
+
+    width:
+        100%;
+
+}
+
         }
 
     </style>
@@ -2362,16 +2412,23 @@
 
 
 
-                            <button
-                                type="submit"
-                                class="
-                                    zq-btn
-                                    zq-btn-primary
-                                    checkout-submit
-                                "
-                            >
-                                Review & Create Order
-                            </button>
+                            <div class="checkout-form-actions">
+
+    <a
+        href="cart.html"
+        class="zq-btn zq-btn-outline checkout-back-cart"
+    >
+        ← Back to Cart
+    </a>
+
+    <button
+        type="submit"
+        class="zq-btn zq-btn-primary checkout-submit"
+    >
+        Review & Create Order
+    </button>
+
+</div>
 
 
                         </form>
