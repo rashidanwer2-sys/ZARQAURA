@@ -4735,6 +4735,10 @@ textarea.form-control {
         gap:
             16px;
 
+
+        text-align:
+            left;
+
     }
 
 
@@ -5318,6 +5322,9 @@ textarea.form-control {
             center;
 
         justify-content:
+            center;
+
+        text-align:
             center;
 
     }
