@@ -1,1 +1,2474 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Product | ZARQAURA</title><link rel="stylesheet" href="assets/css/styles.css"></head><body><div data-site-header></div><main class="container section" data-product></main><div data-site-footer></div><script src="assets/data/site-config.js"></script><script src="assets/data/products.js"></script><script src="assets/js/app.js"></script><script src="assets/js/product.js"></script></body></html>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        Collections | ZARQAURA
+    </title>
+
+    <meta
+        name="description"
+        content="Explore ZARQAURA jewellery collections including bracelets, chains, rings, earrings, mangalsutras, new arrivals and bestsellers."
+    >
+
+    <link
+        rel="icon"
+        href="assets/images/branding/favicon.png"
+        type="image/png"
+    >
+
+    <link
+        rel="stylesheet"
+        href="assets/css/styles.css"
+    >
+
+
+    <style>
+
+        /* =========================================================
+           COLLECTIONS PAGE
+        ========================================================= */
+
+        .collections-page {
+
+            overflow:
+                hidden;
+
+        }
+
+
+
+        /* =========================================================
+           HERO
+        ========================================================= */
+
+        .collections-hero {
+
+            position:
+                relative;
+
+            padding:
+                72px 0 58px;
+
+            overflow:
+                hidden;
+
+            background:
+
+                radial-gradient(
+                    circle at 88% 15%,
+                    rgba(
+                        100,
+                        65,
+                        58,
+                        0.09
+                    ),
+                    transparent 27%
+                ),
+
+                radial-gradient(
+                    circle at 8% 85%,
+                    rgba(
+                        47,
+                        93,
+                        98,
+                        0.05
+                    ),
+                    transparent 23%
+                ),
+
+                var(--cream);
+
+        }
+
+
+        .collections-hero::after {
+
+            content:
+                "";
+
+            position:
+                absolute;
+
+            top:
+                -180px;
+
+            right:
+                -150px;
+
+            width:
+                430px;
+
+            height:
+                430px;
+
+            border:
+                1px solid
+                rgba(
+                    100,
+                    65,
+                    58,
+                    0.07
+                );
+
+            border-radius:
+                50%;
+
+            pointer-events:
+                none;
+
+        }
+
+
+        .collections-hero-inner {
+
+            position:
+                relative;
+
+            z-index:
+                2;
+
+            display:
+                flex;
+
+            align-items:
+                flex-end;
+
+            justify-content:
+                space-between;
+
+            gap:
+                45px;
+
+        }
+
+
+        .collections-hero-content {
+
+            max-width:
+                720px;
+
+        }
+
+
+        .collections-hero h1 {
+
+            margin:
+                4px 0 18px;
+
+            font-size:
+                clamp(
+                    48px,
+                    6vw,
+                    78px
+                );
+
+            font-weight:
+                500;
+
+            line-height:
+                1;
+
+        }
+
+
+        .collections-hero h1 span {
+
+            font-style:
+                italic;
+
+        }
+
+
+        .collections-hero-description {
+
+            max-width:
+                620px;
+
+            margin:
+                0;
+
+            color:
+                var(--text-soft);
+
+            font-family:
+                "Lora",
+                Georgia,
+                serif;
+
+            font-size:
+                14px;
+
+            line-height:
+                1.85;
+
+        }
+
+
+        .collections-hero-action {
+
+            flex:
+                0 0 auto;
+
+        }
+
+
+
+        /* =========================================================
+           CATEGORY COLLECTIONS
+        ========================================================= */
+
+        .collections-category-section {
+
+            padding:
+                88px 0;
+
+            background:
+                var(--white);
+
+        }
+
+
+        .collections-heading {
+
+            display:
+                flex;
+
+            align-items:
+                flex-end;
+
+            justify-content:
+                space-between;
+
+            gap:
+                30px;
+
+            margin-bottom:
+                38px;
+
+        }
+
+
+        .collections-heading-content {
+
+            max-width:
+                620px;
+
+        }
+
+
+        .collections-heading h2 {
+
+            margin:
+                0;
+
+            font-size:
+                clamp(
+                    36px,
+                    4vw,
+                    54px
+                );
+
+            font-weight:
+                500;
+
+            line-height:
+                1.08;
+
+        }
+
+
+        .collections-heading-description {
+
+            max-width:
+                520px;
+
+            margin:
+                12px 0 0;
+
+            color:
+                var(--text-soft);
+
+            font-family:
+                "Lora",
+                Georgia,
+                serif;
+
+            font-size:
+                13px;
+
+            line-height:
+                1.75;
+
+        }
+
+
+
+        /* =========================================================
+           LARGE COLLECTION GRID
+        ========================================================= */
+
+        .collections-grid {
+
+            display:
+                grid;
+
+            grid-template-columns:
+                repeat(
+                    12,
+                    1fr
+                );
+
+            gap:
+                18px;
+
+        }
+
+
+        .collection-card {
+
+            position:
+                relative;
+
+            min-height:
+                470px;
+
+            overflow:
+                hidden;
+
+            border:
+                1px solid
+                var(--border);
+
+            border-radius:
+                var(--radius-large);
+
+            background:
+                #E8D8CD;
+
+            box-shadow:
+                var(--shadow-small);
+
+            transition:
+                transform 0.45s ease,
+                box-shadow 0.45s ease;
+
+        }
+
+
+        .collection-card:hover {
+
+            transform:
+                translateY(-5px);
+
+            box-shadow:
+                var(--shadow);
+
+        }
+
+
+        .collection-card-large {
+
+            grid-column:
+                span 7;
+
+        }
+
+
+        .collection-card-small {
+
+            grid-column:
+                span 5;
+
+        }
+
+
+        .collection-card-third {
+
+            grid-column:
+                span 4;
+
+            min-height:
+                410px;
+
+        }
+
+
+        .collection-card img {
+
+            position:
+                absolute;
+
+            inset:
+                0;
+
+            width:
+                100%;
+
+            height:
+                100%;
+
+            object-fit:
+                cover;
+
+            transition:
+                transform 0.55s ease;
+
+        }
+
+
+        .collection-card:hover img {
+
+            transform:
+                scale(1.035);
+
+        }
+
+
+        .collection-card-overlay {
+
+            position:
+                absolute;
+
+            inset:
+                0;
+
+            background:
+                linear-gradient(
+                    to top,
+                    rgba(
+                        37,
+                        26,
+                        23,
+                        0.72
+                    ) 0%,
+                    rgba(
+                        37,
+                        26,
+                        23,
+                        0.20
+                    ) 45%,
+                    rgba(
+                        37,
+                        26,
+                        23,
+                        0.02
+                    ) 72%
+                );
+
+        }
+
+
+        .collection-card-content {
+
+            position:
+                absolute;
+
+            left:
+                0;
+
+            right:
+                0;
+
+            bottom:
+                0;
+
+            z-index:
+                2;
+
+            padding:
+                31px;
+
+            color:
+                var(--white);
+
+        }
+
+
+        .collection-card-label {
+
+            display:
+                block;
+
+            margin-bottom:
+                8px;
+
+            color:
+                var(--cream);
+
+            font-size:
+                8px;
+
+            font-weight:
+                700;
+
+            letter-spacing:
+                2px;
+
+            text-transform:
+                uppercase;
+
+        }
+
+
+        .collection-card h3 {
+
+            margin:
+                0 0 8px;
+
+            color:
+                var(--white);
+
+            font-size:
+                clamp(
+                    28px,
+                    3vw,
+                    40px
+                );
+
+            font-weight:
+                500;
+
+        }
+
+
+        .collection-card p {
+
+            max-width:
+                430px;
+
+            margin:
+                0 0 18px;
+
+            color:
+                rgba(
+                    255,
+                    255,
+                    255,
+                    0.82
+                );
+
+            font-family:
+                "Lora",
+                Georgia,
+                serif;
+
+            font-size:
+                11px;
+
+            line-height:
+                1.65;
+
+        }
+
+
+        .collection-card-link {
+
+            position:
+                relative;
+
+            display:
+                inline-flex;
+
+            align-items:
+                center;
+
+            padding-bottom:
+                4px;
+
+            color:
+                var(--white);
+
+            font-size:
+                10px;
+
+            font-weight:
+                600;
+
+        }
+
+
+        .collection-card-link::after {
+
+            content:
+                "";
+
+            position:
+                absolute;
+
+            left:
+                0;
+
+            bottom:
+                0;
+
+            width:
+                30%;
+
+            height:
+                1px;
+
+            background:
+                rgba(
+                    255,
+                    255,
+                    255,
+                    0.75
+                );
+
+            transition:
+                width 0.35s ease;
+
+        }
+
+
+        .collection-card:hover
+        .collection-card-link::after {
+
+            width:
+                100%;
+
+        }
+
+
+
+        /* =========================================================
+           CURATED COLLECTION STRIP
+        ========================================================= */
+
+        .collection-curated {
+
+            padding:
+                82px 0;
+
+            background:
+                #EFE3D8;
+
+        }
+
+
+        .collection-curated-grid {
+
+            display:
+                grid;
+
+            grid-template-columns:
+                repeat(
+                    3,
+                    1fr
+                );
+
+            gap:
+                18px;
+
+        }
+
+
+        .curated-card {
+
+            position:
+                relative;
+
+            display:
+                flex;
+
+            flex-direction:
+                column;
+
+            justify-content:
+                space-between;
+
+            min-height:
+                245px;
+
+            padding:
+                30px;
+
+            overflow:
+                hidden;
+
+            border:
+                1px solid
+                rgba(
+                    100,
+                    65,
+                    58,
+                    0.12
+                );
+
+            border-radius:
+                var(--radius);
+
+            background:
+                var(--cream-light);
+
+            transition:
+                transform 0.4s ease,
+                box-shadow 0.4s ease,
+                border-color 0.4s ease;
+
+        }
+
+
+        .curated-card:hover {
+
+            transform:
+                translateY(-5px);
+
+            border-color:
+                rgba(
+                    47,
+                    93,
+                    98,
+                    0.25
+                );
+
+            box-shadow:
+                var(--shadow-small);
+
+        }
+
+
+        .curated-number {
+
+            display:
+                inline-flex;
+
+            align-items:
+                center;
+
+            justify-content:
+                center;
+
+            width:
+                40px;
+
+            height:
+                40px;
+
+            border-radius:
+                50%;
+
+            background:
+                var(--teal);
+
+            color:
+                var(--white);
+
+            font-family:
+                "Lora",
+                Georgia,
+                serif;
+
+            font-size:
+                12px;
+
+        }
+
+
+        .curated-card h3 {
+
+            margin:
+                28px 0 8px;
+
+            font-size:
+                28px;
+
+            font-weight:
+                500;
+
+        }
+
+
+        .curated-card p {
+
+            margin:
+                0 0 21px;
+
+            color:
+                var(--text-soft);
+
+            font-family:
+                "Lora",
+                Georgia,
+                serif;
+
+            font-size:
+                11px;
+
+            line-height:
+                1.7;
+
+        }
+
+
+
+        /* =========================================================
+           PRODUCT COLLECTION SECTIONS
+        ========================================================= */
+
+        .collection-products-section {
+
+            padding:
+                88px 0;
+
+            background:
+                var(--white);
+
+        }
+
+
+        .collection-products-section.alt {
+
+            background:
+                var(--cream);
+
+        }
+
+
+        .collection-products-action {
+
+            display:
+                flex;
+
+            justify-content:
+                center;
+
+            margin-top:
+                38px;
+
+        }
+
+
+
+        /* =========================================================
+           COLLECTION BENEFITS
+        ========================================================= */
+
+        .collection-benefits {
+
+            padding:
+                52px 0;
+
+            border-top:
+                1px solid
+                var(--border);
+
+            border-bottom:
+                1px solid
+                var(--border);
+
+            background:
+                var(--cream-light);
+
+        }
+
+
+        .collection-benefits-grid {
+
+            display:
+                grid;
+
+            grid-template-columns:
+                repeat(
+                    3,
+                    1fr
+                );
+
+        }
+
+
+        .collection-benefit {
+
+            padding:
+                12px 30px;
+
+            border-right:
+                1px solid
+                var(--border);
+
+            text-align:
+                center;
+
+        }
+
+
+        .collection-benefit:last-child {
+
+            border-right:
+                0;
+
+        }
+
+
+        .collection-benefit-icon {
+
+            width:
+                42px;
+
+            height:
+                42px;
+
+            display:
+                grid;
+
+            place-items:
+                center;
+
+            margin:
+                0 auto 12px;
+
+            border-radius:
+                50%;
+
+            background:
+                var(--background-soft);
+
+            color:
+                var(--teal);
+
+        }
+
+
+        .collection-benefit h3 {
+
+            margin:
+                0;
+
+            font-size:
+                18px;
+
+            font-weight:
+                500;
+
+        }
+
+
+        .collection-benefit p {
+
+            max-width:
+                250px;
+
+            margin:
+                7px auto 0;
+
+            color:
+                var(--text-soft);
+
+            font-size:
+                9px;
+
+            line-height:
+                1.65;
+
+        }
+
+
+
+        /* =========================================================
+           TABLET
+        ========================================================= */
+
+        @media (max-width: 950px) {
+
+            .collections-hero-inner {
+
+                flex-direction:
+                    column;
+
+                align-items:
+                    flex-start;
+
+            }
+
+
+            .collection-card-large,
+            .collection-card-small {
+
+                grid-column:
+                    span 6;
+
+            }
+
+
+            .collection-card-third {
+
+                grid-column:
+                    span 6;
+
+            }
+
+
+            .collection-card-third:last-child {
+
+                grid-column:
+                    4 / 10;
+
+            }
+
+
+            .collection-curated-grid {
+
+                grid-template-columns:
+                    repeat(
+                        2,
+                        1fr
+                    );
+
+            }
+
+
+            .curated-card:last-child {
+
+                grid-column:
+                    1 / -1;
+
+            }
+
+        }
+
+
+
+        /* =========================================================
+           MOBILE
+        ========================================================= */
+
+        @media (max-width: 650px) {
+
+            .collections-hero {
+
+                padding:
+                    52px 0 44px;
+
+            }
+
+
+            .collections-hero h1 {
+
+                font-size:
+                    clamp(
+                        44px,
+                        13vw,
+                        62px
+                    );
+
+            }
+
+
+            .collections-category-section,
+            .collection-products-section {
+
+                padding:
+                    64px 0;
+
+            }
+
+
+            .collection-curated {
+
+                padding:
+                    64px 0;
+
+            }
+
+
+            .collections-heading {
+
+                flex-direction:
+                    column;
+
+                align-items:
+                    flex-start;
+
+                gap:
+                    15px;
+
+            }
+
+
+            .collection-card-large,
+            .collection-card-small,
+            .collection-card-third,
+            .collection-card-third:last-child {
+
+                grid-column:
+                    span 12;
+
+            }
+
+
+            .collection-card {
+
+                min-height:
+                    430px;
+
+            }
+
+
+            .collection-card-content {
+
+                padding:
+                    25px;
+
+            }
+
+
+            .collection-curated-grid {
+
+                grid-template-columns:
+                    1fr;
+
+            }
+
+
+            .curated-card:last-child {
+
+                grid-column:
+                    auto;
+
+            }
+
+
+            .collection-benefits-grid {
+
+                grid-template-columns:
+                    1fr;
+
+            }
+
+
+            .collection-benefit {
+
+                padding:
+                    22px 15px;
+
+                border-right:
+                    0;
+
+                border-bottom:
+                    1px solid
+                    var(--border);
+
+            }
+
+
+            .collection-benefit:last-child {
+
+                border-bottom:
+                    0;
+
+            }
+
+        }
+
+
+
+        /* =========================================================
+           SMALL MOBILE - 480PX
+        ========================================================= */
+
+        @media (max-width: 480px) {
+
+            /*
+               CENTER MAIN PAGE CONTENT
+               Header/footer intentionally excluded
+            */
+
+            .collections-hero-content,
+            .collections-heading,
+            .collections-heading-content,
+            .collection-card-content,
+            .curated-card,
+            .collection-benefit {
+
+                text-align:
+                    center;
+
+            }
+
+
+            /* Hero */
+
+            .collections-hero-inner {
+
+                width:
+                    100%;
+
+                align-items:
+                    center;
+
+                text-align:
+                    center;
+
+            }
+
+
+            .collections-hero-content {
+
+                width:
+                    100%;
+
+                max-width:
+                    100%;
+
+            }
+
+
+            .collections-hero-description {
+
+                max-width:
+                    100%;
+
+                margin-left:
+                    auto;
+
+                margin-right:
+                    auto;
+
+            }
+
+
+            .collections-hero-action {
+
+                width:
+                    100%;
+
+            }
+
+
+            .collections-hero-action
+            .zq-btn {
+
+                width:
+                    100%;
+
+            }
+
+
+
+            /* Headings */
+
+            .collections-heading {
+
+                width:
+                    100%;
+
+                align-items:
+                    center;
+
+            }
+
+
+            .collections-heading-content {
+
+                width:
+                    100%;
+
+                max-width:
+                    100%;
+
+            }
+
+
+            .collections-heading-description {
+
+                max-width:
+                    100%;
+
+                margin-left:
+                    auto;
+
+                margin-right:
+                    auto;
+
+            }
+
+
+            .collections-heading
+            .zq-text-link {
+
+                margin:
+                    0 auto;
+
+            }
+
+
+
+            /* Collection cards */
+
+            .collections-grid {
+
+                width:
+                    100%;
+
+                grid-template-columns:
+                    1fr;
+
+            }
+
+
+            .collection-card,
+            .collection-card-large,
+            .collection-card-small,
+            .collection-card-third,
+            .collection-card-third:last-child {
+
+                width:
+                    100%;
+
+                max-width:
+                    100%;
+
+                grid-column:
+                    auto;
+
+            }
+
+
+            .collection-card {
+
+                min-height:
+                    410px;
+
+            }
+
+
+            .collection-card-content {
+
+                width:
+                    100%;
+
+            }
+
+
+            .collection-card p {
+
+                margin-left:
+                    auto;
+
+                margin-right:
+                    auto;
+
+            }
+
+
+            .collection-card-link {
+
+                justify-content:
+                    center;
+
+            }
+
+
+            .collection-card-link::after {
+
+                left:
+                    50%;
+
+                transform:
+                    translateX(-50%);
+
+            }
+
+
+
+            /* Curated cards */
+
+            .collection-curated-grid {
+
+                width:
+                    100%;
+
+                grid-template-columns:
+                    1fr;
+
+            }
+
+
+            .curated-card {
+
+                width:
+                    100%;
+
+                max-width:
+                    100%;
+
+                align-items:
+                    center;
+
+            }
+
+
+            .curated-number {
+
+                margin:
+                    0 auto;
+
+            }
+
+
+            .curated-card
+            .zq-text-link {
+
+                justify-content:
+                    center;
+
+            }
+
+
+
+            /* Products */
+
+            .collections-page
+            .product-grid {
+
+                width:
+                    100%;
+
+                grid-template-columns:
+                    1fr;
+
+                justify-items:
+                    center;
+
+            }
+
+
+            .collections-page
+            .product-card {
+
+                width:
+                    100%;
+
+                max-width:
+                    100%;
+
+                margin:
+                    0 auto;
+
+                text-align:
+                    center;
+
+            }
+
+
+            .collections-page
+            .product-body {
+
+                width:
+                    100%;
+
+                text-align:
+                    center;
+
+            }
+
+
+            .collections-page
+            .badges,
+            .collections-page
+            .product-card-actions {
+
+                justify-content:
+                    center;
+
+            }
+
+
+            .collections-page
+            .product-card-actions
+            .btn {
+
+                width:
+                    100%;
+
+            }
+
+
+            .collection-products-action {
+
+                width:
+                    100%;
+
+            }
+
+
+            .collection-products-action
+            .zq-btn {
+
+                width:
+                    100%;
+
+            }
+
+
+
+            /* Benefits + icons */
+
+            .collection-benefit {
+
+                width:
+                    100%;
+
+            }
+
+
+            .collection-benefit-icon {
+
+                margin-left:
+                    auto;
+
+                margin-right:
+                    auto;
+
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <div data-site-header></div>
+
+
+
+    <main class="collections-page">
+
+
+        <!-- =====================================================
+             HERO
+        ====================================================== -->
+
+        <section class="collections-hero">
+
+            <div
+                class="container collections-hero-inner"
+            >
+
+                <div class="collections-hero-content">
+
+                    <p class="zq-eyebrow">
+                        DISCOVER ZARQAURA
+                    </p>
+
+
+                    <h1>
+                        Explore Our
+                        <span>
+                            Collections.
+                        </span>
+                    </h1>
+
+
+                    <p class="collections-hero-description">
+
+                        Discover jewellery curated around
+                        your everyday style — from refined
+                        bracelets and elegant chains to rings,
+                        earrings and contemporary mangalsutras.
+
+                    </p>
+
+                </div>
+
+
+                <div class="collections-hero-action">
+
+                    <a
+                        href="shop.html"
+                        class="zq-btn zq-btn-primary"
+                    >
+                        Shop All Jewellery
+                    </a>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =====================================================
+             SHOP BY COLLECTION
+        ====================================================== -->
+
+        <section class="collections-category-section">
+
+            <div class="container">
+
+
+                <div class="collections-heading">
+
+                    <div class="collections-heading-content">
+
+                        <p class="zq-eyebrow">
+                            SHOP BY CATEGORY
+                        </p>
+
+
+                        <h2>
+                            Find Your Style
+                        </h2>
+
+
+                        <p class="collections-heading-description">
+
+                            Explore each ZARQAURA collection
+                            and find pieces designed to become
+                            part of your everyday jewellery wardrobe.
+
+                        </p>
+
+                    </div>
+
+
+                    <a
+                        href="shop.html"
+                        class="zq-text-link"
+                    >
+                        Shop all →
+                    </a>
+
+                </div>
+
+
+
+                <div class="collections-grid">
+
+
+                    <!-- BRACELETS -->
+
+                    <a
+                        href="shop.html?category=bracelets"
+                        class="collection-card collection-card-large"
+                    >
+
+                        <img
+                            src="assets/images/categories/bracelets.jpg"
+                            alt="ZARQAURA Bracelets"
+                        >
+
+                        <div class="collection-card-overlay"></div>
+
+
+                        <div class="collection-card-content">
+
+                            <span class="collection-card-label">
+                                ZARQAURA COLLECTION
+                            </span>
+
+                            <h3>
+                                Bracelets
+                            </h3>
+
+                            <p>
+                                Refined everyday bracelets
+                                created for effortless stacking
+                                and elegant styling.
+                            </p>
+
+                            <span class="collection-card-link">
+                                Explore Bracelets →
+                            </span>
+
+                        </div>
+
+                    </a>
+
+
+
+                    <!-- CHAINS -->
+
+                    <a
+                        href="shop.html?category=chains"
+                        class="collection-card collection-card-small"
+                    >
+
+                        <img
+                            src="assets/images/categories/chains.jpg"
+                            alt="ZARQAURA Chains"
+                        >
+
+                        <div class="collection-card-overlay"></div>
+
+
+                        <div class="collection-card-content">
+
+                            <span class="collection-card-label">
+                                EVERYDAY ELEGANCE
+                            </span>
+
+                            <h3>
+                                Chains
+                            </h3>
+
+                            <p>
+                                Minimal chains designed
+                                to complement every look.
+                            </p>
+
+                            <span class="collection-card-link">
+                                Explore Chains →
+                            </span>
+
+                        </div>
+
+                    </a>
+
+
+
+                    <!-- RINGS -->
+
+                    <a
+                        href="shop.html?category=rings"
+                        class="collection-card collection-card-third"
+                    >
+
+                        <img
+                            src="assets/images/categories/rings.jpg"
+                            alt="ZARQAURA Rings"
+                        >
+
+                        <div class="collection-card-overlay"></div>
+
+
+                        <div class="collection-card-content">
+
+                            <span class="collection-card-label">
+                                SMALL DETAILS
+                            </span>
+
+                            <h3>
+                                Rings
+                            </h3>
+
+                            <p>
+                                Elegant rings for subtle
+                                everyday statements.
+                            </p>
+
+                            <span class="collection-card-link">
+                                Explore Rings →
+                            </span>
+
+                        </div>
+
+                    </a>
+
+
+
+                    <!-- EARRINGS -->
+
+                    <a
+                        href="shop.html?category=earrings"
+                        class="collection-card collection-card-third"
+                    >
+
+                        <img
+                            src="assets/images/categories/earrings.jpg"
+                            alt="ZARQAURA Earrings"
+                        >
+
+                        <div class="collection-card-overlay"></div>
+
+
+                        <div class="collection-card-content">
+
+                            <span class="collection-card-label">
+                                EFFORTLESS STYLE
+                            </span>
+
+                            <h3>
+                                Earrings
+                            </h3>
+
+                            <p>
+                                Versatile earrings curated
+                                for everyday elegance.
+                            </p>
+
+                            <span class="collection-card-link">
+                                Explore Earrings →
+                            </span>
+
+                        </div>
+
+                    </a>
+
+
+
+                    <!-- MANGALSUTRAS -->
+
+                    <a
+                        href="shop.html?category=mangalsutras"
+                        class="collection-card collection-card-third"
+                    >
+
+                        <img
+                            src="assets/images/categories/mangalsutras.jpg"
+                            alt="ZARQAURA Mangalsutras"
+                        >
+
+                        <div class="collection-card-overlay"></div>
+
+
+                        <div class="collection-card-content">
+
+                            <span class="collection-card-label">
+                                MODERN TRADITION
+                            </span>
+
+                            <h3>
+                                Mangalsutras
+                            </h3>
+
+                            <p>
+                                Contemporary designs blending
+                                tradition with modern styling.
+                            </p>
+
+                            <span class="collection-card-link">
+                                Explore Mangalsutras →
+                            </span>
+
+                        </div>
+
+                    </a>
+
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =====================================================
+             CURATED DISCOVERY
+        ====================================================== -->
+
+        <section class="collection-curated">
+
+            <div class="container">
+
+
+                <div class="collections-heading">
+
+                    <div class="collections-heading-content">
+
+                        <p class="zq-eyebrow">
+                            CURATED FOR YOU
+                        </p>
+
+                        <h2>
+                            More Ways to Discover
+                        </h2>
+
+                        <p class="collections-heading-description">
+
+                            Whether you're discovering something
+                            new or looking for customer favourites,
+                            start with one of our curated edits.
+
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="collection-curated-grid">
+
+
+                    <a
+                        href="shop.html"
+                        class="curated-card"
+                    >
+
+                        <span class="curated-number">
+                            01
+                        </span>
+
+                        <div>
+
+                            <h3>
+                                Everyday Jewellery
+                            </h3>
+
+                            <p>
+                                Versatile pieces curated for
+                                effortless styling from morning
+                                to evening.
+                            </p>
+
+                            <span class="zq-text-link">
+                                Explore all →
+                            </span>
+
+                        </div>
+
+                    </a>
+
+
+
+                    <a
+                        href="#new-arrivals"
+                        class="curated-card"
+                    >
+
+                        <span class="curated-number">
+                            02
+                        </span>
+
+                        <div>
+
+                            <h3>
+                                New Arrivals
+                            </h3>
+
+                            <p>
+                                Discover the newest jewellery
+                                recently added to ZARQAURA.
+                            </p>
+
+                            <span class="zq-text-link">
+                                Discover new →
+                            </span>
+
+                        </div>
+
+                    </a>
+
+
+
+                    <a
+                        href="#bestsellers"
+                        class="curated-card"
+                    >
+
+                        <span class="curated-number">
+                            03
+                        </span>
+
+                        <div>
+
+                            <h3>
+                                Bestsellers
+                            </h3>
+
+                            <p>
+                                Explore standout pieces loved
+                                across the ZARQAURA collection.
+                            </p>
+
+                            <span class="zq-text-link">
+                                View favourites →
+                            </span>
+
+                        </div>
+
+                    </a>
+
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =====================================================
+             NEW ARRIVALS
+        ====================================================== -->
+
+        <section
+            class="collection-products-section"
+            id="new-arrivals"
+        >
+
+            <div class="container">
+
+
+                <div class="collections-heading">
+
+                    <div class="collections-heading-content">
+
+                        <p class="zq-eyebrow">
+                            JUST IN
+                        </p>
+
+                        <h2>
+                            New Arrivals
+                        </h2>
+
+                        <p class="collections-heading-description">
+
+                            Fresh additions to the ZARQAURA
+                            collection, curated for your
+                            everyday jewellery wardrobe.
+
+                        </p>
+
+                    </div>
+
+
+                    <a
+                        href="shop.html"
+                        class="zq-text-link"
+                    >
+                        View all products →
+                    </a>
+
+                </div>
+
+
+
+                <div
+                    class="product-grid"
+                    data-collections-new
+                ></div>
+
+
+
+                <div class="collection-products-action">
+
+                    <a
+                        href="shop.html"
+                        class="zq-btn zq-btn-outline"
+                    >
+                        Shop All Jewellery
+                    </a>
+
+                </div>
+
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =====================================================
+             BESTSELLERS
+        ====================================================== -->
+
+        <section
+            class="collection-products-section alt"
+            id="bestsellers"
+        >
+
+            <div class="container">
+
+
+                <div class="collections-heading">
+
+                    <div class="collections-heading-content">
+
+                        <p class="zq-eyebrow">
+                            CUSTOMER FAVOURITES
+                        </p>
+
+                        <h2>
+                            Bestsellers
+                        </h2>
+
+                        <p class="collections-heading-description">
+
+                            Discover popular ZARQAURA pieces
+                            chosen for effortless styling
+                            and everyday elegance.
+
+                        </p>
+
+                    </div>
+
+
+                    <a
+                        href="shop.html"
+                        class="zq-text-link"
+                    >
+                        Explore all →
+                    </a>
+
+                </div>
+
+
+
+                <div
+                    class="product-grid"
+                    data-collections-bestsellers
+                ></div>
+
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =====================================================
+             BENEFITS
+        ====================================================== -->
+
+        <section class="collection-benefits">
+
+            <div class="container">
+
+
+                <div class="collection-benefits-grid">
+
+
+                    <div class="collection-benefit">
+
+                        <div class="collection-benefit-icon">
+
+                            <svg
+                                width="22"
+                                height="22"
+                                viewBox="0 0 64 64"
+                                fill="none"
+                                xmlns="http://www.w3.org/2000/svg"
+                                aria-hidden="true"
+                            >
+
+                                <path
+                                    d="M32 8C34.5 19 39 23.5 50 26C39 28.5 34.5 33 32 44C29.5 33 25 28.5 14 26C25 23.5 29.5 19 32 8Z"
+                                    fill="currentColor"
+                                />
+
+                            </svg>
+
+                        </div>
+
+
+                        <h3>
+                            Anti-Tarnish
+                        </h3>
+
+                        <p>
+                            Jewellery designed for
+                            long-lasting everyday shine.
+                        </p>
+
+                    </div>
+
+
+
+                    <div class="collection-benefit">
+
+                        <div class="collection-benefit-icon">
+
+                            <svg
+                                width="22"
+                                height="22"
+                                viewBox="0 0 64 64"
+                                fill="none"
+                                xmlns="http://www.w3.org/2000/svg"
+                                aria-hidden="true"
+                            >
+
+                                <path
+                                    d="M32 54L12 34C4 26 7 13 18 11C24 10 29 13 32 18C35 13 40 10 46 11C57 13 60 26 52 34L32 54Z"
+                                    stroke="currentColor"
+                                    stroke-width="4"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                />
+
+                            </svg>
+
+                        </div>
+
+
+                        <h3>
+                            Thoughtfully Curated
+                        </h3>
+
+                        <p>
+                            Pieces selected for modern,
+                            effortless everyday styling.
+                        </p>
+
+                    </div>
+
+
+
+                    <div class="collection-benefit">
+
+                        <div class="collection-benefit-icon">
+
+                            <svg
+                                width="22"
+                                height="22"
+                                viewBox="0 0 64 64"
+                                fill="none"
+                                xmlns="http://www.w3.org/2000/svg"
+                                aria-hidden="true"
+                            >
+
+                                <path
+                                    d="M8 25L32 17L56 25L32 34L8 25Z"
+                                    stroke="currentColor"
+                                    stroke-width="4"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                />
+
+                                <path
+                                    d="M8 25V48L32 57L56 48V25"
+                                    stroke="currentColor"
+                                    stroke-width="4"
+                                    stroke-linejoin="round"
+                                />
+
+                                <path
+                                    d="M32 34V57"
+                                    stroke="currentColor"
+                                    stroke-width="4"
+                                />
+
+                            </svg>
+
+                        </div>
+
+
+                        <h3>
+                            Free Shipping
+                        </h3>
+
+                        <p>
+                            Complimentary shipping
+                            across India.
+                        </p>
+
+                    </div>
+
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+    </main>
+
+
+
+    <div data-site-footer></div>
+
+
+
+    <!-- =========================================================
+         DATA
+    ========================================================== -->
+
+    <script src="assets/data/site-config.js"></script>
+
+    <script src="assets/data/products.js"></script>
+
+
+
+    <!-- =========================================================
+         GLOBAL WEBSITE
+    ========================================================== -->
+
+    <script src="assets/js/app.js"></script>
+
+
+
+    <!-- =========================================================
+         COLLECTION PRODUCT SECTIONS
+    ========================================================== -->
+
+    <script>
+
+        document.addEventListener(
+            "DOMContentLoaded",
+            () => {
+
+
+                const newGrid =
+                    document.querySelector(
+                        "[data-collections-new]"
+                    );
+
+
+                const bestsellerGrid =
+                    document.querySelector(
+                        "[data-collections-bestsellers]"
+                    );
+
+
+
+                /* =============================================
+                   ACTIVE PRODUCTS
+                ============================================== */
+
+                const activeProducts =
+                    PRODUCTS.filter(
+                        product =>
+                            product.active
+                    );
+
+
+
+                /* =============================================
+                   NEW ARRIVALS
+                ============================================== */
+
+                const newArrivals =
+                    activeProducts
+                        .filter(
+                            product =>
+                                product.newArrival
+                        )
+                        .slice(
+                            0,
+                            4
+                        );
+
+
+                if (
+                    newGrid
+                ) {
+
+                    if (
+                        newArrivals.length
+                    ) {
+
+                        newGrid.innerHTML =
+                            newArrivals
+                                .map(
+                                    product =>
+                                        ZARQAURA.productCard(
+                                            product
+                                        )
+                                )
+                                .join("");
+
+                    }
+
+                    else {
+
+                        newGrid.innerHTML = `
+
+                            <div
+                                class="panel"
+                                style="
+                                    grid-column: 1 / -1;
+                                    text-align: center;
+                                "
+                            >
+
+                                <p
+                                    style="
+                                        margin: 0;
+                                        color: var(--text-soft);
+                                    "
+                                >
+                                    New arrivals are coming soon.
+                                </p>
+
+                            </div>
+
+                        `;
+
+                    }
+
+                }
+
+
+
+                /* =============================================
+                   BESTSELLERS
+                ============================================== */
+
+                const bestsellers =
+                    activeProducts
+                        .filter(
+                            product =>
+                                product.bestseller
+                        )
+                        .slice(
+                            0,
+                            4
+                        );
+
+
+                if (
+                    bestsellerGrid
+                ) {
+
+                    if (
+                        bestsellers.length
+                    ) {
+
+                        bestsellerGrid.innerHTML =
+                            bestsellers
+                                .map(
+                                    product =>
+                                        ZARQAURA.productCard(
+                                            product
+                                        )
+                                )
+                                .join("");
+
+                    }
+
+                    else {
+
+                        bestsellerGrid.innerHTML = `
+
+                            <div
+                                class="panel"
+                                style="
+                                    grid-column: 1 / -1;
+                                    text-align: center;
+                                "
+                            >
+
+                                <p
+                                    style="
+                                        margin: 0;
+                                        color: var(--text-soft);
+                                    "
+                                >
+                                    Bestsellers will appear here soon.
+                                </p>
+
+                            </div>
+
+                        `;
+
+                    }
+
+                }
+
+
+            }
+        );
+
+    </script>
+
+
+</body>
+
+</html>
