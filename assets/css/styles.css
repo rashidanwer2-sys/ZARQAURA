@@ -4291,203 +4291,91 @@ textarea.form-control {
     }
 
 
-    @media (max-width: 1080px) {
-
     .nav {
 
-        position: absolute;
+        position:
+            absolute;
 
-        top: 100%;
+        top:
+            72px;
 
-        left: 0;
+        left:
+            0;
 
-        right: 0;
+        right:
+            0;
 
-        z-index: 1050;
+        display:
+            none;
 
-        display: flex;
+        max-height:
+            calc(
+                100vh - 72px
+            );
 
-        flex-direction: column;
+        overflow-y:
+            auto;
 
-        align-items: stretch;
+        flex-direction:
+            column;
 
-        gap: 0;
+        align-items:
+            stretch;
+
+        gap:
+            0;
 
         padding:
-            15px
-            46px
-            24px;
+            8px 4%
+            20px;
+
+        border-bottom:
+            1px solid
+            var(--border);
 
         background:
             var(--cream);
 
-        border-top:
-            1px solid
-            rgba(100, 65, 58, 0.07);
-
         box-shadow:
-            0 18px 35px
-            rgba(65, 45, 40, 0.06);
-
-        /*
-           CURTAIN CLOSED
-        */
-
-        clip-path:
-            inset(
-                0
-                0
-                100%
-                0
-            );
-
-        opacity: 0;
-
-        visibility: hidden;
-
-        pointer-events: none;
-
-        transition:
-            clip-path 0.48s
-            cubic-bezier(
-                0.77,
-                0,
-                0.18,
-                1
-            ),
-            opacity 0.3s ease,
-            visibility 0s linear 0.48s;
+            var(--shadow-small);
 
     }
 
-
-    /*
-       CURTAIN OPEN
-    */
 
     .nav.open {
 
-        clip-path:
-            inset(
-                0
-                0
-                0
-                0
-            );
-
-        opacity: 1;
-
-        visibility: visible;
-
-        pointer-events: auto;
-
-        transition:
-            clip-path 0.48s
-            cubic-bezier(
-                0.77,
-                0,
-                0.18,
-                1
-            ),
-            opacity 0.3s ease,
-            visibility 0s linear 0s;
+        display:
+            flex;
 
     }
 
-
-    /*
-       MENU ITEMS
-    */
 
     .nav a {
 
-        width: 100%;
-
         padding:
-            17px
-            0;
+            14px 0;
 
         border-bottom:
             1px solid
-            rgba(100, 65, 58, 0.10);
-
-        color:
-            var(--text);
+            rgba(
+                100,
+                65,
+                58,
+                0.08
+            );
 
         font-size:
-            12px;
-
-        transform:
-            translateY(-7px);
-
-        opacity: 0;
-
-        transition:
-            color 0.3s ease,
-            transform 0.38s ease,
-            opacity 0.38s ease;
+            11px;
 
     }
 
 
-    /*
-       MENU ITEM ENTRANCE
-    */
+    .nav a::after {
 
-    .nav.open a {
-
-        transform:
-            translateY(0);
-
-        opacity: 1;
+        display:
+            none;
 
     }
-
-
-    /*
-       SMALL STAGGER EFFECT
-    */
-
-    .nav.open a:nth-child(1) {
-        transition-delay: 0.08s;
-    }
-
-    .nav.open a:nth-child(2) {
-        transition-delay: 0.11s;
-    }
-
-    .nav.open a:nth-child(3) {
-        transition-delay: 0.14s;
-    }
-
-    .nav.open a:nth-child(4) {
-        transition-delay: 0.17s;
-    }
-
-    .nav.open a:nth-child(5) {
-        transition-delay: 0.20s;
-    }
-
-    .nav.open a:nth-child(6) {
-        transition-delay: 0.23s;
-    }
-
-
-    /*
-       ACTIVE PAGE
-    */
-
-    .nav a.active {
-
-        color:
-            var(--teal);
-
-        font-weight:
-            600;
-
-    }
-
-}
 
 
     .cart-link {
