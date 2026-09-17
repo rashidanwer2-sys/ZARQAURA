@@ -5188,3 +5188,407 @@ textarea.form-control {
     }
 
 }
+
+
+/* =========================================================
+   PHONE ALIGNMENT — 480PX ONLY
+========================================================= */
+
+@media
+(
+    max-width:
+    480px
+) {
+
+    /* Homepage content */
+
+    .zq-hero-content,
+    .zq-section-heading,
+    .zq-category-info,
+    .zq-products-section .product-body,
+    .zq-new-section .product-body,
+    .zq-story-content,
+    .zq-benefit,
+    .zq-community-inner,
+    .zq-community-actions,
+    .zq-center-action {
+
+        width:
+            100%;
+
+        text-align:
+            center;
+
+    }
+
+
+    /* Hero */
+
+    .zq-hero-content,
+    .zq-hero-description {
+
+        margin-left:
+            auto;
+
+        margin-right:
+            auto;
+
+    }
+
+
+    .zq-hero-actions {
+
+        width:
+            100%;
+
+        align-items:
+            center;
+
+        justify-content:
+            center;
+
+    }
+
+
+    .zq-hero-actions
+    .zq-btn {
+
+        width:
+            100%;
+
+    }
+
+
+    .zq-hero-features {
+
+        width:
+            100%;
+
+    }
+
+
+    .zq-hero-features div {
+
+        width:
+            100%;
+
+        align-items:
+            center;
+
+        text-align:
+            center;
+
+    }
+
+
+    .zq-hero-visual,
+    .zq-hero-image-wrap {
+
+        width:
+            100%;
+
+    }
+
+
+    /* Floating icon card */
+
+    .zq-floating-card {
+
+        flex-direction:
+            column;
+
+        align-items:
+            center;
+
+        justify-content:
+            center;
+
+        text-align:
+            center;
+
+    }
+
+
+    .zq-floating-icon {
+
+        margin-left:
+            auto;
+
+        margin-right:
+            auto;
+
+    }
+
+
+    /* Section headings */
+
+    .zq-section-heading {
+
+        align-items:
+            center;
+
+        justify-content:
+            center;
+
+    }
+
+
+    .zq-section-description {
+
+        margin-left:
+            auto;
+
+        margin-right:
+            auto;
+
+    }
+
+
+    .zq-category-section .zq-text-link,
+    .zq-products-section .zq-text-link,
+    .zq-new-section .zq-text-link,
+    .zq-story-section .zq-text-link {
+
+        justify-content:
+            center;
+
+    }
+
+
+    /* Categories */
+
+    .zq-category-grid {
+
+        grid-template-columns:
+            1fr;
+
+        width:
+            100%;
+
+    }
+
+
+    .zq-category-card,
+    .zq-category-card:last-child {
+
+        width:
+            100%;
+
+        grid-column:
+            auto;
+
+    }
+
+
+    /* Homepage product cards */
+
+    .zq-products-section
+    .product-grid,
+    .zq-new-section
+    .product-grid {
+
+        grid-template-columns:
+            1fr;
+
+        width:
+            100%;
+
+    }
+
+
+    .zq-products-section
+    .product-card,
+    .zq-new-section
+    .product-card {
+
+        width:
+            100%;
+
+    }
+
+
+    .zq-products-section
+    .badges,
+    .zq-new-section
+    .badges {
+
+        justify-content:
+            center;
+
+    }
+
+
+    .zq-products-section
+    .product-card-actions,
+    .zq-new-section
+    .product-card-actions {
+
+        width:
+            100%;
+
+        align-items:
+            center;
+
+    }
+
+
+    .zq-products-section
+    .product-card-actions
+    .btn,
+    .zq-new-section
+    .product-card-actions
+    .btn {
+
+        width:
+            100%;
+
+    }
+
+
+    /* Story and icon points */
+
+    .zq-story-grid,
+    .zq-story-image,
+    .zq-story-content,
+    .zq-story-points {
+
+        width:
+            100%;
+
+    }
+
+
+    .zq-story-content h2 {
+
+        margin-left:
+            auto;
+
+        margin-right:
+            auto;
+
+    }
+
+
+    .zq-story-points > div {
+
+        width:
+            100%;
+
+        grid-template-columns:
+            1fr;
+
+        justify-items:
+            center;
+
+        text-align:
+            center;
+
+    }
+
+
+    .zq-story-points > div > span {
+
+        margin-left:
+            auto;
+
+        margin-right:
+            auto;
+
+    }
+
+
+    .zq-story-content
+    .zq-btn,
+    .zq-story-content
+    .btn {
+
+        width:
+            100%;
+
+    }
+
+
+    /* Benefits and icons */
+
+    .zq-benefits-grid {
+
+        width:
+            100%;
+
+    }
+
+
+    .zq-benefit {
+
+        display:
+            flex;
+
+        flex-direction:
+            column;
+
+        align-items:
+            center;
+
+        justify-content:
+            center;
+
+    }
+
+
+    .zq-benefit > span {
+
+        margin-left:
+            auto;
+
+        margin-right:
+            auto;
+
+    }
+
+
+    /* Community */
+
+    .zq-community-inner {
+
+        align-items:
+            center;
+
+        justify-content:
+            center;
+
+    }
+
+
+    .zq-community h2 {
+
+        margin-left:
+            auto;
+
+        margin-right:
+            auto;
+
+    }
+
+
+    .zq-community-actions {
+
+        align-items:
+            center;
+
+        justify-content:
+            center;
+
+    }
+
+
+    .zq-community-actions
+    .zq-btn,
+    .zq-whatsapp-community,
+    .zq-community-link {
+
+        width:
+            100%;
+
+    }
+
+}
