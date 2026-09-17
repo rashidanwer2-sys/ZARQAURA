@@ -4741,7 +4741,7 @@ textarea.form-control {
         
         text-align:
             left;
-            
+
 }
 
 
@@ -5327,9 +5327,11 @@ textarea.form-control {
         justify-content:
             center;
 
-        text-align:
-            center;
+    }
 
+    .zq-section-heading.centered {
+        text-align: 
+            center;
     }
 
 
