@@ -1,36 +1,1032 @@
-<div>
+<!DOCTYPE html>
+<html lang="en">
 
-    <h3>
-        Customer Care
-    </h3>
+<head>
 
-    <a href="contact.html">
-        Contact Us
-    </a>
+    <meta charset="UTF-8">
 
-    <a href="faq.html">
-        FAQ
-    </a>
-
-    <a
-        href="https://chat.whatsapp.com/YOUR-COMMUNITY-LINK"
-        target="_blank"
-        rel="noopener noreferrer"
-        class="footer-community-link"
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
     >
-        Join WhatsApp Community →
-    </a>
 
-    <a href="refund.html">
-        Refund Policy
-    </a>
+    <title>
+        Frequently Asked Questions | ZARQAURA
+    </title>
 
-    <a href="privacy.html">
-        Privacy Policy
-    </a>
+    <meta
+        name="description"
+        content="Find answers to frequently asked questions about ZARQAURA jewellery, orders, shipping, payments and product care."
+    >
 
-    <a href="cart.html">
-        Your Cart
-    </a>
+    <link
+        rel="icon"
+        href="assets/images/branding/favicon.png"
+        type="image/png"
+    >
 
-</div>
+    <link
+        rel="stylesheet"
+        href="assets/css/styles.css"
+    >
+
+
+    <style>
+
+        /* =========================================================
+           FAQ PAGE ONLY
+        ========================================================= */
+
+        .faq-intro {
+
+            max-width: 650px;
+
+            margin-top: 15px;
+
+            color: var(--text-soft);
+
+            font-family:
+                "Lora",
+                Georgia,
+                serif;
+
+            font-size: 14px;
+
+            line-height: 1.8;
+
+        }
+
+
+        .faq-section {
+
+            padding-top: 30px;
+
+        }
+
+
+        .faq-container {
+
+            max-width: 900px;
+
+            margin: 0 auto;
+
+        }
+
+
+        .faq-group {
+
+            margin-bottom: 50px;
+
+        }
+
+
+        .faq-group-title {
+
+            margin-bottom: 20px;
+
+            color: var(--brown);
+
+            font-size:
+                clamp(
+                    28px,
+                    4vw,
+                    38px
+                );
+
+            font-weight: 500;
+
+        }
+
+
+        /* =========================================================
+           FAQ ITEM
+        ========================================================= */
+
+        .faq-item {
+
+            overflow: hidden;
+
+            margin-bottom: 10px;
+
+            border:
+                1px solid
+                var(--border);
+
+            border-radius:
+                14px;
+
+            background:
+                var(--white);
+
+            transition:
+                border-color 0.3s ease,
+                box-shadow 0.3s ease;
+
+        }
+
+
+        .faq-item.open {
+
+            border-color:
+                rgba(
+                    47,
+                    93,
+                    98,
+                    0.28
+                );
+
+            box-shadow:
+                var(--shadow-small);
+
+        }
+
+
+        .faq-question {
+
+            width: 100%;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            gap: 20px;
+
+            padding:
+                20px 22px;
+
+            border: 0;
+
+            background:
+                transparent;
+
+            color:
+                var(--brown);
+
+            text-align: left;
+
+            font-family:
+                "Lora",
+                Georgia,
+                serif;
+
+            font-size: 14px;
+
+            font-weight: 600;
+
+        }
+
+
+        .faq-question span:first-child {
+
+            flex: 1;
+
+        }
+
+
+        .faq-icon {
+
+            position: relative;
+
+            width: 22px;
+
+            height: 22px;
+
+            flex:
+                0 0 22px;
+
+        }
+
+
+        .faq-icon::before,
+        .faq-icon::after {
+
+            content: "";
+
+            position: absolute;
+
+            top: 50%;
+
+            left: 50%;
+
+            width: 13px;
+
+            height: 1.5px;
+
+            background:
+                var(--teal);
+
+            transform:
+                translate(
+                    -50%,
+                    -50%
+                );
+
+            transition:
+                transform 0.3s ease;
+
+        }
+
+
+        .faq-icon::after {
+
+            transform:
+                translate(
+                    -50%,
+                    -50%
+                )
+                rotate(90deg);
+
+        }
+
+
+        .faq-item.open
+        .faq-icon::after {
+
+            transform:
+                translate(
+                    -50%,
+                    -50%
+                )
+                rotate(0deg);
+
+        }
+
+
+        /* =========================================================
+           FAQ ANSWER
+        ========================================================= */
+
+        .faq-answer {
+
+            max-height: 0;
+
+            overflow: hidden;
+
+            opacity: 0;
+
+            transition:
+                max-height 0.45s ease,
+                opacity 0.3s ease;
+
+        }
+
+
+        .faq-answer-inner {
+
+            padding:
+                0 22px 21px;
+
+            color:
+                var(--text-soft);
+
+            font-family:
+                "Lora",
+                Georgia,
+                serif;
+
+            font-size: 12px;
+
+            line-height: 1.8;
+
+        }
+
+
+        .faq-answer-inner p {
+
+            margin:
+                0;
+
+        }
+
+
+        /* =========================================================
+           FAQ SUPPORT
+        ========================================================= */
+
+        .faq-support {
+
+            margin-top: 25px;
+
+            padding:
+                45px 25px;
+
+            text-align: center;
+
+        }
+
+
+        .faq-support h2 {
+
+            margin-bottom: 12px;
+
+            font-size:
+                clamp(
+                    30px,
+                    4vw,
+                    42px
+                );
+
+            font-weight: 500;
+
+        }
+
+
+        .faq-support p {
+
+            max-width: 580px;
+
+            margin:
+                0 auto 24px;
+
+            color:
+                var(--text-soft);
+
+            font-family:
+                "Lora",
+                Georgia,
+                serif;
+
+            font-size: 12px;
+
+            line-height: 1.8;
+
+        }
+
+
+        /* =========================================================
+           MOBILE
+        ========================================================= */
+
+        @media (max-width: 480px) {
+
+            .faq-intro,
+            .faq-group-title,
+            .faq-support {
+
+                text-align: center;
+
+            }
+
+
+            .faq-question {
+
+                padding:
+                    18px;
+
+                font-size: 13px;
+
+            }
+
+
+            .faq-answer-inner {
+
+                padding:
+                    0 18px 18px;
+
+            }
+
+
+            .faq-support .zq-btn {
+
+                width: 100%;
+
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- =========================================================
+         HEADER
+    ========================================================== -->
+
+    <div data-site-header></div>
+
+
+
+    <main>
+
+
+        <!-- =====================================================
+             FAQ HERO
+        ====================================================== -->
+
+        <section class="page-hero">
+
+            <div class="container">
+
+                <p class="zq-eyebrow">
+                    NEED SOME HELP?
+                </p>
+
+                <h1>
+                    Frequently Asked Questions
+                </h1>
+
+                <p class="faq-intro">
+
+                    Find answers to common questions about
+                    ZARQAURA jewellery, ordering, shipping,
+                    payments and product care.
+
+                </p>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =====================================================
+             FAQ
+        ====================================================== -->
+
+        <section class="section faq-section">
+
+            <div class="container">
+
+                <div class="faq-container">
+
+
+                    <!-- =========================================
+                         PRODUCTS
+                    ========================================== -->
+
+                    <div class="faq-group">
+
+                        <h2 class="faq-group-title">
+                            Products & Jewellery
+                        </h2>
+
+
+                        <div class="faq-item">
+
+                            <button
+                                type="button"
+                                class="faq-question"
+                            >
+                                <span>
+                                    What does anti-tarnish jewellery mean?
+                                </span>
+
+                                <span class="faq-icon"></span>
+                            </button>
+
+                            <div class="faq-answer">
+
+                                <div class="faq-answer-inner">
+
+                                    <p>
+                                        ZARQAURA jewellery is selected
+                                        for its long-lasting finish and
+                                        resistance to everyday tarnishing.
+                                        Proper care will help maintain its
+                                        shine for longer.
+                                    </p>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+
+                        <div class="faq-item">
+
+                            <button
+                                type="button"
+                                class="faq-question"
+                            >
+                                <span>
+                                    Can I wear ZARQAURA jewellery every day?
+                                </span>
+
+                                <span class="faq-icon"></span>
+                            </button>
+
+                            <div class="faq-answer">
+
+                                <div class="faq-answer-inner">
+
+                                    <p>
+                                        Our collections are curated with
+                                        everyday styling in mind. We still
+                                        recommend following the jewellery
+                                        care instructions to preserve the
+                                        finish.
+                                    </p>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+
+                        <div class="faq-item">
+
+                            <button
+                                type="button"
+                                class="faq-question"
+                            >
+                                <span>
+                                    How should I care for my jewellery?
+                                </span>
+
+                                <span class="faq-icon"></span>
+                            </button>
+
+                            <div class="faq-answer">
+
+                                <div class="faq-answer-inner">
+
+                                    <p>
+                                        Keep your jewellery clean and dry
+                                        when storing it. Avoid prolonged
+                                        exposure to perfumes, harsh
+                                        chemicals and moisture, and store
+                                        pieces separately whenever possible.
+                                    </p>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+                    </div>
+
+
+
+                    <!-- =========================================
+                         ORDERS
+                    ========================================== -->
+
+                    <div class="faq-group">
+
+                        <h2 class="faq-group-title">
+                            Orders & Payments
+                        </h2>
+
+
+                        <div class="faq-item">
+
+                            <button
+                                type="button"
+                                class="faq-question"
+                            >
+                                <span>
+                                    How can I place an order?
+                                </span>
+
+                                <span class="faq-icon"></span>
+                            </button>
+
+                            <div class="faq-answer">
+
+                                <div class="faq-answer-inner">
+
+                                    <p>
+                                        Browse the ZARQAURA store, add
+                                        your preferred jewellery to your
+                                        cart and proceed through checkout
+                                        to complete your order.
+                                    </p>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+
+                        <div class="faq-item">
+
+                            <button
+                                type="button"
+                                class="faq-question"
+                            >
+                                <span>
+                                    How will I know my order was received?
+                                </span>
+
+                                <span class="faq-icon"></span>
+                            </button>
+
+                            <div class="faq-answer">
+
+                                <div class="faq-answer-inner">
+
+                                    <p>
+                                        Once your order details are
+                                        completed, you will receive an
+                                        order summary with your order
+                                        information.
+                                    </p>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+
+                        <div class="faq-item">
+
+                            <button
+                                type="button"
+                                class="faq-question"
+                            >
+                                <span>
+                                    Can I contact ZARQAURA before ordering?
+                                </span>
+
+                                <span class="faq-icon"></span>
+                            </button>
+
+                            <div class="faq-answer">
+
+                                <div class="faq-answer-inner">
+
+                                    <p>
+                                        Yes. You can contact us through
+                                        WhatsApp, Instagram or email if
+                                        you need product information or
+                                        assistance before placing an order.
+                                    </p>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+                    </div>
+
+
+
+                    <!-- =========================================
+                         SHIPPING
+                    ========================================== -->
+
+                    <div class="faq-group">
+
+                        <h2 class="faq-group-title">
+                            Shipping & Delivery
+                        </h2>
+
+
+                        <div class="faq-item">
+
+                            <button
+                                type="button"
+                                class="faq-question"
+                            >
+                                <span>
+                                    Do you offer free shipping?
+                                </span>
+
+                                <span class="faq-icon"></span>
+                            </button>
+
+                            <div class="faq-answer">
+
+                                <div class="faq-answer-inner">
+
+                                    <p>
+                                        Yes, ZARQAURA currently offers
+                                        free shipping across India.
+                                    </p>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+
+                        <div class="faq-item">
+
+                            <button
+                                type="button"
+                                class="faq-question"
+                            >
+                                <span>
+                                    How long does delivery take?
+                                </span>
+
+                                <span class="faq-icon"></span>
+                            </button>
+
+                            <div class="faq-answer">
+
+                                <div class="faq-answer-inner">
+
+                                    <p>
+                                        Delivery generally takes around
+                                        3–7 business days depending on
+                                        your location.
+                                    </p>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+
+                        <div class="faq-item">
+
+                            <button
+                                type="button"
+                                class="faq-question"
+                            >
+                                <span>
+                                    How quickly is my order dispatched?
+                                </span>
+
+                                <span class="faq-icon"></span>
+                            </button>
+
+                            <div class="faq-answer">
+
+                                <div class="faq-answer-inner">
+
+                                    <p>
+                                        Orders are generally prepared
+                                        for dispatch within 24–48 hours.
+                                    </p>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+                    </div>
+
+
+
+                    <!-- =========================================
+                         RETURNS
+                    ========================================== -->
+
+                    <div class="faq-group">
+
+                        <h2 class="faq-group-title">
+                            Returns & Support
+                        </h2>
+
+
+                        <div class="faq-item">
+
+                            <button
+                                type="button"
+                                class="faq-question"
+                            >
+                                <span>
+                                    Where can I find your refund policy?
+                                </span>
+
+                                <span class="faq-icon"></span>
+                            </button>
+
+                            <div class="faq-answer">
+
+                                <div class="faq-answer-inner">
+
+                                    <p>
+                                        You can review the complete
+                                        refund and return information on
+                                        our Refund Policy page.
+                                    </p>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+
+                        <div class="faq-item">
+
+                            <button
+                                type="button"
+                                class="faq-question"
+                            >
+                                <span>
+                                    How can I contact customer support?
+                                </span>
+
+                                <span class="faq-icon"></span>
+                            </button>
+
+                            <div class="faq-answer">
+
+                                <div class="faq-answer-inner">
+
+                                    <p>
+                                        Visit our Contact page to reach
+                                        ZARQAURA through WhatsApp,
+                                        Instagram or email.
+                                    </p>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+                    </div>
+
+
+
+                    <!-- =========================================
+                         SUPPORT CTA
+                    ========================================== -->
+
+                    <div class="panel faq-support">
+
+                        <p class="zq-eyebrow">
+                            STILL NEED HELP?
+                        </p>
+
+                        <h2>
+                            We're here for you.
+                        </h2>
+
+                        <p>
+                            If you couldn't find the answer you're
+                            looking for, contact ZARQAURA and we'll
+                            be happy to assist you.
+                        </p>
+
+                        <a
+                            href="contact.html"
+                            class="zq-btn zq-btn-primary"
+                        >
+                            Contact Us
+                        </a>
+
+                    </div>
+
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+    </main>
+
+
+
+    <!-- =========================================================
+         FOOTER
+    ========================================================== -->
+
+    <div data-site-footer></div>
+
+
+
+    <!-- =========================================================
+         DATA + GLOBAL JS
+    ========================================================== -->
+
+    <script src="assets/data/site-config.js"></script>
+
+    <script src="assets/data/products.js"></script>
+
+    <script src="assets/js/app.js"></script>
+
+
+
+    <!-- =========================================================
+         FAQ ACCORDION
+    ========================================================== -->
+
+    <script>
+
+        document.addEventListener(
+            "DOMContentLoaded",
+            () => {
+
+                const faqItems =
+                    document.querySelectorAll(
+                        ".faq-item"
+                    );
+
+
+                faqItems.forEach(
+                    item => {
+
+                        const question =
+                            item.querySelector(
+                                ".faq-question"
+                            );
+
+
+                        const answer =
+                            item.querySelector(
+                                ".faq-answer"
+                            );
+
+
+                        question.addEventListener(
+                            "click",
+                            () => {
+
+                                const isOpen =
+                                    item.classList.contains(
+                                        "open"
+                                    );
+
+
+                                /*
+                                   Close other FAQs
+                                */
+
+                                faqItems.forEach(
+                                    otherItem => {
+
+                                        otherItem
+                                            .classList
+                                            .remove(
+                                                "open"
+                                            );
+
+
+                                        const otherAnswer =
+                                            otherItem
+                                                .querySelector(
+                                                    ".faq-answer"
+                                                );
+
+
+                                        otherAnswer.style.maxHeight =
+                                            null;
+
+
+                                        otherAnswer.style.opacity =
+                                            "0";
+
+                                    }
+                                );
+
+
+                                /*
+                                   Open selected FAQ
+                                */
+
+                                if (!isOpen) {
+
+                                    item.classList.add(
+                                        "open"
+                                    );
+
+
+                                    answer.style.maxHeight =
+                                        answer.scrollHeight
+                                        + "px";
+
+
+                                    answer.style.opacity =
+                                        "1";
+
+                                }
+
+                            }
+                        );
+
+                    }
+                );
+
+            }
+        );
+
+    </script>
+
+
+</body>
+
+</html>
