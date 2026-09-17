@@ -1671,17 +1671,20 @@ span:nth-child(3) {
 
 .zq-text-link {
 
-    padding-bottom:
-        5px;
+    position:
+        relative;
 
-    border-bottom:
-        1px solid
-        rgba(
-            100,
-            65,
-            58,
-            0.35
-        );
+    display:
+        inline-flex;
+
+    align-items:
+        center;
+
+    gap:
+        6px;
+
+    padding-bottom:
+        4px;
 
     color:
         var(--brown);
@@ -1692,23 +1695,67 @@ span:nth-child(3) {
     font-weight:
         600;
 
+    letter-spacing:
+        0.2px;
+
     transition:
-        color 0.2s ease,
-        border-color 0.2s ease;
+        color 0.3s ease,
+        transform 0.3s ease,
+        opacity 0.3s ease;
+
+}
+
+
+.zq-text-link::after {
+
+    content:
+        "";
+
+    position:
+        absolute;
+
+    left:
+        0;
+
+    bottom:
+        0;
+
+    width:
+        28%;
+
+    height:
+        1px;
+
+    background:
+        var(--brown);
+
+    transition:
+        width 0.35s ease,
+        background-color 0.35s ease;
 
 }
 
 
 .zq-text-link:hover {
 
-    border-color:
-        var(--teal);
-
     color:
         var(--teal);
 
+    transform:
+        translateX(4px);
+
 }
 
+
+.zq-text-link:hover::after {
+
+    width:
+        100%;
+
+    background:
+        var(--teal);
+
+}
 
 /* =========================================================
    CATEGORY SECTION
