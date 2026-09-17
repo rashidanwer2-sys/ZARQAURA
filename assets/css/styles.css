@@ -5200,7 +5200,6 @@ textarea.form-control {
     .zq-new-section .product-body,
     .zq-story-content,
     .zq-benefit,
-    .zq-community-inner,
     .zq-community-actions,
     .zq-center-action {
 
@@ -5437,16 +5436,6 @@ textarea.form-control {
 
 
     /* Story and icon points */
-
-    .zq-story-grid,
-    .zq-story-image,
-    .zq-story-content,
-    .zq-story-points {
-
-        width:
-            100%;
-
-    }
 
 
     .zq-story-content h2 {
