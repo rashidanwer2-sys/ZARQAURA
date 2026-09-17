@@ -5594,4 +5594,36 @@ textarea.form-control {
 
     }
 
+    .product-grid {
+        width: 100%;
+        grid-template-columns: 1fr;
+        justify-items: center;
+    }
+
+    .product-card {
+        width: 100%;
+        max-width: 100%;
+        margin: 0 auto;
+        text-align: center;
+    }
+
+    .product-card-image-link,
+    .product-image {
+        width: 100%;
+    }
+
+    .product-body {
+        width: 100%;
+        text-align: center;
+    }
+
+    .badges,
+    .product-card-actions {
+        justify-content: center;
+    }
+
+    .product-card-actions .btn {
+        width: 100%;
+    }
+
 }
